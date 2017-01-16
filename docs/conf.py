@@ -51,7 +51,7 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 # General information about the project.
-project = u'realmjoin-docs'
+project = u'RealmJoin'
 copyright = u'2017, glueckkanja.com'
 author = u'glueckkanja.com'
 

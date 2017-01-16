@@ -2,16 +2,21 @@
 
 ## Possible reasons why a software package might not install
 
-1. The software package is not properly assigned to the user:  
+**1. The software package is not properly assigned to the user**
+
   * In Azure AD: is there a software distribution group for this software and is the user member of this group?  
   *	In RealmJoin Admin Portal: is there a package for this software and is this package assigned to the correct Azure AD group?  
   * Is the software package assigned for automatic or manual install?  
-2. The software is assigned but the assignment is not received by the client:
+
+**2. The software is assigned but the assignment is not received by the client**
+
   * Is RealmJoin running?
   * Is the RealmJoin configuration up to date?
   * Is the RealmJoin version up to date?
   * Are there any errors in the RealmJoin logs?
-3. The assignment reaches the client but the installation is not started or fails: 
+
+**3. The assignment reaches the client but the installation is not started or fails**
+
   * Is the software assigned for manual installation?
   * Is it possible to start the installation manually and are there any errors shown?
   * Check RealmJoin logs and software installation logs if available?

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; realmjoin-docs 4.0.0 documentation</title>
+  <title>Installation &mdash; RealmJoin 4.0.0 documentation</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="realmjoin-docs 4.0.0 documentation" href="index.html"/>
+    <link rel="top" title="RealmJoin 4.0.0 documentation" href="index.html"/>
         <link rel="next" title="FAQ" href="faq.html"/>
         <link rel="prev" title="Introduction" href="introduction.html"/> 
 
@@ -53,7 +53,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> realmjoin-docs
+            <a href="index.html" class="icon icon-home"> RealmJoin
           
 
           
@@ -118,7 +118,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">realmjoin-docs</a>
+        <a href="index.html">RealmJoin</a>
       </nav>
 
 
@@ -171,19 +171,25 @@
 <p>You may download and install RealmJoin in a single step by using the following command line.</p>
 <div class="section" id="release-channel-version">
 <span id="release-channel-version"></span><h3>Release Channel Version<a class="headerlink" href="#release-channel-version" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@powershell</span> <span class="o">-</span><span class="n">NoProfile</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">unrestricted</span> <span class="o">-</span><span class="n">Command</span> <span class="s2">&quot;((new-object net.webclient).DownloadFile(&#39;https://gkrealmjoin.s3.amazonaws.com/win-dev/RealmJoin.exe&#39;, &#39;realmjoin.exe&#39;))&quot;</span> <span class="o">&amp;&amp;</span> <span class="o">.</span>\<span class="n">realmjoin</span><span class="o">.</span><span class="n">exe</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@powershell</span> <span class="o">-</span><span class="n">NoProfile</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">unrestricted</span> 
+<span class="o">-</span><span class="n">Command</span> <span class="s2">&quot;((new-object net.webclient).DownloadFile(&#39;https://gkrealmjoin.s3.amazonaws.com</span>
+<span class="o">/</span><span class="n">win</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">RealmJoin</span><span class="o">.</span><span class="n">exe</span><span class="s1">&#39;, &#39;</span><span class="n">realmjoin</span><span class="o">.</span><span class="n">exe</span><span class="s1">&#39;))&quot; &amp;&amp; .</span><span class="se">\r</span><span class="s1">ealmjoin.exe</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="beta-channel-version">
 <span id="beta-channel-version"></span><h3>Beta Channel Version<a class="headerlink" href="#beta-channel-version" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@powershell</span> <span class="o">-</span><span class="n">NoProfile</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">unrestricted</span> <span class="o">-</span><span class="n">Command</span> <span class="s2">&quot;((new-object net.webclient).DownloadFile(&#39;https://gkrealmjoin.s3.amazonaws.com/win-beta/RealmJoin.exe&#39;, &#39;realmjoin.exe&#39;))&quot;</span> <span class="o">&amp;&amp;</span> <span class="o">.</span>\<span class="n">realmjoin</span><span class="o">.</span><span class="n">exe</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@powershell</span> <span class="o">-</span><span class="n">NoProfile</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">unrestricted</span> 
+<span class="o">-</span><span class="n">Command</span> <span class="s2">&quot;((new-object net.webclient).DownloadFile(&#39;https://gkrealmjoin.s3.amazonaws.com</span>
+<span class="o">/</span><span class="n">win</span><span class="o">-</span><span class="n">beta</span><span class="o">/</span><span class="n">RealmJoin</span><span class="o">.</span><span class="n">exe</span><span class="s1">&#39;, &#39;</span><span class="n">realmjoin</span><span class="o">.</span><span class="n">exe</span><span class="s1">&#39;))&quot; &amp;&amp; .</span><span class="se">\r</span><span class="s1">ealmjoin.exe</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="beta-channel-version">
 <span id="id1"></span><h3>Beta Channel Version<a class="headerlink" href="#beta-channel-version" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@powershell</span> <span class="o">-</span><span class="n">NoProfile</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">unrestricted</span> <span class="o">-</span><span class="n">Command</span> <span class="s2">&quot;((new-object net.webclient).DownloadFile(&#39;https://gkrealmjoin.s3.amazonaws.com/win-canary/RealmJoin.exe&#39;, &#39;realmjoin.exe&#39;))&quot;</span> <span class="o">&amp;&amp;</span> <span class="o">.</span>\<span class="n">realmjoin</span><span class="o">.</span><span class="n">exe</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@powershell</span> <span class="o">-</span><span class="n">NoProfile</span> <span class="o">-</span><span class="n">ExecutionPolicy</span> <span class="n">unrestricted</span> 
+<span class="o">-</span><span class="n">Command</span> <span class="s2">&quot;((new-object net.webclient).DownloadFile(&#39;https://gkrealmjoin.s3.amazonaws.com</span>
+<span class="o">/</span><span class="n">win</span><span class="o">-</span><span class="n">canary</span><span class="o">/</span><span class="n">RealmJoin</span><span class="o">.</span><span class="n">exe</span><span class="s1">&#39;, &#39;</span><span class="n">realmjoin</span><span class="o">.</span><span class="n">exe</span><span class="s1">&#39;))&quot; &amp;&amp; .</span><span class="se">\r</span><span class="s1">ealmjoin.exe</span>
 </pre></div>
 </div>
 </div>
