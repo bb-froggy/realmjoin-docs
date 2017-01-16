@@ -108,5 +108,3 @@ In this example it has not been assigned to any individual user but to 2 groups.
 
 ![RealmJoin Portal](./media/rjserver-two.png)
 
-
-
