@@ -4,7 +4,7 @@
 
 ### Release Version
 
-[RealmJoin Release Version](https://gkrealmjoin.s3.amazonaws.com/win-dev/RealmJoin.exe)
+[RealmJoin Release Version](https://gkrealmjoin.s3.amazonaws.com/win-release/RealmJoin.exe)
 
 ### Dev Channel Version
 
@@ -23,7 +23,7 @@ You may download and install RealmJoin in a single step by using the following c
 ```
 @powershell -NoProfile -ExecutionPolicy unrestricted 
 -Command "((new-object net.webclient).DownloadFile('https://gkrealmjoin.s3.amazonaws.com
-/win-dev/RealmJoin.exe', 'realmjoin.exe'))" && .\realmjoin.exe
+/win-release/RealmJoin.exe', 'realmjoin.exe'))" && .\realmjoin.exe
 ```
 
 ### Beta Channel Version
