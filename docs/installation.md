@@ -2,23 +2,25 @@
 
 ## Interactive Installation
 
-### Release Version
+In general you should deploy RealmJoin by using Intune app deployment. Intune will deploy one application only, the RealmJoin client. The application will be deployed through the MDM Channel with an Installer Type “Windows Installer trough MDM (*.msi)”. The Windows 10 clients will be auto enrolled to Intune during their AzureAD Join. 
 
-[RealmJoin Release Version](https://gkrealmjoin.s3.amazonaws.com/win-release/RealmJoin.exe)
+### Release 
 
-### Dev Channel Version
+[RealmJoin Release Version](https://gkrealmjoin.s3.amazonaws.com/win-release/RealmJoin.msi)
 
-[RealmJoin Dev Channel Version](https://gkrealmjoin.s3.amazonaws.com/win-beta/RealmJoin.exe)
+### Beta Channel 
 
-### Canary Channel Version
+[RealmJoin Beta Version](https://gkrealmjoin.s3.amazonaws.com/win-beta/RealmJoin.msi)
 
-[RealmJoin Canary Channel Version](https://gkrealmjoin.s3.amazonaws.com/win-canary/RealmJoin.exe)
+### Canary Channel 
+
+[RealmJoin Canary Version](https://gkrealmjoin.s3.amazonaws.com/win-canary/RealmJoin.msi)
 
 ## Command Line Installation
 
-You may download and install RealmJoin in a single step by using the following command line.
+You may download and install RealmJoin in a single step by using the following command line. This may help especially when testing scenarios or new software packages in virtual machines.
 
-### Release Channel Version
+### Release Channel 
 
 ```
 @powershell -NoProfile -ExecutionPolicy unrestricted 
@@ -26,7 +28,7 @@ You may download and install RealmJoin in a single step by using the following c
 /win-release/RealmJoin.exe', 'realmjoin.exe'))" && .\realmjoin.exe
 ```
 
-### Beta Channel Version
+### Beta Channel 
 
 ```
 @powershell -NoProfile -ExecutionPolicy unrestricted 
@@ -34,7 +36,7 @@ You may download and install RealmJoin in a single step by using the following c
 /win-beta/RealmJoin.exe', 'realmjoin.exe'))" && .\realmjoin.exe
 ```
 
-### Beta Channel Version
+### Canary Version
 
 ```
 @powershell -NoProfile -ExecutionPolicy unrestricted 
