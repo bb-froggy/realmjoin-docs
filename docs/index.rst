@@ -21,8 +21,9 @@ Deployment Guide
    installation
    userinterface
 
-   faq
    network
+
+   faq
    troubleshooting
 
 
