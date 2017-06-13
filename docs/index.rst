@@ -26,7 +26,7 @@ Deployment Guide
    faq
    troubleshooting
 
-   realmjoin-core-extension
+   realmjoincoreextension
 
 
 
