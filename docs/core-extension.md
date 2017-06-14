@@ -7,8 +7,10 @@ Enable-ChocolateyRealmjoinAppv
 
 ### Parameters
 
+```no-highlight
 | Name | Alias | Description | Required? | Pipeline Input | Default Value |
 | ---- | ----- | ----------- |:---------:|:--------------:| ------------- |
+```
 
 ## Get-ChocolateyRealmjoinAppvPackageVfsPath
 ### Syntax
