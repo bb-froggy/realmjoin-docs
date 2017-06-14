@@ -26,9 +26,6 @@ Deployment Guide
    faq
    troubleshooting
 
-   realmjoincoreextension
-
-
 
 Indices and tables
 ==================
