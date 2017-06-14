@@ -22,6 +22,7 @@ Deployment Guide
    userinterface
 
    network
+   core-extension
 
    faq
    troubleshooting
