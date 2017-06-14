@@ -1,6 +1,9 @@
 # Core Extension
 
-## Initial Start
+## Enable-ChocolateyRealmjoinAppv
 
-TBD.
+### Syntax
+Enable-ChocolateyRealmjoinAppv
 
+### Parameters
+TBD
