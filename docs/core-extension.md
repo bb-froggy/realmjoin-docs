@@ -188,15 +188,15 @@ Uninstall-ChocolateyRealmjoinPackage \[\[-uninstallerFile\] \<string\>\] \[\[-ad
 ### Parameters
 
 ```no-highlight
-| Name            | Alias | Description | Required? | Pipeline Input | Default Value |
-| --------------- | ----- | ----------- |:---------:|:--------------:| ------------- |
-| Confirm         | cf    |             | false     | false            |             |
-| WhatIf          | wi    |             | false     | false            |             |
-| additionalArgs  | None  |             | false     | false            |             |
-| silentArgs      | None  |             | false     | false            |             |
-| subPackageName  | None  |             | false     | false            |             |
-| uninstallInfo   | None  |             | false     | true \(ByValue\) |             |
-| uninstallerFile | None  |             | false     | false            |             |
-| uninstallers    | None  |             | false     | false            |             |
-| validExitCodes  | None  |             | false     | false            |             |
+| Name            | Alias | Description | Required? | Pipeline Input   | Default Value |
+| --------------- | ----- | ----------- |:---------:|:----------------:| ------------- |
+| Confirm         | cf    |             | false     | false            |               |
+| WhatIf          | wi    |             | false     | false            |               |
+| additionalArgs  | None  |             | false     | false            |               |
+| silentArgs      | None  |             | false     | false            |               |
+| subPackageName  | None  |             | false     | false            |               |
+| uninstallInfo   | None  |             | false     | true \(ByValue\) |               |
+| uninstallerFile | None  |             | false     | false            |               |
+| uninstallers    | None  |             | false     | false            |               |
+| validExitCodes  | None  |             | false     | false            |               |
 ```
