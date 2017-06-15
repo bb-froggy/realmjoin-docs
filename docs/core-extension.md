@@ -176,6 +176,7 @@ Test-ChocolateyRealmjoinRegistryUninstallExists \[\[-keyNameFilter\] \<string\>\
 Uninstall-ChocolateyRealmjoinAppvPackage \[\[-name\] \<string\>\] \[\<CommonParameters\>\]
 ### Parameters
 
+```no-highlight
 | Name | Alias | Description | Required? | Pipeline Input | Default Value |
 | ---- | ----- | ----------- |:---------:|:--------------:| ------------- |
 | name | None  |             | false     | false          |               |
