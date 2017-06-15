@@ -19,8 +19,8 @@ Get-ChocolateyRealmjoinAppvPackageVfsPath \[\[-appvPackage\] \<Object\>\] \[\<Co
 
 ```no-highlight
 | Name | Alias | Description | Required? | Pipeline Input | Default Value |
-| ---- | ----- | ----------- |:---------:|:--------------:| ------------- |
-| appvPackage | None |  | false | false |  |
+| ----------- | ----- | ----------- |:---------:|:--------------:| ------------- |
+| appvPackage | None  |             | false     | false          |               |
 ```
 
 ## Get-ChocolateyRealmjoinLocaleId
