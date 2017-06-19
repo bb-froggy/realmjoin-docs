@@ -20,6 +20,7 @@ Deployment Guide
    introduction
    installation
    userinterface
+   create-package
 
    network
    core-extension
