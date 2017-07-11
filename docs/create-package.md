@@ -6,7 +6,7 @@ The following documentation describes the creation of a VLC choco package.
 
 ```mkdir VLC```
 
-## Use Junpstarter to create repository
+## Use Jumpstarter to create repository
 
 ```
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/realmjoin/realmjoin-package-jumpstarter/raw/master/JumpstartRealmJoinPackage.ps1'))"
