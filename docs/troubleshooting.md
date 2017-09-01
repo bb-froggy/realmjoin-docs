@@ -41,6 +41,10 @@ Select and copy everything in the details If the software installation fails. At
 
 ## RealmJoin Log Files
 
+## Loging
+RealmJoin records all event data into log files. Those can easily be accessed on the client device using the Windows Event Viewer (eventvwr.msc).
+RealmJoin logs can be found under *Event Viewer (Local) / Windows Logs / Application*. 
+
 To troubleshoot package execution problems or RealmJoin Problems there are several Log Files available:
 
 System Context Installations and other system tasks: ```C:\Windows\Logs\realmjoin.log```
@@ -102,6 +106,7 @@ Select appropriate software distribution group and verify if the user is member 
 ![O365 Portal](./media/o365-portal-two.png)
 
 ## RealmJoin Backend
+Replace with Admin Console!
 
 Go to RealmJoin Backend admin portal at: [RealmJoin Backend Portal](https://realmjoin-backend.azurewebsites.net)
 
@@ -113,3 +118,16 @@ In this example it has not been assigned to any individual user but to 2 groups.
 
 ![RealmJoin Portal](./media/rjserver-two.png)
 
+
+Einwurf Pascal: sollte chocolatey mal nicht richtig von realmjoin isntalliert werden kann die umgebenungsvaribale %chocolateyinstall% entfernt werden und beim nächsten start von realmjoin wird chocolatey nocheinmal installiert
+bzw. neuinstalliert (forced)
+
+
+
+user for admin angemeldet, tenant noch nicht vorhanden gibt ein problem. 
+
+
+## Token Error / re-call the RealmJoin credential pop-up window
+* RealmJoin client module, Change Domain Password
+* Broken Token File: rename C:\Users\username\AppData\Local\RealmJoin\token.dat and restart device
+sollte in neuer Version automatisch gehen

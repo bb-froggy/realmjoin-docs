@@ -14,17 +14,18 @@ Deployment Guide
 ================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
 
    introduction
    installation
-   userinterface
+   infrastructure
+   managing-realmjoin
+   policies
+   package-types
+   packaging-workflow
    create-package
-
-   network
    core-extension
-
    faq
    troubleshooting
 
