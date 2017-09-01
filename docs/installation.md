@@ -14,9 +14,11 @@ There are different ways to install and enroll RealmJoin in Microsoft Intune. If
 
 ### Azure Intune Portal
 The deployment of RealmJoin using Azure Intune requires only the .MSI installer to be configured. If the RealmJoin app in the desired release version is not registered in Intune, it can be added as a Line-of-Business app via the Azure Portal blade *Microsoft Intune / Mobile Apps / Apps / Add*.  
-<img src="media/rj-intune-deploy.png" width="1024">  
+![RJ Intune Deploy](./media/rj-intune-deploy.png)
+
 In the configuration tab basic and advanced information can be provided.   
-<img src="media/rj-intune-deploy2.png" width="800">  
+![RJ Intune Deploy2](./media/rj-intune-deploy2.png)
+
 As any piece of software, ReamJoin then can be assigned to the desired user groups as (required) software. It is not neccessary to install additional software on the client devices to run RealmJoin. RealmJoin will be deployed on the client devices on next Azure sync.
 
 ### Powershell

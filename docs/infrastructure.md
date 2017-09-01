@@ -90,7 +90,7 @@ The RealmJoin client authenticates itself against the Azure AD via a secured HTT
 ### Signed MSI 
 The RealmJoin.MSI is SHA2 (256 bit) signed by GK and therefore recognizied by Windows as safe to install.
 
-<img src="media/rj-msi-sig.png" width="640">  
+![RJ Signed MSI](./media/rj-msi-sig.png)
 
 ### Package Hashes
 During the package creation process, packages are signed with SHA2 (256 bit) hashes (see chapter *create packages*). Older SHA1 signed packages will still be accepted by RealmJoin. For more information on SHA2 encryption, check [the Wikipedia article on SHA2](https://en.wikipedia.org/wiki/SHA-2).

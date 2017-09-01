@@ -1,5 +1,6 @@
 # Creating packages
-<img src="media/rj-ecosystem.png" width="640">  
+![RJ ecosystem](./media/rj-ecosystem.png)
+  
 The picture above provides a schematic overview over the RealmJoin package distribution ecosystem. The step of creating packages will be illuminiated in this chapter. 
 It documents the basic steps in creating craft, chocolatey, APP-X and organic packages. While all types follow the same rough outline, there are some differences when handling the packages. 
 
@@ -24,7 +25,8 @@ You confronted by the following prompt and asked to specify details:
 * Please enter the RealmJoin GitLab Access Token: (your token)   
 Cloning into....[installation messages]
 ``` 
-<img src="media/rj-package-jump.png" width="1024">  
+  
+![RJ package-jump](./media/rj-package-jump.png)
 
 After a short while, a new repository is created and the template files are copied into the local package folder. Before working on the files, please check the *readme.md*. Depending on the type of package that is to be created, the next steps will vary.  
 
@@ -35,15 +37,19 @@ After a short while, a new repository is created and the template files are copi
 <!-- Depending on the instructions in the *readme.md* file, all not for choco packages used files can be deleted from the package folder including the ```Jumpstart.ps1```-->
 * Create ```.gitlab-ci.yml```  
   Select and add the most fitting ```sample*.gitlab-ci.yml``` file and delete the other ones. In the following example, the *flavour* [companyname] was added, to provide the package with the desired corporate meta data. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.
-<img src="media/rj-package-sample.png" width="1024">  
+
+![RJ package-sample](./media/rj-package-sample.png)
+  
 * Customize ```choco-package.nuspec```  
   Add the metadata according to the desired software. 
-<img src="media/rj-package-nuspec.PNG" width="800"> 
+![RJ rj-package-nuspec](./media/rj-package-nuspec.png)
+
 * Move installer  
   Move the executables or installer files into the subfolder ```blobs``` and delete the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```. 
 * Customize ```tools\chocolateyInstall.ps1```  
   Based on the samples in the file, choose the most fitting one and adapt accordingly. 
-<img src="media/rj-package-install.PNG" width="1024"> 
+![RJ rj-package-install](./media/rj-package-install.png)
+
 * Customize `rj_install.cmd` and `rj_install.ps1` 
     * With User Settings
       * Customize one of `usersettings\rj_install.cmd` and `usersettings\rj_install.ps1`.

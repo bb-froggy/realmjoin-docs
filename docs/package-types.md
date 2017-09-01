@@ -19,7 +19,7 @@ rj_install.cmd arg1 arg2
 It is important to know that craft packages can run in user or system context, which can be specified during the package crafting process.
 Packages that are run in *user* mode are installed using the current user without administrative rights, even if the user is local administrator on the device.
 Packages that are run in the system mode use the *SYSTEM* account on the device.
-
+  
 <!--
 Depending on the context there are several environment variables provided by Realmjoin available based i.e. on Microsoft Graph.
 
@@ -33,6 +33,7 @@ Das wird gerufen so: rj_install.cmd arg1 arg2
 
 Aus dem Graph, es gibt maximal folgende:
 -->
+  
 ### Environment Variables
 ```
 Graph_User_BusinessPhone
@@ -52,7 +53,7 @@ Graph_User_State
 Graph_User_StreetAddress
 Graph_User_Surname
 ```
-
+  
 <!-- 
 hier differenziert nach user / system  
  ebenso: wie wird system gelöst? system-account or user in admin-mode?
@@ -74,6 +75,7 @@ Chocolatey packages contain all neccessary files, e.g. installes, zip-files, scr
 Chocolatey uses Nuget.Core to retrieve packages from the source. Before installing, Chocolatey takes snapshots, then runs automation scripts (Powershell) if provided in the package. In the next step, installers or exeutables are run. After the installation, Chocolatey prepares uninstall information based on the pre-installation snapshots of registry and file/folder structre.
 In case of Windows installer based software, it will be installed into the default path, mostly *Program Files*. Other packages are installed into *ChocolateyInstall\Lib*.  
 The Chocolatey install command can be run with various parameters to e.g. suppress prompts, specifiy an installation directory. The full list of options can be found in the Chocolatey wiki: <https://github.com/chocolatey/choco/wiki/CommandsInstall#options-and-switches>.  
+  
 **Note:** If you want to provide command line parameters for the software that should be installed, they have to be correclty escaped to prevent Chocolatey from trying to interpret them as install options.  
 For a more detailed documentation of Chocolatey see the [official Chocolatey wiki on Github](https://github.com/chocolatey/choco/wiki).
 
@@ -92,6 +94,7 @@ Generally spoken, APP-X is the most sophisticated package type in RealmJoin, whi
 For a more detailed view on APP-V see the [Microsoft documentation on Application Virtualization](https://technet.microsoft.com/en-us/library/hh826068.aspx).
 
 <!-- Auch hier: Es gibt tonnenweise Doku im Netz zu AppV und AppX. Warum sind die relevanten Teile hier nicht zitiert bzw. referenziert?? -->
+  
 ## Organic
 Organic packages contain raw and unprocessed application setups. When handeling those, RealmJoin is basically just used as a transport vehicle to move the zipped container to a specified location. Depending on its payload, the installer then has to be manually started by the user (if user mode) or an remote administrator or field service. 
 

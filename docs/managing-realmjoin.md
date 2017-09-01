@@ -7,51 +7,59 @@ The RealmJoin client is enrolled on evey Windows 10 device. RealmJoin seamlessly
 ### Initial Start
 When RealmJoin is enrolled and started for the first time, it asks for the User-Identity and then calls to the cloud Service for a policy.  
    
-<img src="media/rj-aad-auth.png" width="480">  
+![RJ AAD Auth](./media/rj-aad-auth.png)
 
 RealmJoin “Security Requirement” assessment does some pre-checks (Encryption, Patch Level, Firewall, Anti-Virus, etc. – this is optional and can be replaced in parts by Intune-Health-Check).  
   
-<img src="media/rj-sec-check.gif" width="640">    
+![RJ Sec Check](./media/rj-sec-check.png)
   
 If no error ocurs during deployment, RealmJoin is ready to use.
 
 ### Client usage
 After being successfully installed, RealmJoin is automatically started on the user login and is permanent active in the background. It is represented with an ID card icon. Clicking on the icon opens up the RealmJoin client menu. It contains basic information in the lower and a number of links in the upper part. The selector *Software Packages* opens a second context menu with all the software packages that are allocated to the user.
   
-<img src="media/rj-tray-menu.png" width="480">   
+![RJ Tray](./media/rj-tray-menu.png)
   
 If a user wishes to install any of the listed software, he/she is only required to select the package to start the installation. 
   
-<img src="media/rj-client-addpackage2.png" width="640">  
+![RJ Add Package](./media/rj-client-addpackage2.png)
   
 The installation mode depends on the packages selected: If those are only user mode packages, they are installed immediately. In case of a higher permission level, RealmJoin starts a service (realmjoinservice.exe) and installs the packages with the *SYSTEM* user account.
 
 ### Debug Modus
 If neccessary, a debug window can be opened by clicking on the RealmJoin icon while pressing Shift+Strg on the keyboard. This reveals a new entry in the context menu listed as *Show Debug Window*. This window offers seven different diagnostic tools. If a device is not able to be addressed by the server or can not connect to the backend, this tool will provide the user with the tools for the first steps of diagnosis. Another new tray menu entry showing up in debug mode is *Retry base installation*, which allows the user to reinstall the RealmJoin client. Additionally, when the client tray menu is opened in debug mode, all packages are shown with the package version number.
 
-<img src="media/rj-debug-menu.png" width="640">  
+![RJ Debug Menu](./media/rj-debug-menu.png)
 
 *Collect Logs* is a quick way to access all log files, which will be saved in a zip-file to the users desktop. See chapter *troubleshooting* for a detailed description of the RealmJoin debug window and its features.
 
 ## Admin Console
 Device provisioning and RealmJoin configuration is done with the RealmJoin *Admin Console*. Designed to mirror the style of the new Microsoft administration services, it is the main tool for the management of the RealmJoin clients and users. The web application can be reached under <https://realmjoin-web-staging.azurewebsites.net/>.
 
-<img src="media/rj-ac-dashboard.png" width="800">  
+![RJ Dashboard](./media/rj-ac-dashboard.png)
 
 The dashboard provides a quick and beneficial overview. All sections can be accessed by either clicking on the corresponding number or selecting the section in the toolbar on the left.
 
 ### Clients
-<img src="media/rj-ac-clientsicon.png"> The clients tab gives you a transparent overview over all enrolled devices as well as the respective primary user. To enter the devices' states (see section *States*) or associate users, just click on the green numbers on the right. 
+![RJ clientsicon](./media/rj-ac-clientsicon.png)
+
+The clients tab gives you a transparent overview over all enrolled devices as well as the respective primary user. To enter the devices' states (see section *States*) or associate users, just click on the green numbers on the right. 
  
 ### Users
-<img src="media/rj-ac-usersicon.png"> A list of all users assigned to the tenant. The selectable details on the right include states, group membership, installed software packages, client devices and (to come...) individual settings. Users can't be added or assigned to groups using RealmJoin, the management of users and groups has to be done in Azure AD. 
+![RJ rj-ac-usersicon](./media/rj-ac-usersicon..png)
+
+A list of all users assigned to the tenant. The selectable details on the right include states, group membership, installed software packages, client devices and (to come...) individual settings. Users can't be added or assigned to groups using RealmJoin, the management of users and groups has to be done in Azure AD. 
 Selecting a user opens up the users detail page, which contains information gathered by RealmJoin using the Microsoft Graph API.
 
 ### User settings
+![RJ usersettingsicon](./media/rj-ac-usersettingsicon.png)
+
 <img src="media/rj-ac-usersettingsicon.png"> Configurable group settings and policies. See chapter *Policies* for a list of implemented features.
 
 ### Groups
-<img src="media/rj-ac-groupsicon.png"> All in this tenant registered user groups. RealmJoin syncronizes groups from Azure Active Directory into the RealmJoin backend. The details on the right contain users within the individual group, packages that are assigned to a group as well as group settings. Since not all users in Azure AD might be equipped with RealmJoin, only a specified range of groups are transfered into RealmJoin (depending on the group name.....). The groups can not be added or altered within RealmJoin, therefore the group naming conventions have to be established in advance.
+![RJ rj-ac-groupsicon](./media/rj-ac-groupsicon.png)
+
+All in this tenant registered user groups. RealmJoin syncronizes groups from Azure Active Directory into the RealmJoin backend. The details on the right contain users within the individual group, packages that are assigned to a group as well as group settings. Since not all users in Azure AD might be equipped with RealmJoin, only a specified range of groups are transfered into RealmJoin (depending on the group name.....). The groups can not be added or altered within RealmJoin, therefore the group naming conventions have to be established in advance.
    
 While there are not strict naming pattern requirements in RealmJoin, we recommend the following convention:
   
@@ -77,19 +85,24 @@ APP-Mozilla-Firefox-withFlash
 The synchronization time schedule and the prefixes that are taken into account might be configured from the settings control panel or individually implemented by the developer.
 
 ### User settings
-<img src="media/rj-ac-groupsettingsicon.png"> Configurable group settings and policies. See chapter *Policies* for a list of implemented features.
+![RJ rj-ac-groupsettingsicon](./media/rj-ac-groupsettingsicon.png)
+
+Configurable group settings and policies. See chapter *Policies* for a list of implemented features.
 
 ### Software Packages
-<img src="media/rj-ac-packagesicon.png"> A list of all added packages. 
+![RJ rj-ac-packagesicon](./media/rj-ac-packagesicon.png)
+
+A list of all added packages. 
 The detail list contains the package version, install order, auto upgradibility and user/group assignment. 
 
 #### Add packages
 The administrator is able to add created craft and choco packages to RealmJoin using the *Add Choco* / *Add Craft* buttons. 
 This open the package setup window.    
-<img src="media/rj-ac-packages.png" width="1024">  
+![RJ rj-ac-packages](./media/rj-ac-packages.png)
+
 There are two ways to add the neccessary information: Entering the required fields *Name*, *GroupName*, *Version* and *Package* manually or pasting the JSON code, which can be found in the corresponding package repository (pipeline).
-<img src="media/rj-ac-package-json.png" width="1024">  
-<img src="media/rj-gitlab-pckg-pipeline.png" width="1024">  
+![RJ ac-package-json](./media/rj-ac-package-json.png)
+![RJ rj-ac-groupsettingsicon](./media/rj-gitlab-pckg-pipeline.png)
 
 While adding a package the following configuration options are available: 
 1. GroupName
@@ -120,8 +133,9 @@ While adding a package the following configuration options are available:
     The clients are not equaly distributed in the deplyoment groups, with fewer deployments in the first part of the timeline and the majority on the last. 
     Deployed package versions for each can be found in the user details of the package or the deployed package details of the users.
     Exsample distribution for n = 10000 and 8 days update time:  
-    <img src="media/rj-autoupdate_sim.png" width="480">  
+![RJ autoupdate_sim](./media/rj-autoupdate_sim.png)
     
+   
 #### Assign Packages
 
 Similar to the profile management with Microsoft Azure AD, packages can be assigned to groups and individual users. To assign a package, enter the group or user detail for the package in the package control panel. 
@@ -136,16 +150,18 @@ There are four options to override the package configuration when assigning, if 
 4. Args
   * In addition to the configuration of the package itself (see section above for the feature description), *Args* can be set for the selected group / user individually.  
 
-<img src="media/rj-ac-packageoverrides.png" width="1024">   
+![RJ rj-ac-packageoverrides](./media/rj-ac-packageoverrides.png)
 
 ### States
 
-<img src="media/rj-ac-statesicon.png"> The *states* detail of the client or user control panel provides a list of the devices of the user and how frequent data was upstreamed. 
+![RJ rj-ac-statesicon](./media/rj-ac-statesicon.png)
+
+The *states* detail of the client or user control panel provides a list of the devices of the user and how frequent data was upstreamed. 
 The *Branch Cache* column indicates, how much this client has contributed to the package distribution over the *Branch Cache* feature (see chapter *Infrastructure*).
 Selecting the white arrow in the green circle gives away the complete upstream file.
 It contains all the information about the device, OS, Defender Pattern States and installed packages that are transfered to the backend, where some of it is evaluated.  
 
-<img src="media/rj-ac-states.png" width="1024">  
+![RJ rj-ac-states](./media/rj-ac-states.png)
 
 ### Settings
 #### List of states
@@ -241,7 +257,7 @@ It contains all the information about the device, OS, Defender Pattern States an
       
 
 
-# TBD  
+## TBD  
 Roles and self service in the admin console.
 <!-- 
 Roles werden noch eingeführt, aktuell nur Admin oder kein Admin
