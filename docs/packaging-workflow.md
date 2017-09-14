@@ -32,38 +32,138 @@ Before building your package, there are different checks to be performed:
 
 **Do not start creating the package before you have a reasonable assumption of what to pack**
 
-## Create your package  
-
-The creation process demonstrated on a generic VLC player package. 
+## Fifth: Create the package
+### General Steps
+This section describes the shared steps for craft and chocolatey packages. The packaging process will be demonstrated on the well known **VLC player**.
 
 ### Create local repository folder
+Run cmd.exe as administrator and navigate to the desired folder, in which the packages are to be created. Then create a new folder for the new repository:
+```mkdir videolan-vlc-2.26```
 
-```mkdir videolan-vlc-2.15```  
-Convention: use small letters for all naming purposes and use *vedor-program-version* as folder name.
+#### Use Jumpstarter to create repository
+Gk provides a Jumpstarter script that can be used to automatically create the template for a new package. Run the following code in the bash shell: 
 
-### Use Jumpstarter to create repository
-
-To create a template for your package, use the following *Jumpstarter* command within the created folder:  
 ```
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/realmjoin/realmjoin-package-jumpstarter/raw/master/JumpstartRealmJoinPackage.ps1'))"
 ```
-
-* Please enter the RealmJoin GitLab repository path: videolan-vlc-2.15 (or leave empty)    
-* Please enter the RealmJoin GitLab repository name: VideoLan - vlc   
+You confronted by the following prompt and asked to specify details:
+```
+* Please enter the RealmJoin GitLab repository path: test-vlc   
+* Please enter the RealmJoin GitLab repository name: test-vlc   
 * Please enter the RealmJoin GitLab repository namespace: (your namespace)   
-* Please enter the RealmJoin GitLab Access Token: (your token)     
-*Cloning into ....*
+* Please enter the RealmJoin GitLab Access Token: (your token)   
+Cloning into....[installation messages]
+``` 
+<img src="media/rj-package-jump.png" width="1024">  
 
-### Edit Package
+After a short while, a new repository is created and the template files are copied into the local package folder. Before working on the files, please check the *readme.md*. Depending on the type of package that is to be created, the next steps will vary.  
 
-The now existing repository may be used as a template for all types of packages: *organic*, *craft*, *chocolatey*. The *Readme.md* file contains instructions for the creation of either. 
+<!--Run ```Jumpstart.ps1``` in powershell. -->
 
-* First, delete all files that are not neccessay for the desired package type. 
-* 
+### Chocolatey Package
+#### Edit Package files
+<!-- Depending on the instructions in the *readme.md* file, all not for choco packages used files can be deleted from the package folder including the ```Jumpstart.ps1```-->
+* Create ```.gitlab-ci.yml```  
+  Select and add the most fitting ```sample*.gitlab-ci.yml``` file and delete the other ones. In the following example, the *flavour* [companyname] was added, to provide the package with the desired corporate meta data. **NOTE:** make sure to provide the *-build / -deployChocoMachine* parameters for Chocolatey packages. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.  
+<img src="media/rj-package-sample.png" width="800">  
+* Customize ```choco-package.nuspec```  
+  Add the metadata according to the desired software. 
+<img src="media/rj-package-nuspec1.png" width="800"> 
+* Move installer  
+  Move the executables or installer files into the subfolder ```blobs```.
+* Create SHA256 hash  
+  Open a Powershell and navigate into the ```blobs``` subfolder. Execute 
+  ```
+  Get-ChildItem | % {(Get-FileHash $_.name).hash + " *" + $_.name | out-file ($_.name + ".sha256")}
+  ```
+  A `*.sha256` file is created for every item in the folder. The command is also listed in the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```, which is to be deleted afterwards (as well as any ```zzz_Place_installer_files_here_and_delete_me.txt.sha256``` item).  
+* Customize ```tools\chocolateyInstall.ps1```  
+  Based on the samples in the file, choose the most fitting one and adapt accordingly. 
+<img src="media/rj-package-install.png" width="1024"> 
+* Customize `rj_install.cmd` and `rj_install.ps1` 
+    * With User Settings
+      * Customize one of `usersettings\rj_install.cmd` and `usersettings\rj_install.ps1`, if necessary, and delete the other one. This file may contain various modifications and adjustments, e.g. registry keys or (un-)pinning of start icons.
+      * Delete `rj_install.cmd` and `rj_install.ps1` in root folder.
+    * Without User Settings
+      * Delete subfolder `usersettings` completely.
+      * Customize one of `rj_install.cmd` and `rj_install.ps1` in root folder, if necessary, delete the other one.
+* Rewrite ```Readme.md```  
+  Provide all information necessary in the ```Readme.md``` file.
+* Upload  
+  Commit the file and upload it with Git to the Gitlab.  
+<!-- ### Optional: Dynamic Parameter ### git add, commit, push (git branch) addfiles, deploy with parameter execution in crafts -->  
+### Craft Package
+#### Edit Package files
+* Delete non-craft items  
+  Delete subfolders `blobs`, `tools` and `usersettings` and file `choco-package.nuspec`.
+* Create ```.gitlab-ci.yml```  
+  Select and add the most fitting ```sample*.gitlab-ci.yml``` file and delete the other ones. In the following example, the *flavour* [companyname] was added, to provide the package with the desired corporate meta data. **NOTE:** make sure to provide the *-build / -deployCraft* parameters for craft packages. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.  
+<img src="media/rj-package-sample-craft.png" width="640">  
+* Customize `rj_install.cmd` and `rj_install.ps1`  
+  Customize one of `rj_install.cmd` and `rj_install.ps1` in root folder, if necessary, delete the other one. This file may contain various modifications and adjustments, e.g. registry keys or (un-)pinning of start icons.  
+<img src="media/rj-package-rjinstaller-craft.png" width="480"> 
+* Any additional files can also go into the root folder.
+* Rewrite ```Readme.md```  
+  Provide all information necessary in the ```Readme.md``` file.  
+* Upload  
+  Commit the file and upload it with Git to the Gitlab.
 
-Use your favorite Visual Studio Code editor and edit ```choco-package.nuspec``` and ```readme.md```.  
-....
-
+### Organic Package  
+Organic packages are created similar to Chocolatey packages, but instead of a software install, they unzip a specified file into a specified folder on the device. Therefore, the main differences are the provided `blobs` and the `chocolateyInstall.ps1`script. 
+* Create ```.gitlab-ci.yml```  
+  Select and add the most fitting ```sample*.gitlab-ci.yml``` file and delete the other ones. In the following example, the *flavour* [companyname] was added, to provide the package with the desired corporate meta data. **NOTE:** make sure to provide the *-build / -deployChocoMachine* parameters for organic packages. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.
+<img src="media/rj-package-sample.png" width="1024">  
+* Customize ```choco-package.nuspec```  
+  Add the metadata according to the desired software. 
+<img src="media/rj-package-nuspec1.png" width="800"> 
+* Move `*.zip`  
+  Zip the files that should be delivered onto the devices. Move the executables or installer files into the subfolder ```blobs```.
+* Create SHA256 hash  
+  Open a Powershell and navigate into the ```blobs``` subfolder. Execute ```Get-ChildItem | % {(Get-FileHash $_.name).hash + " *" + $_.name | out-file ($_.name + ".sha256")}```. A `*.sha256` file is created for every item in the folder. The command is also listed in the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```, which is to be deleted afterwards (as well as any ```zzz_Place_installer_files_here_and_delete_me.txt.sha256``` item).  
+* Customize ```tools\chocolateyInstall.ps1```  
+  Specify the desired `$targetDir` location on the device and the correct `$filename` of the zip container.  
+<img src="media/rj-package-chocoinstall-organic.png" width="640"> 
+* Delete `rj_install.cmd` and `rj_install.ps1`  
+   * Delete subfolder `usersettings` completely.
+   * Delete `rj_install.cmd` and `rj_install.ps1` in root folder.
+* Rewrite ```Readme.md```  
+  Provide all information necessary in the ```Readme.md``` file.
+* Upload   
+  Commit the file and upload it with Git to the Gitlab.
+  
+### APP-X Package
+TBD
+### Conventions and helpers
+#### realmjoin-gitlab-ci-helpers.ps1
+The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package types in the `.gitlab-ci.yml`, e.g. `script: ./.realmjoin-gitlab-ci-helpers/realmjoin-gitlab-ci-helpers.ps1 -buildChocoMachine -flavors "generic","glueckkanja"`. The following switches are available:
+* [switch]$buildCraft,
+  + *Craft* package
+* [switch]$buildChocoMachine,
+  + *Chocolatey* package
+* [switch]$buildUsersettingsChild,
+  + 
+* [switch]$deployCraft,
+  + *Craft* package
+* [switch]$deployChocoMachine,
+  + *Chocolatey* package
+* [switch]$deployUsersettingsChild,
+  + 
+* [string]$craftSubfolder,
+  + 
+* [string]$usersettingsSuffix,
+  + 
+* [string]$packagePrefix,
+  + 
+* [string[]]$flavors
+  + *Metadata* to assign to a company
+ 
+#### Capitalization and Naming
+Please use only small letters for all naming purposes and use *vendor-program-version* as folder names.
+#### Version numbering
+Software packages are assigned a individual version number. It is recommended to divide the version number into four parts W.X.Y.Z and use one of two different conventions:
+  * For non-chocolatey packages GK is suggesting, to use *W* as major release number, *X* as majer sub-version, *Y* as minor release number and *Z* as (re-)packaging number (when rebuilding the package without changes in software but in the build itself). 
+  * For chocolatey packages it is recommended to use the softwares version number, and use *Z* as (re-)packing number. If the software itself has a four part version number, chocolatey suggests to multiply the *Z* by 100 and increase the number by 1 every (re-)packaging.  
+**Note:** When a new version is tested, the package might be crafted as a pre release package, which, if testing is successfull and no further changes have to be done, has the same version number as the final build.
 
 ## Testing of the package  
 <!-- 

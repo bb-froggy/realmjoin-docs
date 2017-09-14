@@ -90,7 +90,7 @@ The RealmJoin client authenticates itself against the Azure AD via a secured HTT
 ### Signed MSI 
 The RealmJoin.MSI is SHA2 (256 bit) signed by GK and therefore recognizied by Windows as safe to install.
 
-![RJ Signed MSI](./media/rj-msi-sig.png)
+![RJ Signed MSI](./media/rj-msi-sig.png)  
 
 ### Package Hashes
 During the package creation process, packages are signed with SHA2 (256 bit) hashes (see chapter *create packages*). Older SHA1 signed packages will still be accepted by RealmJoin. For more information on SHA2 encryption, check [the Wikipedia article on SHA2](https://en.wikipedia.org/wiki/SHA-2).
@@ -105,3 +105,5 @@ If the client device is Azure AD joined, RealmJoin uploads the Bitlocker recover
 In case of a *not-AAD-joined* device, the Bitlocker recovery key is not secured. 
 ### Passwort expiry
 RealmJoin uses the Azure AD attribute ```msDS-UserPasswordExpiryTimeComputed``` to check if the user passwort is expired. 
+
+<!--Long Story Short: Wir haben direkten Kontakt mit den Defender/ATP/Intune-Teams und versuchen das Thema zu l�sen. Das Defender-Team bekommt immer vorab alle unsere Binaries, damit sie diese pr�fen und ggf. whitelisten k�nnen. Parallel haben wir in allen managed Infrastrukturen per Intune Exceptions verteilt. Aber bei der Gelegenheit haben wir ein paar neue Issues in den Intune-Policies gefunden.-->
