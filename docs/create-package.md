@@ -109,8 +109,7 @@ After the successfull deployment, the package can be found in the chocolatey lib
 ## Organic Package  
 Organic packages are created similar to Chocolatey packages, but instead of a software install, they unzip a specified file into a specified folder on the device. Therefore, the main differences are the provided `blobs` and the `chocolateyInstall.ps1`script. 
 * Create ```.gitlab-ci.yml```  
-  Select and add the most fitting ```sample*.gitlab-ci.yml``` file and delete the other ones. In the following example, the *flavour* [companyname] was added, to provide the package with the desired corporate meta data. **NOTE:** make sure to provide the *-build / -deployChocoMachine* parameters for organic packages. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.
-<img src="media/rj-package-sample.png" width="1024">  
+  Select and add the most fitting ```sample*.gitlab-ci.yml``` file and delete the other ones. In the following example, the *flavour* [companyname] was added, to provide the package with the desired corporate meta data. **NOTE:** make sure to provide the *-build / -deployChocoMachine* parameters for organic packages. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.  
 ![RJ package-sample](./media/rj-package-sample.png)  
 * Customize ```choco-package.nuspec```  
   Add the metadata according to the desired software. 
@@ -121,7 +120,7 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
   Open a Powershell and navigate into the ```blobs``` subfolder. Execute ```Get-ChildItem | % {(Get-FileHash $_.name).hash + " *" + $_.name | out-file ($_.name + ".sha256")}```. A `*.sha256` file is created for every item in the folder. The command is also listed in the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```, which is to be deleted afterwards (as well as any ```zzz_Place_installer_files_here_and_delete_me.txt.sha256``` item).  
 * Customize ```tools\chocolateyInstall.ps1```  
   Specify the desired `$targetDir` location on the device and the correct `$filename` of the zip container.  
-![RJ organic-install](./media/rj-chocoinstall-organic.png)  
+![RJ organic-install](./media/rj-package-chocoinstall-organic.png)  
 * Delete `rj_install.cmd` and `rj_install.ps1`  
    * Delete subfolder `usersettings` completely.
    * Delete `rj_install.cmd` and `rj_install.ps1` in root folder.
@@ -134,7 +133,7 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
   * 10 generic: Deploys a new version of the generic flavour package.
   * 20 customers: Deploys a new version of all customer flavour packages. Do not do this, if you do not want to deploy a new version for all flavours listed here.
   * 90 special: Deploys a new version of the special flavour package. This is used, when a package is already deployed for more than one customer. It prevents unwanted deployment of new package versions.  
-![RJ organic-install](./media/rj-package-choco-deploy.png)  
+![RJ package-deploy](./media/rj-package-choco-deploy.png)  
 After the successfull deployment, the package can be found in the chocolatey library and added. See chapter *managing RealmJoin* for information on assigning packages.
 
 ## APP-X Package
