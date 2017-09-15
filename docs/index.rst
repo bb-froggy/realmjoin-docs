@@ -23,7 +23,6 @@ Deployment Guide
    managing-realmjoin
    policies
    package-types
-   packaging-workflow
    create-package
    core-extension
    faq
