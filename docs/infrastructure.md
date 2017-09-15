@@ -30,6 +30,16 @@ This article links a file that contains the compute IP address ranges that you s
 #### No (VLans/WLAN-/Port)-Isolation
 For *BranchCache* to be effective the clients need to be able to communicate directly with each other. So they shouldn't be separated by different VLans, WLAN-Isolation or Port-Isolation. For mass rollouts "BranchCache Servers" with pre-populated caches are recommended. BranchCache is limited to a single subnet, if a site has multiple subnets the "BranchCache Servers" must be placed in the same subnet as the clients to be effective.  
 
+#### RealmJoin connection endpoints  
+RealmJoin connects to the following URLs, that might be considered in your firewall settings:    
+<https://cdn.realmjoin.com/>  
+<https://realmjoin-backend.azurewebsites.net/>  
+<https://packages.gkdatacenter.net/>  
+<https://enterpriseregistration.windows.net/>  
+<https://gkrealmjoin.s3.amazonaws.com/>  
+<https://login.microsoftonline.com/>  
+<https://graph.microsoft.com/>  
+
 ## Infrastructure
 ### Frontend (Client)
 The frontend component of RealmJoin is the RealmJoin client, which is installed on the Windows 10 device. With the installed RealmJoin client the individual user is able to access and install provided software in self service. Packages assigned as *required* by the administrator are installed automatically on the first Logon after assignment.  

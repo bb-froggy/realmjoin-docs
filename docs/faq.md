@@ -53,6 +53,9 @@ RealmJoin tries to redo failed installations on the next three logons. If the in
 ## Since the packages are based on open protocols, can others access my packages?
 Yes. NuGet and Chocolatey repositories are based on open protocols. Using search commands one is able to find all repositories that are hosted on the GK tenant. Since packages **should not** contain personalized information like licenses or user specific data, there is no potential harm in e.g. installing a Office package with a different companies name in the package description. 
 It is in principle possible to host the RealmJoin   
+
+## What Firewall/Proxy settings do I have to configure?
+Please check chapter *Technical* section *Requirements* for detailed information on the RealmJoin connections.  
 <!--
 ## Who can see my packages  
 TBD
