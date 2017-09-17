@@ -2,13 +2,17 @@
 
 ## Which links should I bookmark?
 * RealmJoin Admin Console  
-  <https://realmjoin-web-staging.azurewebsites.net/>
+  
+  <https://realmjoin-web-staging.azurewebsites.net/>  
 * RealmJoin Uploader / Package Request  
-  <https://Realmjoin-uploader.azurewebsites.net>
+  
+  <https://Realmjoin-uploader.azurewebsites.net>  
 * Gitlab Packages  
-  <https://gitlab.glueckkanja.net/>
+  
+  <https://gitlab.glueckkanja.net/>  
 * Documentation  
-  <https://realmjoin.readthedocs.io/>
+  
+  <https://realmjoin.readthedocs.io/>  
 
 ## Am I able to maintain my own packages and updates
 Yes. RealmJoin offers packageing-as-a-service but you may also check in ready-to-use packages. In addition it is possible to use additional deployment repositories completely maintained independently. 

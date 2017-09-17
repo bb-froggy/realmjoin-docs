@@ -11,7 +11,7 @@ When RealmJoin is enrolled and started for the first time, it asks for the User-
 
 RealmJoin “Security Requirement” assessment does some pre-checks (Encryption, Patch Level, Firewall, Anti-Virus, etc. – this is optional and can be replaced in parts by Intune-Health-Check).  
   
-[RJ Sec Check](./media/rj-sec-check.png)    
+![RJ Sec Check](./media/rj-sec-check.gif)
   
 If no error ocurs during deployment, RealmJoin is ready to use.
 

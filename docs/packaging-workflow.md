@@ -67,7 +67,7 @@ After a short while, a new repository is created and the template files are copi
 
 #### Chocolatey Package
 ##### Edit Package files
-<!-- Depending on the instructions in the *readme.md* file, all not for choco packages used files can be deleted from the package folder including the ```Jumpstart.ps1```-->
+
 * Create ```.gitlab-ci.yml```
   There are 8 different sample files, while those starting with `Sample1*` are considered outdated. Therefore, select and edit the most fitting ```Sample0*.gitlab-ci.yml``` file and delete the other ones. You might need to adjust the content. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.   
 ![RJ package-sample](./media/rj-package-sample.png)  
@@ -203,17 +203,7 @@ The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package t
 
 ##### build-deploy-flavor-definitions.ps1  
 TBD
-<!--  [string]$packageName,
-    [switch]$isBuild,
-    [switch]$isDeploy,
-    [string]$flavorsCollection
-  $genericFlavors = @("generic")
-$customerFlavors = @("glueckkanja", "schenker", "enbw", "swb", "fst")
 
-example for new customer: $specialFlavors = @("fst")
-if empty: $specialFlavors = @()
-$specialFlavors = @("fst")
--->
 ##### Capitalization and Naming
 Please use only small letters for all naming purposes and use *vendor-program-version* as folder names.
 ##### Version numbering

@@ -33,13 +33,13 @@ For *BranchCache* to be effective the clients need to be able to communicate dir
 #### RealmJoin connection endpoints  
 RealmJoin connects to the following URLs, that might be considered in your firewall settings:    
    
-https://cdn.realmjoin.com/  
-https://realmjoin-backend.azurewebsites.net/  
-https://packages.gkdatacenter.net/  
-https://enterpriseregistration.windows.net/  
-https://gkrealmjoin.s3.amazonaws.com/  
-https://login.microsoftonline.com/  
-https://graph.microsoft.com/  
+* https://cdn.realmjoin.com/  
+* https://realmjoin-backend.azurewebsites.net/  
+* https://packages.gkdatacenter.net/  
+* https://enterpriseregistration.windows.net/  
+* https://gkrealmjoin.s3.amazonaws.com/  
+* https://login.microsoftonline.com/  
+* https://graph.microsoft.com/  
   
 ## Components
 ### Frontend (Client)

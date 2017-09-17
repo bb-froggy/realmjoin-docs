@@ -221,8 +221,10 @@ The following fields for signatures are extracted from the Microsoft Graph API a
 | Street           |    
 | Surname          |    
           
-## TBD
-Add connection between HKEY to policies if existing?
 <!--
-### In Issue erw�hnt aber nicht in der JSON vorhanden: 
-Policies.DisableNetworkLocationWizard = true|false; HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Network\NwCategoryWizard, Value *Show* auf 0 oder 1-->
+TBD
+Add connection between HKEY to policies if existing?
+
+In Issue erw�hnt aber nicht in der JSON vorhanden: 
+Policies.DisableNetworkLocationWizard = true|false; HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Network\NwCategoryWizard, Value *Show* auf 0 oder 1
+-->
