@@ -210,8 +210,8 @@ TBD
   $genericFlavors = @("generic")
 $customerFlavors = @("glueckkanja", "schenker", "enbw", "swb", "fst")
 
-# example for new customer: $specialFlavors = @("fst")
-# if empty: $specialFlavors = @()
+example for new customer: $specialFlavors = @("fst")
+if empty: $specialFlavors = @()
 $specialFlavors = @("fst")
 -->
 ##### Capitalization and Naming
