@@ -11,7 +11,7 @@ When RealmJoin is enrolled and started for the first time, it asks for the User-
 
 RealmJoin “Security Requirement” assessment does some pre-checks (Encryption, Patch Level, Firewall, Anti-Virus, etc. – this is optional and can be replaced in parts by Intune-Health-Check).  
   
-[RJ Sec Check](./media/rj-sec-check.gif)    
+[RJ Sec Check](./media/rj-sec-check.png)    
   
 If no error ocurs during deployment, RealmJoin is ready to use.
 
@@ -64,6 +64,7 @@ While there are not strict naming pattern requirements in RealmJoin, we recommen
 ```
 
 **Examples:**  
+```
 CFG-Global-Core  
 CFG-DE-Core  
 CFG-DE7499-Core  
@@ -77,6 +78,7 @@ APP-Mozilla-Firefox-x86
 APP-Mozilla-Firefox-x64  
 APP-Mozilla-Firefox-DE7499  
 APP-Mozilla-Firefox-withFlash  
+```
 
 The synchronization time schedule and the prefixes that are taken into account might be configured from the settings control panel or individually implemented by the developer.
 
@@ -90,12 +92,14 @@ A list of all added packages.
 The detail list contains the package version, install order, auto upgradibility and user/group assignment. 
 
 #### Add packages
-The administrator is able to add created craft and choco packages to RealmJoin using the *Add Choco* / *Add Craft* buttons. 
-This open the package setup window.    
-![RJ rj-ac-packages](./media/rj-ac-packages.png)  
-There are two ways to add the neccessary information: Entering the required fields *Name*, *Version*, *Chocolatey Package ID* (Chocolatey packages only), *ID* (*Chocolatey Package ID* and *ID* are usually similar), *Location*, *Hash* and *Scope* (all three craft packages only) manually or pasting the JSON code, which can be found in the corresponding package repository (pipeline).
+The administrator is able to add created craft and choco packages to RealmJoin using the *Add Choco* / *Add Craft* buttons. This open the package setup window.    
+  
+![RJ rj-ac-packages](./media/rj-ac-packages.png)   
+  
+There are two ways to add the neccessary information: Entering the required fields *Name*, *Version*, *Chocolatey Package ID* (Chocolatey packages only), *ID* (*Chocolatey Package ID* and *ID* are usually similar), *Location*, *Hash* and *Scope* (all three craft packages only) manually or pasting the JSON code, which can be found in the corresponding package repository (pipeline).  
+  
 ![RJ package-json-pipeline](./media/rj-package-json.png)  
-
+  
 
 While adding a package the following configuration entries are available:  
 - Name
@@ -107,10 +111,14 @@ While adding a package the following configuration entries are available:
 - DependsOn
   * The *DependsOn* option is used to indicate if a package needs another package to be installed to work properly. This may be the case for Office user setting packages, that require an office installation upfront. It is possible to hide packages, so that the client context menu only shows one installation option (see section *Package Assignment*). 
      For a working correlation, the correct package name has to be provided. 
-     If there is a multiple level-dependency, RealmJoin takes this into consideration. Before the installation process, all dependency-related packages are sorted (also including mandatories) and installed afterwards. The following images show the assignment of package dependency for the chocolatey package *Omnitracker*, which will be installed with usersettings:  
+     If there is a multiple level-dependency, RealmJoin takes this into consideration. Before the installation process, all dependency-related packages are sorted (also including mandatories) and installed afterwards. The following images show the assignment of package dependency for the chocolatey package *Omnitracker*, which will be installed with usersettings:   
+       
      ![RJ autoupdate_sim](./media/rj-ac-package-dependency.png)   
+       
      The user setting package *Omnitracker with Usersettings* is assigned as usual, with the ID of the parent package *generic-omninet-omnitracker* entered as *DependsOn*. During the installation process in the RealmJoin client, RealmJoin understands the need of the *generic-omninet-omnitracker* package and installs the deployed version of it first.   
+       
     ![RJ autoupdate_sim](./media/rj-install-dependent.png)   
+      
      RealmJoin takes 1:n dependenciey into account.     
 - Order
   * The order number is an Int32 type figure and provides RealmJoin with a basic structure to determine the package installation sequence. The lower the number the higher the importance, therefore a 10 will be installed before 100. 
@@ -139,7 +147,8 @@ Options:
   * It is possible to use staggered deployment and distribute the risk of updating a software if desired. The two parameters needed are the target date and the amount of days over which the update should take place. 
     The clients are not equaly distributed in the deplyoment groups, with fewer deployments in the first part of the timeline and the majority on the last. 
     Deployed package versions for each can be found in the user details of the package or the deployed package details of the users.
-    Exsample distribution for n = 10000 and 8 days update time:  
+    Exsample distribution for n = 10000 and 8 days update time:   
+      
     ![RJ autoupdate_sim](./media/rj-autoupdate_sim.png)   
 
 **NOTE:** Do not edit assigned packages in the way, that you change the package name or ID (version number is fine). If you need a package in a different flavour, please add a new package and delete the obsolete one.  
@@ -155,7 +164,8 @@ There are four options to override the package configuration when assigning, if 
 - Staggered Deployment
   * In addition to the configuration of the package itself (see section above for the feature description), *stagered deployment* can be enabled for the selected group / user individually. 
 - Args
-  * In addition to the configuration of the package itself (see section above for the feature description), *Args* can be set for the selected group / user individually.  
+  * In addition to the configuration of the package itself (see section above for the feature description), *Args* can be set for the selected group / user individually.   
+    
 ![RJ rj-ac-packageoverrides](./media/rj-ac-packageoverrides.png)    
 
 ### States
@@ -163,109 +173,184 @@ There are four options to override the package configuration when assigning, if 
 The *states* detail of the client or user control panel provides a list of the devices of the user and how frequent data was upstreamed. 
 The *Branch Cache* column indicates, how much this client has contributed to the package distribution over the *Branch Cache* feature (see chapter *Infrastructure*).
 Selecting the white arrow in the green circle gives away the complete upstream file.
-It contains all the information about the device, OS, Defender Pattern States and installed packages that are transfered to the backend, where some of it is evaluated.  
+It contains all the information about the device, OS, Defender Pattern States and installed packages that are transfered to the backend, where some of it is evaluated.   
+  
 ![RJ rj-ac-states](./media/rj-ac-states.png)
+
 ### Settings
 #### List of states
 
 ##### Information on the Windows Device: 
 
--  "Type": "win",
--  "ClientID": "ad681fc2-6347-4f72-929d-1c582fb45c13",
--  "VersionTray": "4.8.14+11139.ebe94d4e",
--  "VersionService": "4.8.14+11139.ebe94d4e",
--  "OperatingSystem": 
-    * "Name": "Windows 10 Enterprise",
-    * "Edition": "Enterprise",
-    * "CompositionEdition": "Enterprise",
-    * "Version": "10.0.15063.0",
-    * "ReleaseID": "1703",
-    * "BuildBranch": "rs2_release",
-    * "Build": 15063,
-    * "BuildRevision": 540,
-    * "InstallDate": "2017-07-28T13:08:44Z",
-    * "Bits": 64,
-    * "Activated": false
--  "MachineName": "MC1",
--  "DomainName": "AzureAD",
--  "JoinedDomainName": null,
--  "HostName": "C1",
--  "Timestamp": "2017-08-18T12:19:35.7293104+00:00",
--  "User": 
-   * "LocalName": "User1",
-   * "LocalLogonAt": "2017-08-17T10:19:01.8367465+00:00",
-   * "IsAdministrator": false
--  "Branchbox": 
-   * "Available": [],
-   * "Suspended": false
--  "CloudVpn": 
-   * "Available": false,
-   * "Active": false
--  "Firewall": 
-   * "ProfileStates": 
-     + "ON",
-     + "ON",
-     + "ON"
--  "AvProducts": 
-   * "Installed": 
-       + "Name": "Windows Defender",
-       + "State": 397568
--  "Bitlocker": {
-   * "DriveStates": 
-       * "ComputerName": "C1",
-       * "MountPoint": "C:",
-       * "EncryptionMethod": 0,
-       * "AutoUnlockEnabled": null,
-       * "AutoUnlockKeyStored": null,
-       * "MetadataVersion": 0,
-       * "VolumeStatus": 0,
-       * "ProtectionStatus": 0,
-       * "LockStatus": 0,
-       * "EncryptionPercentage": 0,
-       * "WipePercentage": 0,
-       * "VolumeType": 0,
-       * "CapacityGB": 49.4462852,
-       * "KeyProtector": []
-- "OsUpdates": 
-   * "RefreshTime": "2017-08-17T22:19:41.193123+00:00",
-   * "PendingUpdates": 
-      * "NoSeverity": 1
--   "BranchCache": 
-   * "DataCacheCurrentActiveCacheSize": 0,
-   * "CurrentClientMode": "DistributedCache"
-   
-##### Software:
-
--  "Chocolatey":
-   * "RequiredVersion": "0.10.3",
-   * "InstalledVersion": "0.10.3",
-   * "Status": "Ready"
- 
--  "SoftwarePackages": 
-   * "Installed": 
-       * "ID": "chocolatey",
-          * "Version": "0.10.3",
-          * "ArgsHash": null
-       *  "ID": "generic-google-chrome",
-            * "Version": "59.0.3071.86000",
-            * "ArgsHash": null
-      
--    "Inventory":    
-     *  "Name": "Google Chrome",
-            * "Version": "60.0.3112.101",
-            * "Publisher": "Google, Inc.",
-            * "EstimatedSize": 48768,
-            * "UserScope": false
-      
-
+```
+{
+  "Type": "win",
+  "ClientID": "75cf4d56-0676-ae02-73ad-a1af9b89f269",
+  "VersionTray": "4.9.15-canary+14869.bf207295",
+  "VersionService": "4.9.15-canary+14869.bf207295",
+  "OperatingSystem": {
+    "Name": "Windows 10 Enterprise",
+    "Edition": "Enterprise",
+    "CompositionEdition": "Enterprise",
+    "Version": "10.0.14393.0",
+    "ReleaseID": "1607",
+    "BuildBranch": "rs1_release",
+    "Build": 14393,
+    "BuildRevision": 0,
+    "InstallDate": "2017-08-16T12:53:01Z",
+    "Bits": 64,
+    "Activated": false
+  },
+  "MachineName": "DESKTOP-VH66R7X",
+  "DomainName": "LEGACYDOMAIN",
+  "JoinedDomainName": "legacydomain.local",
+  "HostName": "DESKTOP-VH66R7X",
+  "Timestamp": "2017-09-14T07:07:39.2543111+00:00",
+  "User": {
+    "LocalName": "JONDOE",
+    "LocalLogonAt": "2017-09-14T07:07:06.3167385+00:00",
+    "IsAdministrator": false
+  },
+  "Firewall": {
+    "ProfileStates": [
+      "ON",
+      "ON",
+      "ON"
+    ]
+  },
+  "AvProducts": {
+    "Installed": [
+      {
+        "Name": "Windows Defender",
+        "State": 397568,
+        "Details": {
+          "AMEngineVersion": "1.1.14003.0",
+          "AMProductVersion": "4.10.14393.0",
+          "AMServiceEnabled": true,
+          "AMServiceVersion": "4.10.14393.0",
+          "AntispywareEnabled": true,
+          "AntispywareSignatureAge": 29,
+          "AntispywareSignatureLastUpdated": "2017-08-15T14:37:45+00:00",
+          "AntispywareSignatureVersion": "1.249.1077.0",
+          "AntivirusEnabled": true,
+          "AntivirusSignatureAge": 29,
+          "AntivirusSignatureLastUpdated": "2017-08-15T14:37:46+00:00",
+          "AntivirusSignatureVersion": "1.249.1077.0",
+          "BehaviorMonitorEnabled": true,
+          "ComputerID": "829DE85B-7B39-4093-85F1-6AEF62AC65DD",
+          "ComputerState": 0,
+          "FullScanAge": 4294967295,
+          "FullScanEndTime": null,
+          "FullScanStartTime": null,
+          "IoavProtectionEnabled": true,
+          "LastFullScanSource": 0,
+          "LastQuickScanSource": 0,
+          "NISEnabled": true,
+          "NISEngineVersion": "2.1.13804.0",
+          "NISSignatureAge": 0,
+          "NISSignatureLastUpdated": "2017-09-14T07:06:25.604+00:00",
+          "NISSignatureVersion": "117.8.0.0",
+          "OnAccessProtectionEnabled": true,
+          "QuickScanAge": 4294967295,
+          "QuickScanEndTime": null,
+          "QuickScanStartTime": null,
+          "RealTimeProtectionEnabled": true,
+          "RealTimeScanDirection": 0,
+          "PSComputerName": null
+        }
+      }
+    ]
+  },
+  "Bitlocker": {
+    "DriveStates": [
+      {
+        "ComputerName": "DESKTOP-VH66R7X",
+        "MountPoint": "C:",
+        "EncryptionMethod": 0,
+        "AutoUnlockEnabled": null,
+        "AutoUnlockKeyStored": null,
+        "MetadataVersion": 0,
+        "VolumeStatus": 0,
+        "ProtectionStatus": 0,
+        "LockStatus": 0,
+        "EncryptionPercentage": 0,
+        "WipePercentage": 0,
+        "VolumeType": 0,
+        "CapacityGB": 59.50976,
+        "KeyProtector": []
+      }
+    ]
+  },
+  "OsUpdates": {
+    "RefreshTime": "2017-08-16T14:38:44.1388364+00:00",
+    "PendingUpdates": {},
+    "Settings": {
+      "DeferQualityUpdates": 1,
+      "DeferQualityUpdatesPeriodInDays": 21,
+      "BranchReadinessLevel": 32,
+      "DeferFeatureUpdates": 1,
+      "DeferFeatureUpdatesPeriodInDays": 60
+    }
+  },
+  "BranchCache": {
+    "DataCacheCurrentActiveCacheSize": 1424903614,
+    "CurrentClientMode": "DistributedCache"
+  },
+  "Chocolatey": {
+    "RequiredVersion": "0.10.3",
+    "InstalledVersion": "0.10.3",
+    "Status": "Ready"
+  },
+  "SoftwarePackages": {
+    "Installed": [
+      {
+        "ID": "chocolatey",
+        "Version": "0.10.3",
+        "ArgsHash": null
+      },
+      {
+        "ID": "realmjoin-core.extension",
+        "Version": "1.0.0.0",
+        "ArgsHash": null
+      },
+      {
+        "ID": "contoso-adobe-reader-dc-classic",
+        "Version": "15.6.30306.0",
+        "ArgsHash": null
+      },
+      {
+        "ID": "contoso-fonts",
+        "Version": "1.0.0.5",
+        "ArgsHash": null
+      },
+      {
+        "ID": "contoso-microsoft-office-2016-proplus-x64-en-de",
+        "Version": "16.0.2.0",
+        "ArgsHash": null
+      },
+      {
+        "ID": "contoso-office-templates-de",
+        "Version": "3.0.1.0",
+        "ArgsHash": null
+      }
+    ]
+  },
+  "DeliveryOptimization": {
+    "DefaultGatewayDiscovered": null,
+    "GroupID": "00099099-0000-0000-0000-802cc8f1c3bd"
+  }
+}
+```
 
 ### Package upload 
 ![RJ rj-ac-uploadericon](./media/rj-ac-uploadicon.png)  
-To request new packages to be provided by G&K, use the uploader in the RealmJoin admin console. Please provide the necessary binaries as well as all installation requirements and additional information as a *Readme.txt*. After submitting the information (please do not forget a contact person!), you will be able to upload your zip file containing the binaries and the additional information. This will trigger a packaging request in the G&K ticketing system.  
+To request new packages to be provided by G&K, use the uploader in the RealmJoin admin console. Please provide the necessary binaries as well as all installation requirements and additional information as a *Readme.txt*. After submitting the information (please do not forget a contact person!), you will be able to upload your zip file containing the binaries and the additional information. This will trigger a packaging request in the G&K ticketing system.   
+  
  ![RJ rj-ac-uploader](./media/rj-ac-upload.png)
+   
+<!--
 # TBD  
 Roles and self service in the admin console.
-<!-- 
 Roles werden noch eingeführt, aktuell nur Admin oder kein Admin
 ### Increased self service
 SelfService im Backend/Admin Console geplant, niedrige Prio -->

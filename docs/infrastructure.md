@@ -1,4 +1,4 @@
-# Technical
+# Infrastructure
 ## Requirements
 ### Environment 
 RealmJoin is designed as a companion to Microsoft Intune to increase the usability in a 100% cloud environment with Microsoft Azure AD. The following pre-requirements are necessary:
@@ -32,15 +32,16 @@ For *BranchCache* to be effective the clients need to be able to communicate dir
 
 #### RealmJoin connection endpoints  
 RealmJoin connects to the following URLs, that might be considered in your firewall settings:    
-<https://cdn.realmjoin.com/>  
-<https://realmjoin-backend.azurewebsites.net/>  
-<https://packages.gkdatacenter.net/>  
-<https://enterpriseregistration.windows.net/>  
-<https://gkrealmjoin.s3.amazonaws.com/>  
-<https://login.microsoftonline.com/>  
-<https://graph.microsoft.com/>  
-
-## Infrastructure
+   
+https://cdn.realmjoin.com/  
+https://realmjoin-backend.azurewebsites.net/  
+https://packages.gkdatacenter.net/  
+https://enterpriseregistration.windows.net/  
+https://gkrealmjoin.s3.amazonaws.com/  
+https://login.microsoftonline.com/  
+https://graph.microsoft.com/  
+  
+## Components
 ### Frontend (Client)
 The frontend component of RealmJoin is the RealmJoin client, which is installed on the Windows 10 device. With the installed RealmJoin client the individual user is able to access and install provided software in self service. Packages assigned as *required* by the administrator are installed automatically on the first Logon after assignment.  
 Realmjoin is responsible for two different processes running on the device: 
@@ -66,32 +67,16 @@ The RealmJoin Publishing Server has to provide the chunk identifiers, and theref
 For a more detailed documentation of the BranchCache technologie see the [Microsoft BranchCache documentation](https://technet.microsoft.com/de-de/library/hh831696.aspx).
 <!-- Es gibt tonnenweise Doku im Netz zu BranchCache. Warum sind die relevanten Teile hier nicht zitiert bzw. referenziert??-->
 
-#### Delivery Optimization for Windows Update
-*Windows Update Delivery Optimization*, or *WUDO* is a self organised solution for distributed caches for Windows Updates. In default mode, WUDO identifies peers as part of a WAN based on their external IP. In case of streched out WANs with just one breakout point, this leads to a high network load and a bottleneck. 
-To improve the handling, Microsoft Intune can be used to set WUDO to *download mode 2*, where peers are grouped by a groupID. The ID is set for each device using network fingerprinting and the MAC address of the default gateway and therefore creating a more localized group. RealmJoin is used to set the groupID for each client.
-
-Two registry keys are updated when the *mode 2* delivery optimization is used:
-Set Download Mode = 2
-```
-HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization\DODownloadMode
-```
-Network-Fingerprint-GUID in Reg-Key:
-```
-HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization\DOGroupId
-```
-If WUDO is activated on a device using BranchCache, WUDO is used for Windows Updates over WSUS with BranchCache.  
-For a more on WUDO see the [Microsoft WUDO documentation (DE)](https://docs.microsoft.com/de-de/windows/deployment/update/waas-delivery-optimization).
-
 ### Backend
 #### Hosting
 The RealmJoin backend is an Azure web application using an Azure SQL data base and the available Azure services. 
-The backend is hosted on a GK tenant, which is exclusively used for RealmJoin. All customer tenants are managed on this tenant, but are isolated from each other. 
+The backend is hosted on an Azure tenant exclusively used for RealmJoin. All customer realms within this tenant are isolated from each other. 
 
 #### RealmJoin App Publishing Endpoint
-To provide the BranchCache mechanism (see section *BranchCache* above), the endpoint has to provide the chunk identifiers, a feature only provided by *Microsoft Internet Information Services* (IIS) servers. The Publishing Endpoint is hosted on a single Azure VM with Windows 2016 IIS and uses local storage. To increase scalability, it is currently planned to move the Publishing Endpoint to multiple Azure VM with Windows 2016 IIS that share one Azure blob storage. 
+To provide the BranchCache mechanism (see section *BranchCache* above), the endpoint has to provide the chunk identifiers, a feature only provided by *Microsoft Internet Information Services* (IIS) servers. To deliver the maximum scalability he Publishing Endpoint is distributed on multiple Azure nodes hosting Windows 2016 IIS sharing an redundant Azure blob storage. 
 
 #### Web interface
-The web interface can be reached via <https://realmjoin-web-staging.azurewebsites.net/> and is in detailed explained in the chapter *Managing RealmJoin*. After logging in with the provided credentials, the administrator can manage the package distribution in his tenant and has access to extensive information.
+The web interface can be reached via <https://realmjoin-web.azurewebsites.net/> and is in detailed explained in the chapter *Managing RealmJoin*. After logging in with the provided credentials, the administrator can manage the package distribution in his tenant and has access to extensive information.
 
 ## Security Features
 ### Client authentication
@@ -104,16 +89,3 @@ The RealmJoin.MSI is SHA2 (256 bit) signed by GK and therefore recognizied by Wi
 
 ### Package Hashes
 During the package creation process, packages are signed with SHA2 (256 bit) hashes (see chapter *create packages*). Older SHA1 signed packages will still be accepted by RealmJoin. For more information on SHA2 encryption, check [the Wikipedia article on SHA2](https://en.wikipedia.org/wiki/SHA-2).
-
-### Bitlocker
-#### Bitlocker enforcement
-It is possible to force Bitlocker encryption for OS volumes. The configuration file (see chapter *Policies*) allows to set the switch *BitlockerEnabled* to true. If the device is equipped with a *ready state* TPM chip the encryption is activated. To allow the Bitlocker enforcement, the registry key ```HKLM\SYSTEM\CurrentControlSet\Control\BitLocker:PreventDeviceEncryption``` is set to false. 
-For virtual machines the encryption is only enforced, if the virtual machine variable ```$env:RjDisableVmDetection=1``` is set. 
-
-#### Bitlocker recovery key
-If the client device is Azure AD joined, RealmJoin uploads the Bitlocker recovery key to Azure AD. If the upload is not successfull in the first try, it will be retried. If the upload can not be performed successfully, the RealmJoin rollout failed. 
-In case of a *not-AAD-joined* device, the Bitlocker recovery key is not secured. 
-### Passwort expiry
-RealmJoin uses the Azure AD attribute ```msDS-UserPasswordExpiryTimeComputed``` to check if the user passwort is expired. 
-
-<!--Long Story Short: Wir haben direkten Kontakt mit den Defender/ATP/Intune-Teams und versuchen das Thema zu l�sen. Das Defender-Team bekommt immer vorab alle unsere Binaries, damit sie diese pr�fen und ggf. whitelisten k�nnen. Parallel haben wir in allen managed Infrastrukturen per Intune Exceptions verteilt. Aber bei der Gelegenheit haben wir ein paar neue Issues in den Intune-Policies gefunden.-->
