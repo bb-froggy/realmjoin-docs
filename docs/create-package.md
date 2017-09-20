@@ -50,7 +50,7 @@ After a short while, a new repository is created and the template files are copi
   Check the file `.realmjoin-gitlab-ci-helpers/build-deploy-flavor-definitions.ps1` for your desired flavour. 
   If it is not included in the `$genericFlavors`, `$specialFlavors` or `$customerFlavors` range, the helperscript has to be adjusted. Please contact the responsible person.  
   ![RJ build-flavours](./media/rj-package-choco-buildflavour.png)   
-* Customize ```choco-package.nuspec```  
+* Customize ```choco-package.nuspec```   
   Add the metadata according to the desired software. 
 ![RJ package-nuspec](./media/rj-package-nuspec1.png)  
   * id: *flavour-vendor-program*. It is necessary to add *generic* for non-customized packages.
@@ -59,7 +59,7 @@ After a short while, a new repository is created and the template files are copi
   * description: Description of the package.
   * authors: Creator of the package.
   * requireLicenseAcceptance: *true/false*.
-* Move binaries 
+* Move binaries  
   Move the executables, installer or zip files into the subfolder ```blobs```.
 * Create SHA256 hash  
   Open a Powershell and navigate into the ```blobs``` subfolder. Execute 
@@ -70,18 +70,18 @@ After a short while, a new repository is created and the template files are copi
 * Customize ```tools\chocolateyInstall.ps1```  
   Based on the samples in the file, choose the most fitting one and adapt accordingly. 
 ![RJ package-install](./media/rj-package-install.png)  
-* Customize `rj_install.cmd` and `rj_install.ps1` 
-    * With User Settings
+* Customize `rj_install.cmd` and `rj_install.ps1`  
+    * With User Settings  
       * Customize one of `usersettings\rj_install.cmd` and `usersettings\rj_install.ps1`, if necessary, and delete the other one. This file may contain various modifications and adjustments, e.g. registry keys or (un-)pinning of start icons.
       * Delete `rj_install.cmd` and `rj_install.ps1` in root folder.
-    * Without User Settings
+    * Without User Settings  
       * Delete subfolder `usersettings` completely.
       * Delete`rj_install.cmd` and `rj_install.ps1` in root folder.
 * Rewrite ```Readme.md```  
   Provide all information necessary in the ```Readme.md``` file. Alternatively delete the file completely. 
 * Upload  
   Commit the file and upload it with Git to the Gitlab. 
-* Deploy package  
+* Deploy package   
   After uploading the package to Gitlab, navigate with a browser of your choice into the repository and select the *Pipelines* section. Select your release and use the deploy function. Depending on the package type, there are different possibilites. 
   * 10 generic: Deploys a new version of the generic flavour package.
   * 20 customers: Deploys a new version of all customer flavour packages. Do not do this, if you do not want to deploy a new version for all flavours listed here.
@@ -102,9 +102,9 @@ After the successfull deployment, the package can be found in the chocolatey lib
 * Any additional files can also go into the root folder.
 * Rewrite ```Readme.md```  
   Provide all information necessary in the ```Readme.md``` file.  
-* Upload  
+* Upload   
   Commit the file and upload it with Git to the Gitlab.
-* Deploy package
+* Deploy package  
   After uploading the package to Gitlab, navigate with a browser of your choice into the repository and select the *Pipelines* section. Select your release and use the deploy function. Depending on the package type, there are different possibilites. 
   * 10 generic: Deploys a new version of the generic flavour package.
   * 20 customers: Deploys a new version of all customer flavour packages. Do not do this, if you do not want to deploy a new version for all flavours listed here.
@@ -130,7 +130,7 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
 * Delete `rj_install.cmd` and `rj_install.ps1`  
    * Delete subfolder `usersettings` completely.
    * Delete `rj_install.cmd` and `rj_install.ps1` in root folder.
-* Rewrite ```Readme.md```  
+* Rewrite ```Readme.md```   
   Provide all information necessary in the ```Readme.md``` file.
 * Upload   
   Commit the file and upload it with Git to the Gitlab.
