@@ -103,10 +103,10 @@ After a short while, a new repository is created and the template files are copi
   Based on the samples in the file, choose the most fitting one and adapt accordingly. 
 ![RJ package-install](./media/rj-package-install.png)  
 * Customize `rj_install.cmd` and `rj_install.ps1` 
-    * With User Settings
+    * With User Settings  
       * Customize one of `usersettings\rj_install.cmd` and `usersettings\rj_install.ps1`, if necessary, and delete the other one. This file may contain various modifications and adjustments, e.g. registry keys or (un-)pinning of start icons.
       * Delete `rj_install.cmd` and `rj_install.ps1` in root folder.
-    * Without User Settings
+    * Without User Settings  
       * Delete subfolder `usersettings` completely.
       * Delete`rj_install.cmd` and `rj_install.ps1` in root folder.
 * Rewrite ```Readme.md```  
@@ -131,11 +131,11 @@ After the successfull deployment, the package can be found in the chocolatey lib
   Customize one of `rj_install.cmd` and `rj_install.ps1` in root folder if necessary, delete the other one. This file may contain various modifications and adjustments, e.g. registry keys or (un-)pinning of start icons.  
 ![RJ craft-installer](./media/rj-package-rjinstaller-craft.png)  
 * Any additional files can also go into the root folder.
-* Rewrite ```Readme.md```  
+* Rewrite ```Readme.md```   
   Provide all information necessary in the ```Readme.md``` file.  
 * Upload  
   Commit the file and upload it with Git to the Gitlab.
-* Deploy package
+* Deploy package  
   After uploading the package to Gitlab, navigate with a browser of your choice into the repository and select the *Pipelines* section. Select your release and use the deploy function. Depending on the package type, there are different possibilites. 
   * 10 generic: Deploys a new version of the generic flavour package.
   * 20 customers: Deploys a new version of all customer flavour packages. Do not do this, if you do not want to deploy a new version for all flavours listed here.
@@ -157,26 +157,24 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
   Open a Powershell and navigate into the ```blobs``` subfolder. Execute ```Get-ChildItem | % {(Get-FileHash $_.name).hash + " *" + $_.name | out-file ($_.name + ".sha256")}```. A `*.sha256` file is created for every item in the folder. The command is also listed in the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```, which is to be deleted afterwards (as well as any ```zzz_Place_installer_files_here_and_delete_me.txt.sha256``` item).  
 * Customize ```tools\chocolateyInstall.ps1```  
   Specify the desired `$targetDir` location on the device and the correct `$filename` of the zip container.  
-![RJ organic-install](./media/rj-chocoinstall-organic.png)  
+![RJ organic-install](./media/rj-package-chocoinstall-organic.png)  
 * Delete `rj_install.cmd` and `rj_install.ps1`  
-   * Delete subfolder `usersettings` completely.
+   * Delete subfolder `usersettings` completely. 
    * Delete `rj_install.cmd` and `rj_install.ps1` in root folder.
 * Rewrite ```Readme.md```  
   Provide all information necessary in the ```Readme.md``` file.
 * Upload   
   Commit the file and upload it with Git to the Gitlab.
-* Deploy package
+* Deploy package  
   After uploading the package to Gitlab, navigate with a browser of your choice into the repository and select the *Pipelines* section. Select your release and use the deploy function. Depending on the package type, there are different possibilites. 
   * 10 generic: Deploys a new version of the generic flavour package.
   * 20 customers: Deploys a new version of all customer flavour packages. Do not do this, if you do not want to deploy a new version for all flavours listed here.
   * 90 special: Deploys a new version of the special flavour package. This is used, when a package is already deployed for more than one customer. It prevents unwanted deployment of new package versions.  
 ![RJ organic-install](./media/rj-package-choco-deploy.png)  
 After the successfull deployment, the package can be found in the chocolatey library and added. See chapter *managing RealmJoin* for information on assigning packages.
-
 #### APP-X Package
 APP-V packages are highly sophisticated and unique. Therefore, a general guide can at this point not be provided. If an APP-V package is required, please contact GK for examples and further information or package creation.
-
-#### Conventions and helpers
+#### Conventions and RealmJoin helpers
 The helper scripts are provided by GK. They can not be altered while choco/craft packages are created. If a change is necessary, e.g. add a new flavour, the helper scripts have to be recreated. Please contact GK. 
 ##### realmjoin-gitlab-ci-helpers.ps1
 The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package types in the `.gitlab-ci.yml`, e.g. `script: ./.realmjoin-gitlab-ci-helpers/realmjoin-gitlab-ci-helpers.ps1 -buildChocoMachine -flavors "generic","glueckkanja"`. The following switches are available:
@@ -202,10 +200,14 @@ The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package t
   + *Metadata* to assign to a company
 
 ##### build-deploy-flavor-definitions.ps1  
-TBD
-
+The `build-deploy-flavor-definitions.ps1` script contains the available flavours for all deploy modes. There are currently 3 different deploy modes:  
+* generic: Just the generic flavour, nothing to change here.
+* customers: All customer flavours. The deploy mode *customer* will result in a *customer-package-name* deployment for each listed here. This means, if you redeploy in *customer* mode, it affects all customers at once.  
+* special: Might be used to deploy for a new customer without the need of the *customers* deploy mode. Any flavour that is not included in the other deploy modes might be inserted here to deploy without disturbing existing deployments.
+The `build-deploy-flavor-definitions.ps1` script is part of the extensions package and linked to your packages. It is not possible to just change the extensions files in your local package folder, to add flavours, it is necessary to update the extensions package separatly. 
+ 
 ##### Capitalization and Naming
-Please use only small letters for all naming purposes and use *vendor-program-version* as folder names.
+Please use only small letters for all naming purposes and use *vendor-program(-version)* as folder names.
 ##### Version numbering
 Software packages are assigned a individual version number. It is recommended to divide the version number into four parts W.X.Y.Z and use one of two different conventions:
   * For non-chocolatey packages GK is suggesting, to use *W* as major release number, *X* as majer sub-version, *Y* as minor release number and *Z* as (re-)packaging number (when rebuilding the package without changes in software but in the build itself). 
@@ -230,8 +232,6 @@ import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
 It might be required the repeat the last command if you encounter an error message. Now you are able to use the RealmJoin specific chocolatey commands individually.
 #### Craft packages
 Check if you are able to use the install commands in a powershell without RealmJoin. Make sure, your package is assigned in the correct scope (user or system).
-### RealmJoin Core Extensions
-TBD
 ## Dispatching
 TBD
 ## Tools
@@ -246,6 +246,9 @@ The following tools are somewhere between useful and necessary:
   * In the tool package
 - Tool package
   * If you are a member of the *packaging as a service* group, you might have access to <https://guk.sharepoint.com/sites/packaging/Shared%20Documents/Forms/AllItems.aspx>. 
+
+
+
 
 <!-- 
 Pr�fungen: 
