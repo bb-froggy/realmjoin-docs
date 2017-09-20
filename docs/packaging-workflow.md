@@ -157,7 +157,7 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
   Open a Powershell and navigate into the ```blobs``` subfolder. Execute ```Get-ChildItem | % {(Get-FileHash $_.name).hash + " *" + $_.name | out-file ($_.name + ".sha256")}```. A `*.sha256` file is created for every item in the folder. The command is also listed in the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```, which is to be deleted afterwards (as well as any ```zzz_Place_installer_files_here_and_delete_me.txt.sha256``` item).  
 * Customize ```tools\chocolateyInstall.ps1```  
   Specify the desired `$targetDir` location on the device and the correct `$filename` of the zip container.  
-![RJ organic-install](./media/rj-chocoinstall-organic.png)  
+![RJ organic-install](./media/rj-package-chocoinstall-organic.png)  
 * Delete `rj_install.cmd` and `rj_install.ps1`  
    * Delete subfolder `usersettings` completely.
    * Delete `rj_install.cmd` and `rj_install.ps1` in root folder.
@@ -165,7 +165,7 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
   Provide all information necessary in the ```Readme.md``` file.
 * Upload   
   Commit the file and upload it with Git to the Gitlab.
-* Deploy package
+* Deploy package  
   After uploading the package to Gitlab, navigate with a browser of your choice into the repository and select the *Pipelines* section. Select your release and use the deploy function. Depending on the package type, there are different possibilites. 
   * 10 generic: Deploys a new version of the generic flavour package.
   * 20 customers: Deploys a new version of all customer flavour packages. Do not do this, if you do not want to deploy a new version for all flavours listed here.
@@ -174,7 +174,7 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
 After the successfull deployment, the package can be found in the chocolatey library and added. See chapter *managing RealmJoin* for information on assigning packages.
 #### APP-X Package
 APP-V packages are highly sophisticated and unique. Therefore, a general guide can at this point not be provided. If an APP-V package is required, please contact GK for examples and further information or package creation.
-#### Conventions and RealmJoin core extensions
+#### Conventions and RealmJoin helpers
 The helper scripts are provided by GK. They can not be altered while choco/craft packages are created. If a change is necessary, e.g. add a new flavour, the helper scripts have to be recreated. Please contact GK. 
 ##### realmjoin-gitlab-ci-helpers.ps1
 The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package types in the `.gitlab-ci.yml`, e.g. `script: ./.realmjoin-gitlab-ci-helpers/realmjoin-gitlab-ci-helpers.ps1 -buildChocoMachine -flavors "generic","glueckkanja"`. The following switches are available:
