@@ -202,20 +202,14 @@ The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package t
   + *Metadata* to assign to a company
 
 ##### build-deploy-flavor-definitions.ps1  
-TBD
-<!--  [string]$packageName,
-    [switch]$isBuild,
-    [switch]$isDeploy,
-    [string]$flavorsCollection
-  $genericFlavors = @("generic")
-$customerFlavors = @("glueckkanja", "schenker", "enbw", "swb", "fst")
-
-# example for new customer: $specialFlavors = @("fst")
-# if empty: $specialFlavors = @()
-$specialFlavors = @("fst")
--->
+The `build-deploy-flavor-definitions.ps1` script contains the available flavours for all deploy modes. There are currently 3 different deploy modes:  
+* generic: Just the generic flavour, nothing to change here.
+* customers: All customer flavours. The deploy mode *customer* will result in a *customer-package-name* deployment for each listed here. This means, if you redeploy in *customer* mode, it affects all customers at once.  
+* special: Might be used to deploy for a new customer without the need of the *customers* deploy mode. Any flavour that is not included in the other deploy modes might be inserted here to deploy without disturbing existing deployments.
+The `build-deploy-flavor-definitions.ps1` script is part of the extensions package and linked to your packages. It is not possible to just change the extensions files in your local package folder, to add flavours, it is necessary to update the extensions package separatly. 
+ 
 ##### Capitalization and Naming
-Please use only small letters for all naming purposes and use *vendor-program-version* as folder names.
+Please use only small letters for all naming purposes and use *vendor-program(-version)* as folder names.
 ##### Version numbering
 Software packages are assigned a individual version number. It is recommended to divide the version number into four parts W.X.Y.Z and use one of two different conventions:
   * For non-chocolatey packages GK is suggesting, to use *W* as major release number, *X* as majer sub-version, *Y* as minor release number and *Z* as (re-)packaging number (when rebuilding the package without changes in software but in the build itself). 
@@ -256,6 +250,9 @@ The following tools are somewhere between useful and necessary:
   * In the tool package
 - Tool package
   * If you are a member of the *packaging as a service* group, you might have access to <https://guk.sharepoint.com/sites/packaging/Shared%20Documents/Forms/AllItems.aspx>. 
+
+
+
 
 <!-- 
 Pr�fungen: 
