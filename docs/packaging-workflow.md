@@ -67,7 +67,7 @@ After a short while, a new repository is created and the template files are copi
 
 #### Chocolatey Package
 ##### Edit Package files
-<!-- Depending on the instructions in the *readme.md* file, all not for choco packages used files can be deleted from the package folder including the ```Jumpstart.ps1```-->
+
 * Create ```.gitlab-ci.yml```
   There are 8 different sample files, while those starting with `Sample1*` are considered outdated. Therefore, select and edit the most fitting ```Sample0*.gitlab-ci.yml``` file and delete the other ones. You might need to adjust the content. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.   
 ![RJ package-sample](./media/rj-package-sample.png)  
@@ -202,12 +202,17 @@ The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package t
   + *Metadata* to assign to a company
 
 ##### build-deploy-flavor-definitions.ps1  
+<<<<<<< HEAD
 The `build-deploy-flavor-definitions.ps1` script contains the available flavours for all deploy modes. There are currently 3 different deploy modes:  
 * generic: Just the generic flavour, nothing to change here.
 * customers: All customer flavours. The deploy mode *customer* will result in a *customer-package-name* deployment for each listed here. This means, if you redeploy in *customer* mode, it affects all customers at once.  
 * special: Might be used to deploy for a new customer without the need of the *customers* deploy mode. Any flavour that is not included in the other deploy modes might be inserted here to deploy without disturbing existing deployments.
 The `build-deploy-flavor-definitions.ps1` script is part of the extensions package and linked to your packages. It is not possible to just change the extensions files in your local package folder, to add flavours, it is necessary to update the extensions package separatly. 
  
+=======
+TBD
+
+>>>>>>> 277f67027c7a16fc840c46c3d8580fabca5c3540
 ##### Capitalization and Naming
 Please use only small letters for all naming purposes and use *vendor-program(-version)* as folder names.
 ##### Version numbering

@@ -1,5 +1,7 @@
 # Creating packages
-![RJ ecosystem](./media/rj-ecosystem.png)   
+  
+![RJ ecosystem](./media/rj-ecosystem.png)    
+  
 The picture above provides a schematic overview over the RealmJoin package distribution ecosystem. The step of creating packages will be illuminiated in this chapter. 
 It documents the basic steps in creating craft, chocolatey, APP-X and organic packages. While all types follow the same rough outline, there are some differences when handling the packages. 
 
@@ -24,16 +26,19 @@ You confronted by the following prompt and asked to specify details:
 * Please enter the RealmJoin GitLab Access Token: (your token)   
 Cloning into....[installation messages]
 ```  
+  
 ![RJ package-jump](./media/rj-package-jump.png)  
 
 After a short while, a new repository is created and the template files are copied into the local package folder. Before working on the files, please check the *readme.md*. Depending on the type of package that is to be created, the next steps will vary.  
-
+  
 ## Chocolatey Package
 ### Edit Package files
-<!-- Depending on the instructions in the *readme.md* file, all not for choco packages used files can be deleted from the package folder including the ```Jumpstart.ps1```-->
-* Create ```.gitlab-ci.yml```
+   
+* Create ```.gitlab-ci.yml```  
   There are 8 different sample files, while those starting with `Sample1*` are considered outdated. Therefore, select and edit the most fitting ```Sample0*.gitlab-ci.yml``` file and delete the other ones. You might need to adjust the content. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.   
+   
 ![RJ package-sample](./media/rj-package-sample.png)  
+  
   The `.gitlab-ci.yml`file contain the build and deploy information. In the *build* stage, the `build-deploy.ps1` helper script is called, while the argument `-build` indicates the *build* stage and `-ChocoMachine` the chocolatey type package. 
   In the *deploy* stage, the `build-deploy.ps1` helper script is called, while the argument `-deploy` indicates the *deploy* stage, `-ChocoMachine` the chocolatey type package and depending on the deploy mode, the *-flavourCollection*: 
    * Deploy Generic: Deployment of the *-flavourCollection* *generic*.
@@ -83,6 +88,7 @@ After a short while, a new repository is created and the template files are copi
   * 90 special: Deploys a new version of the special flavour package. This is used, when a package is already deployed for more than one customer. It prevents unwanted deployment of new package versions.  
 ![RJ package-deploy](./media/rj-package-choco-deploy.png)  
 After the successfull deployment, the package can be found in the chocolatey library and added. See chapter *managing RealmJoin* for information on assigning packages.  
+
 ## Craft Package
 ### Edit Package files
 * Delete non-craft items  
@@ -173,8 +179,8 @@ TBD
   $genericFlavors = @("generic")
 $customerFlavors = @("glueckkanja", "schenker", "enbw", "swb", "fst")
 
-# example for new customer: $specialFlavors = @("fst")
-# if empty: $specialFlavors = @()
+example for new customer: $specialFlavors = @("fst")
+if empty: $specialFlavors = @()
 $specialFlavors = @("fst")
 -->
 ### Capitalization and Naming

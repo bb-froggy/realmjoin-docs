@@ -1,12 +1,40 @@
 # Settings and Policies
 
-After installing the RealmJoin client on the device, a configuration file is localy saved. This file is encrypted and can not easily be modified by the user. 
-RealmJoin compares the hash value of the local configuration file to the hash value of the configuration file for this user on the backend. If the hash deviats, the file is synced from the server to the local device. 
-The configuration file is signed with the servers public key, therefore the local RealmJoin client can validate the file. 
+After installing the RealmJoin client on the device, a configuration is saved locally. This configuration is encrypted and can not be modified by the user. RealmJoin compares the hash value of the local configuration  to the hash value of the configuration for this user on the backend. If the hash deviats, the confifguration is re-synced from the server to the local device. The configuration is signed with the servers public key, therefore the local RealmJoin client can validate the configuration. 
 
-The following section lists the content of a typical JSON RealmJoin configuration file. 
+## Delivery Optimization for Windows Update
 
-## JSON Configuration File
+*Windows Update Delivery Optimization*, or *WUDO* is a self organised solution for distributed caches for Windows Updates. In default mode, WUDO identifies peers as part of a WAN based on their external IP. In case of streched out WANs with just one breakout point, this leads to a high network load and a bottleneck. 
+To improve the handling, Microsoft Intune can be used to set WUDO to *download mode 2*, where peers are grouped by a groupID. The ID is set for each device using network fingerprinting and the MAC address of the default gateway and therefore creating a more localized group. RealmJoin is used to set the groupID for each client.
+
+Two registry keys are updated when the *mode 2* delivery optimization is used:  
+  
+**Set Download Mode = 2**
+```
+HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization\DODownloadMode
+```
+**Network-Fingerprint-GUID in Reg-Key**
+```
+HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization\DOGroupId
+```
+  
+If WUDO is activated on a device using BranchCache, WUDO is used for Windows Updates over WSUS with BranchCache.  
+For a more on WUDO see the [Microsoft WUDO documentation (DE)](https://docs.microsoft.com/de-de/windows/deployment/update/waas-delivery-optimization).
+
+## Bitlocker
+### Bitlocker enforcement
+
+It is possible to force Bitlocker encryption for OS volumes. The configuration file (see chapter *Policies*) allows to set the switch *BitlockerEnabled* to true. If the device is equipped with a *ready state* TPM chip the encryption is activated. To allow the Bitlocker enforcement, the registry key ```HKLM\SYSTEM\CurrentControlSet\Control\BitLocker:PreventDeviceEncryption``` is set to false. 
+For virtual machines the encryption is only enforced, if the virtual machine variable ```$env:RjDisableVmDetection=1``` is set. 
+
+### Bitlocker recovery key
+If the client device is Azure AD joined, RealmJoin uploads the Bitlocker recovery key to Azure AD. If the upload is not successfull in the first try, it will be retried. If the upload can not be performed successfully, the RealmJoin rollout failed. 
+In case of a *not-AAD-joined* device, the Bitlocker recovery key is not secured. 
+
+## Domain Passwort expiry
+RealmJoin uses the Azure AD attribute ```msDS-UserPasswordExpiryTimeComputed``` to check if the user passwort is expired. 
+
+## Other Configuration Settings
 
 - "Environment"
   * "UpdateCheckInterval": "01:00"
@@ -193,8 +221,10 @@ The following fields for signatures are extracted from the Microsoft Graph API a
 | Street           |    
 | Surname          |    
           
-## TBD
-Add connection between HKEY to policies if existing?
 <!--
-### In Issue erw�hnt aber nicht in der JSON vorhanden: 
-Policies.DisableNetworkLocationWizard = true|false; HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Network\NwCategoryWizard, Value *Show* auf 0 oder 1-->
+TBD
+Add connection between HKEY to policies if existing?
+
+In Issue erw�hnt aber nicht in der JSON vorhanden: 
+Policies.DisableNetworkLocationWizard = true|false; HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Network\NwCategoryWizard, Value *Show* auf 0 oder 1
+-->
