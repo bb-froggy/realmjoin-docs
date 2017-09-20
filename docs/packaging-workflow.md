@@ -172,11 +172,9 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
   * 90 special: Deploys a new version of the special flavour package. This is used, when a package is already deployed for more than one customer. It prevents unwanted deployment of new package versions.  
 ![RJ organic-install](./media/rj-package-choco-deploy.png)  
 After the successfull deployment, the package can be found in the chocolatey library and added. See chapter *managing RealmJoin* for information on assigning packages.
-
 #### APP-X Package
 APP-V packages are highly sophisticated and unique. Therefore, a general guide can at this point not be provided. If an APP-V package is required, please contact GK for examples and further information or package creation.
-
-#### Conventions and helpers
+#### Conventions and RealmJoin core extensions
 The helper scripts are provided by GK. They can not be altered while choco/craft packages are created. If a change is necessary, e.g. add a new flavour, the helper scripts have to be recreated. Please contact GK. 
 ##### realmjoin-gitlab-ci-helpers.ps1
 The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package types in the `.gitlab-ci.yml`, e.g. `script: ./.realmjoin-gitlab-ci-helpers/realmjoin-gitlab-ci-helpers.ps1 -buildChocoMachine -flavors "generic","glueckkanja"`. The following switches are available:
@@ -202,17 +200,12 @@ The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package t
   + *Metadata* to assign to a company
 
 ##### build-deploy-flavor-definitions.ps1  
-<<<<<<< HEAD
 The `build-deploy-flavor-definitions.ps1` script contains the available flavours for all deploy modes. There are currently 3 different deploy modes:  
 * generic: Just the generic flavour, nothing to change here.
 * customers: All customer flavours. The deploy mode *customer* will result in a *customer-package-name* deployment for each listed here. This means, if you redeploy in *customer* mode, it affects all customers at once.  
 * special: Might be used to deploy for a new customer without the need of the *customers* deploy mode. Any flavour that is not included in the other deploy modes might be inserted here to deploy without disturbing existing deployments.
 The `build-deploy-flavor-definitions.ps1` script is part of the extensions package and linked to your packages. It is not possible to just change the extensions files in your local package folder, to add flavours, it is necessary to update the extensions package separatly. 
  
-=======
-TBD
-
->>>>>>> 277f67027c7a16fc840c46c3d8580fabca5c3540
 ##### Capitalization and Naming
 Please use only small letters for all naming purposes and use *vendor-program(-version)* as folder names.
 ##### Version numbering
@@ -239,8 +232,6 @@ import-Module C:\ProgramData\chocolatey\helpers\chocolateyInstaller.psm1
 It might be required the repeat the last command if you encounter an error message. Now you are able to use the RealmJoin specific chocolatey commands individually.
 #### Craft packages
 Check if you are able to use the install commands in a powershell without RealmJoin. Make sure, your package is assigned in the correct scope (user or system).
-### RealmJoin Core Extensions
-TBD
 ## Dispatching
 TBD
 ## Tools
