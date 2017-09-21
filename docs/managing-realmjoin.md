@@ -102,22 +102,22 @@ There are two ways to add the neccessary information: Entering the required fiel
   
 
 While adding a package the following configuration entries are available:  
-- Name
+- Name  
   * The *name* under which the package is listed in the client and RealmJoin admin console. Otherwise not used as an unique identifier.
-- GroupName
+- GroupName  
   * An optional group name may be entered. This name has no connection to the user groups, instead it will be shown in the RealmJoin client context menu to group the depicted applications.
-- ID 
-  The RealmJoin internal name of the package, for example *generic-videolan-vlc*.
+- ID  
+  * The RealmJoin internal name of the package, for example *generic-videolan-vlc*.
 - DependsOn
   * The *DependsOn* option is used to indicate if a package needs another package to be installed to work properly. This may be the case for Office user setting packages, that require an office installation upfront. It is possible to hide packages, so that the client context menu only shows one installation option (see section *Package Assignment*). 
      For a working correlation, the correct package name has to be provided. 
      If there is a multiple level-dependency, RealmJoin takes this into consideration. Before the installation process, all dependency-related packages are sorted (also including mandatories) and installed afterwards. The following images show the assignment of package dependency for the chocolatey package *Omnitracker*, which will be installed with usersettings:   
        
-     ![RJ autoupdate_sim](./media/rj-ac-package-dependency.png)   
+     ![RJ package-dependency](./media/rj-ac-package-dependency.png)   
        
      The user setting package *Omnitracker with Usersettings* is assigned as usual, with the ID of the parent package *generic-omninet-omnitracker* entered as *DependsOn*. During the installation process in the RealmJoin client, RealmJoin understands the need of the *generic-omninet-omnitracker* package and installs the deployed version of it first.   
        
-    ![RJ autoupdate_sim](./media/rj-install-dependent.png)   
+    ![RJ dependency-installation](./media/rj-install-dependent.png)   
       
      RealmJoin takes 1:n dependenciey into account.     
 - Order

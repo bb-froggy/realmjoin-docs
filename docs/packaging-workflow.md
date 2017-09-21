@@ -179,21 +179,21 @@ The helper scripts are provided by GK. They can not be altered while choco/craft
 ##### realmjoin-gitlab-ci-helpers.ps1
 The `realmjoin-gitlab-ci-helpers.ps1` is a helper script called in all package types in the `.gitlab-ci.yml`, e.g. `script: ./.realmjoin-gitlab-ci-helpers/realmjoin-gitlab-ci-helpers.ps1 -buildChocoMachine -flavors "generic","glueckkanja"`. The following switches are available:
 * [switch]$buildCraft,
-  + *Craft* package
+  + Build *craft* package, user or system
 * [switch]$buildChocoMachine,
-  + *Chocolatey* package
+  + Build *chocolatey* package, system only
 * [switch]$buildUsersettingsChild,
-  + 
+  + Variation of*-buildCraft*, designed to build user only *UserSettings* craft packages
 * [switch]$deployCraft,
-  + *Craft* package
+  + Upload *craft* package to repository (no config in RJ yet, only storage)
 * [switch]$deployChocoMachine,
-  + *Chocolatey* package
+  + Upload *chocolatey* package to repository (no config in RJ yet, only storage)
 * [switch]$deployUsersettingsChild,
-  + 
+  + Variation of *deployCraft*
 * [string]$craftSubfolder,
-  + 
+  + override default dirs (-buildCraft = root, -buildUsersettingsChild: usersettings)
 * [string]$usersettingsSuffix,
-  + 
+  + override suffix for UserSetting packages (default: usersettings)
 * [string]$packagePrefix,
   + 
 * [string[]]$flavors
