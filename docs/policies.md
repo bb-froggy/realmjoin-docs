@@ -203,9 +203,9 @@ RealmJoin provides Outlook with signature files. Those files can be found in:
 The following fields for signatures are extracted from the Microsoft Graph API and may be used: 
          
 | Graph_User_      |   
-|------------------|
-| BusinessPhone    | 
-| City             | 
+|------------------|  
+| BusinessPhone    |   
+| City             |   
 | CompanyName      |     
 | Country          |        
 | Department       |               
