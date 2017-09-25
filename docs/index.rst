@@ -27,7 +27,7 @@ Deployment Guide
    core-extension
    faq
    troubleshooting
-
+   packaging-workflow
 
 Indices and tables
 ==================
