@@ -26,11 +26,11 @@ Like any other application in Intune, ReamJoin then can be assigned to the desir
 ### Windows Defender Exceptions
 RealmJoin might be recognized by the *Windows Defender* as a possible thread. While this behaviour is not certain, it is recommended to implement some Windows Defender exceptions. Create a new device configuration profile, type *Device restriction*, or edit your existing profile and add the following *Windows Defender Antivirus Exceptions*:  
 * Files and folders  
-´%ProgramFiles%\RealmJoin´  
+`%ProgramFiles%\RealmJoin`  
 * Processes  
-´%ProgramFiles%\RealmJoin\RealmJoin.exe´  
-´%ProgramFiles%\RealmJoin\RealmJoinService.exe´  
-´%ProgramFiles%\RealmJoin\RealmJoinUpdate.exe´  
+`%ProgramFiles%\RealmJoin\RealmJoin.exe`   
+`%ProgramFiles%\RealmJoin\RealmJoinService.exe`  
+`%ProgramFiles%\RealmJoin\RealmJoinUpdate.exe`  
 
 ### Powershell
 TBD
