@@ -23,6 +23,15 @@ In the configuration tab basic and advanced information can be provided.
   
 Like any other application in Intune, ReamJoin then can be assigned to the desired user groups as (required) software. It is not neccessary to install additional software on the client devices to run RealmJoin. RealmJoin will be deployed on the client devices on next Azure sync.
 
+### Windows Defender Exceptions
+RealmJoin might be recognized by the *Windows Defender* as a possible thread. While this behaviour is not certain, it is recommended to implement some Windows Defender exceptions. Create a new device configuration profile, type *Device restriction*, or edit your existing profile and add the following *Windows Defender Antivirus Exceptions*:  
+* Files and folders  
+´%ProgramFiles%\RealmJoin´  
+* Processes  
+´%ProgramFiles%\RealmJoin\RealmJoin.exe´  
+´%ProgramFiles%\RealmJoin\RealmJoinService.exe´  
+´%ProgramFiles%\RealmJoin\RealmJoinUpdate.exe´  
+
 ### Powershell
 TBD
 
