@@ -201,30 +201,22 @@ RealmJoin provides Outlook with signature files. Those files can be found in:
     * .\anyname.htm
 
 The following fields for signatures are extracted from the Microsoft Graph API and may be used: 
-         
-| Graph_User_      |   
-|------------------|  
-| BusinessPhone    |   
-| City             |   
-| CompanyName      |     
-| Country          |        
-| Department       |               
-| DisplayName      |           
-| GivenName        |        
-| ID               |               
-| JobTitle         |        
-| Mail             |       
-| MobilePhone      |    
-| OfficeLocation   |    
-| PostalCode       |     
-| State            |    
-| Street           |    
-| Surname          |    
-          
-<!--
-TBD
-Add connection between HKEY to policies if existing?
 
-In Issue erw�hnt aber nicht in der JSON vorhanden: 
-Policies.DisableNetworkLocationWizard = true|false; HKCU\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Network\NwCategoryWizard, Value *Show* auf 0 oder 1
--->
+```
+Graph_User_BusinessPhone
+Graph_User_City
+Graph_User_CompanyName
+Graph_User_Country
+Graph_User_Department
+Graph_User_DisplayName
+Graph_User_GivenName
+Graph_User_Id
+Graph_User_JobTitle
+Graph_User_Mail
+Graph_User_MobilePhone
+Graph_User_OfficeLocation
+Graph_User_PostalCode
+Graph_User_State
+Graph_User_StreetAddress
+Graph_User_Surname
+```
