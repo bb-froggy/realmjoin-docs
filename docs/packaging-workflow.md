@@ -1,19 +1,12 @@
 # Workflow (internal GK)
 
-## First: Upload through customer  
-The customer uses the *RealmJoin Organic Uploader* <https://realmjoin-uploader.azurewebsites.net/> to upload a * .zip file containing the .msi or .exe file as well as the instructions on the desired installation mode.
+## Upload through customer  
+The package management team of a customer uses the option *RealmJoin Request Package* within the portal to upload a * .zip file containing the .msi or .exe file as well as the instructions on the desired installation mode.
 
-## Second: Get involved  
-The customers upload triggers an automatic ticket in the GK ticketing system. Find the relevant upload ticket and assign it to yourself. The ticket may contain the *UUID* which is needed to identify the upload in the BLOB storage or even direct download links. 
-**NOTE:** Currently it is not possible to track the upladed zip - file into the BLOB storage, resulting in a missing *UUID*. Therefore, it is currently neccessary to remember the timestamp of the ticket.
+## Get involved  
+The customers upload triggers an automatic ticket in the Packaging as a Service ticketing system. 
 
-## Third: Find the file  
-
-Use the *Microsoft Azure Storage Explorer* (install using RealmJoin if it not already done so) to find the upload corresponding to the *UUID* of the ticket or timestamp of the ticket. 
-Due to different time zones, the hour in the tickets timestamp and the *MASE* timestamp may be deviate. If several blobs have the same timestamp or are too close, check their properties (right click) for the original filename. 
-Save the file to your working directory. You might remove the upload in the storage after succesfully enrolling the package.
-
-## Fourth: Check the requierments 
+## Check the requierments 
 
 Before building your package, there are different checks to be performed:
 
@@ -34,7 +27,7 @@ Before building your package, there are different checks to be performed:
   * If an `*.mst` file is provided, use a tool like DDIF to compare it to the `*.msi` and decide, if any of the changes are to be kept. Do not keep uninstall blocker or similar. Create a new `*.mst` file if necessary (use *Orca*).
 **Do not start creating the package before you have a reasonable assumption of what to pack**
 
-## Fifth: Create the package
+## Create the package
 ### Creating packages
 ![RJ ecosystem](./media/rj-ecosystem.png)   
 The picture above provides a schematic overview over the RealmJoin package distribution ecosystem. The step of creating packages will be illuminiated in this chapter. 
@@ -249,38 +242,3 @@ The following tools are somewhere between useful and necessary:
 
 
 
-
-<!-- 
-Pr�fungen: 
-Softwareversion, gibt es andere Versionen beim Kunden
-Sind Args und Parametern sinnvoll, vllt statt custom lieber generic hinterher, nicht unbedingt zu viel User/Kundenspezifisch
-Argumente f�r generic: Kosten und Updates (die sind schneller da)
-Test der Software ggf auf VM
-
-Verzechnis erstellen vedor-program-version
-Jumpstarter f�r Template ausf�hren aus (Admin) cmd, gut wenn das im Ordner dr�ber liegt
-Werte eingeben
-
-Neue Repo Folder: 
-Folder aufr�umen, steht in der Readme.md welche, readme auch weg, 
-Umgenennen der ci.yml
-Sourcen in BLOBs, Versionsnummer in BLOBnamen angeben, da diese im Blobstorage ausserhalb von choco landen
-Erzeugen der hash check sum
-�ffnenin VS Code, editieren von chocolateyinstall
-Anapssen der nuspec datei
-Anpassen install script, auch wegen uninstall
-Falls notwendig eine post installtion Info mitgeben f�r Inis, Uninstal Files abfragen aus powershell
-
-
-
-Test durch eine Batchfile (Felix) zur Sim einer Umgebung
-
-Helferskripte um Uninstall Infos und weiteres zu ziehen (siehe extensions), wird ins choco temp geschoben, weil choco da sucht wenn online nichts gefunden wird
-
-
-
-
-Erg�nzung RJ Docu: 
-Beim Packaing:Jumpstarter gibt�s Parameter im Script, die k�nnen in den Befehl reinkommen
-VLC zu vlc, weil immer klein
--->
