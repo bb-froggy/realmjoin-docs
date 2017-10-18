@@ -20,22 +20,37 @@ Gk provides a Jumpstarter script that can be used to automatically create the te
 ```
 You confronted by the following prompt and asked to specify details:
 ```
-* Please enter the RealmJoin GitLab repository path: test-vlc   
-* Please enter the RealmJoin GitLab repository name: test-vlc   
-* Please enter the RealmJoin GitLab repository namespace: (your namespace)   
-* Please enter the RealmJoin GitLab Access Token: (your token)   
+Repository path (leave empty for current folder name, Format: {VENDOR}-{PRODUCTNAME}): videolan-vlc
+Repository name (leave empty for repository path): Videolan VLC Player
+Repository namespace (leave empty for 'generic-packages', Format: {CUSTOMER}-packages): (your namespace)
+Personal Access Token:(your token)   
 Cloning into....[installation messages]
+[...]
+Possible Packagetypes:
+  [1] Chocolatey
+  [2] Chocolatey and Usersettings
+  [3] Chocolatey and multi Usersettings
+  [4] Craft
+Please enter the type of package. (all samples found in: '.realmjoin-gitlab-ci-helpers'): 1
+Please enter the PackageVersion (Format: 1.0.0.0): w.x.y.z
 ```  
   
 ![RJ package-jump](./media/rj-package-jump.png)  
 
-After a short while, a new repository is created and the template files are copied into the local package folder. Before working on the files, please check the *readme.md*. Depending on the type of package that is to be created, the next steps will vary.  
-  
+After a short while, a new repository is created and the template files are copied into the local package folder. Files not necessary for the selected package type will be deleted. If the correct package version and type are selected, it is not necessary to edit the `choco-package.nuspec` and ```.gitlab-ci.yml``` files. Nevertheless it is highly recommended to check those files for consistency.  
+Before working on the files, please check the *readme.md*. Depending on the type of package that is to be created, the next steps will vary.  
+#### Jumpstarter Beta
+RealmJoin and the automatization tools are constantly adapted and refined. Advanced features are implemented and tested in a beta branch. 
+The beta version of the Jumpstarter script can be used by running the following code in a cmd shell:  
+```
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/realmjoin/realmjoin-package-jumpstarter/raw/beta/JumpstartRealmJoinPackage.ps1'))"
+```
+
 ## Chocolatey Package
 ### Edit Package files
    
 * Create ```.gitlab-ci.yml```  
-  There are 8 different sample files, while those starting with `Sample1*` are considered outdated. Therefore, select and edit the most fitting ```Sample0*.gitlab-ci.yml``` file and delete the other ones. You might need to adjust the content. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.   
+  There are 8 different sample files (might be already deleted when using a *Jumpstarter* script and selecting a specific package type), while those starting with `Sample1*` are considered outdated. Therefore, select and edit the most fitting ```Sample0*.gitlab-ci.yml``` file and delete the other ones. You might need to adjust the content. Remove the prefix of the filename and save it as ```.gitlab-ci.yml```.   
    
 ![RJ package-sample](./media/rj-package-sample.png)  
   
@@ -184,6 +199,19 @@ Software packages are assigned a individual version number. It is recommended to
   * For non-chocolatey packages GK is suggesting, to use *W* as major release number, *X* as majer sub-version, *Y* as minor release number and *Z* as (re-)packaging number (when rebuilding the package without changes in software but in the build itself). 
   * For chocolatey packages it is recommended to use the softwares version number, and use *Z* as (re-)packing number. If the software itself has a four part version number, chocolatey suggests to multiply the *Z* by 100 and increase the number by 1 every (re-)packaging.  
 **Note:** When a new version is tested, the package might be crafted as a pre release package, which, if testing is successfull and no further changes have to be done, has the same version number as the final build.
+
+### Variables
+The following variables may be used in the RealmJoin install scripts:  
+* $Global:packagePrefix = $env:packageName.Split("-")[0]
+* $Global:packageName = $env:packageName
+* $Global:packageVersion = $env:packageVersion
+* $Global:packageVersionObject = [System.Version]$env:packageVersion
+* $Global:packageVersionNoRevisionObject = New-Object System.Version -ArgumentList $packageVersionObject.Major, $packageVersionObject.Minor, $packageVersionObject.Build
+* $Global:packageParameters = $env:packageParameters
+* $Global:packageFolder = $env:packageFolder
+* $Global:packageToolsFolder = Join-Path $env:packageFolder "tools"
+* $Global:packageTempDir = Join-Path $env:TEMP (Join-Path $env:chocolateyPackageName $env:chocolateyPackageVersion)
+
 
 
 
