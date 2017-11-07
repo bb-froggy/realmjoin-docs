@@ -16,4 +16,5 @@ Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\realmjoin\Paramete
 ``
 can be set to `1`.  
 It is also possible to set this key during the installation of RealmJoin as a argument for the *msi*:  
+
 ``msiexec /i "RealmJoin.msi" NOGRAPH=1``.
