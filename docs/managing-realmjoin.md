@@ -109,17 +109,17 @@ While adding a package the following configuration entries are available:
 - ID  
   * The RealmJoin internal name of the package, for example *generic-videolan-vlc*.
 - DependsOn
-  * The *DependsOn* option is used to indicate if a package needs another package to be installed to work properly. This may be the case for Office user setting packages, that require an office installation upfront. It is possible to hide packages, so that the client context menu only shows one installation option (see section *Package Assignment*). 
-     For a working correlation, the correct package name has to be provided. 
-     If there is a multiple level-dependency, RealmJoin takes this into consideration. Before the installation process, all dependency-related packages are sorted (also including mandatories) and installed afterwards. The following images show the assignment of package dependency for the chocolatey package *Omnitracker*, which will be installed with usersettings:   
+  * The *DependsOn* option is used to indicate if a package needs another package to be installed to work properly. This may be the case for Office user setting packages, that require an office installation upfront. It is possible to hide packages, so that the client context menu only shows one installation option (see section *Package Assignment*), but all involved packages have to be assigned to the user group for dependencies to work.  
+  For a working correlation, the correct package name has to be provided. 
+     If there is a multiple level-dependency, RealmJoin takes this into consideration. Before the installation process, all dependency-related packages are sorted (also including mandatories) and installed afterwards. The following images show the assignment of package dependency for the chocolatey package *Microsoft Office 2016 ProPlus*, which will be installed with usersettings:   
        
      ![RJ package-dependency](./media/rj-ac-package-dependency.png)   
        
-     The user setting package *Omnitracker with Usersettings* is assigned as usual, with the ID of the parent package *generic-omninet-omnitracker* entered as *DependsOn*. During the installation process in the RealmJoin client, RealmJoin understands the need of the *generic-omninet-omnitracker* package and installs the deployed version of it first.   
+     The user setting package *Microsoft Office 2016 ProPlus ML UserSettings* is assigned as usual, with the ID of the parent package *generic-microsoft-office-2016-proplus* entered as *DependsOn*. During the installation process in the RealmJoin client, RealmJoin understands the need of the *generic-microsoft-office-2016-proplus* package and installs the deployed version of it first.   
        
     ![RJ dependency-installation](./media/rj-install-dependent.png)   
-      
-     RealmJoin takes 1:n dependenciey into account.     
+    RealmJoin takes 1:n dependenciey into account. It is possible to add more than one dependency using the synthax:  
+     ``["package-id-1","package-id-2"]``    
 - Order
   * The order number is an Int32 type figure and provides RealmJoin with a basic structure to determine the package installation sequence. The lower the number the higher the importance, therefore a 10 will be installed before 100. 
     It has to be noted that a 0 is translated to "no sequence given" and the order number is only taken into account at the first roll out.

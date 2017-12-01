@@ -28,6 +28,7 @@ Deployment Guide
    faq
    troubleshooting
    packaging-workflow
+   specialised-packages
    appendix
 
 Indices and tables

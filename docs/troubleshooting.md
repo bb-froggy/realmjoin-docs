@@ -67,6 +67,8 @@ MSI Installations logs.
 
 ![Log](./media/rj-msi-log.png)
 
+Alternatively the logs can be automatically collected and save to the current users desktop via the debug window (see section below).
+
 ## Advanced RealmJoin Options
 
 Hold “control” & “shift” keys and klick RealmJoin Tray icon. Select “Show Debug Window”.
@@ -93,6 +95,10 @@ You can reset the user configuration. After this is done it is required to updat
 
 ![Advanced](./media/rjx-debug-menu-six.png)
 
+You can collect the RealmJoin logfiles automatically. 
+
+![Advanced](./media/rjx-debug-menu-seven.png)
+
 ## Verify Group Membership in Office 365 Admin Center
 
 You need to know the Software Distribution Group to which the software should be deployed.
@@ -105,8 +111,18 @@ Select appropriate software distribution group and verify if the user is member 
 
 ![O365 Portal](./media/o365-portal-two.png)
 
+## Token Error
+There are several possible approaches to repair token errors. 
+### Delete Token.dat
+To trigger a new token request, delete the file  
+``C:\Users\username\AppData\Local\RealmJoin\token.dat``  
+and restart your device. Newer RealmJoin (starting with v4.10) versions that detect broken tokens may repair them automatically.  
+
+### Reconnet to Domain
+
+In the RealmJoin tray, you might use the *Reconnet to Domain* or *Change Domain Password* options to reinstate the connection authentication. 
 ## RealmJoin Backend
-Replace with Admin Console!
+Replaced with Admin Console!
 
 Go to RealmJoin Backend admin portal at: [RealmJoin Backend Portal](https://realmjoin-backend.azurewebsites.net)
 
@@ -118,16 +134,6 @@ In this example it has not been assigned to any individual user but to 2 groups.
 
 ![RealmJoin Portal](./media/rjserver-two.png)
 
-
-Einwurf Pascal: sollte chocolatey mal nicht richtig von realmjoin isntalliert werden kann die umgebenungsvaribale %chocolateyinstall% entfernt werden und beim nächsten start von realmjoin wird chocolatey nocheinmal installiert
-bzw. neuinstalliert (forced)
-
-
-
-user for admin angemeldet, tenant noch nicht vorhanden gibt ein problem. 
-
-
-## Token Error / re-call the RealmJoin credential pop-up window
-* RealmJoin client module, Change Domain Password
-* Broken Token File: rename C:\Users\username\AppData\Local\RealmJoin\token.dat and restart device
-sollte in neuer Version automatisch gehen
+## Corrupted chocolatey installation  
+If the installation of software packages produce error messages hinting to a corrupt chocolatey installation, it is possible to reenforce the automatic chocolatey installation through RealmJoin.   
+To do so, remove the *%chocolatey%* environment variable and enforce a reboot of the client machine and the RealmJoin agent. This will trigger a reinstallation of chocolatey.
