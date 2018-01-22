@@ -83,7 +83,7 @@ The beta version of the Jumpstarter script can be used by running the following 
   ```
   A `*.sha256` file is created for every item in the folder. The command is also listed in the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```, which is to be deleted afterwards (as well as any ```zzz_Place_installer_files_here_and_delete_me.txt.sha256``` item).  
 * Customize ```tools\chocolateyInstall.ps1```  
-  Based on the samples in the file, choose the most fitting one and adapt accordingly. 
+  Based on the samples in the file, choose the most fitting one and adapt accordingly. To ad additional installation parameters, the ```-silentArgs""``` or ```-additionalArgs``` options may be used.  
 ![RJ package-install](./media/rj-package-install.png)  
 * Customize `rj_install.cmd` and `rj_install.ps1`  
     * With User Settings  
@@ -103,6 +103,25 @@ The beta version of the Jumpstarter script can be used by running the following 
   * 90 special: Deploys a new version of the special flavour package. This is used, when a package is already deployed for more than one customer. It prevents unwanted deployment of new package versions.  
 ![RJ package-deploy](./media/rj-package-choco-deploy.png)  
 After the successfull deployment, the package can be found in the chocolatey library and added. See chapter *managing RealmJoin* for information on assigning packages.  
+
+#### Installers in zip-files
+In some cases *.msi* or *.exe* installers require additional files in their execution folder. It is possible, to merge the installer and additional files in a zip container and execute the installer without unpacking forehand.  
+To do so, the zip container is put into the *blobs* folder and a hash value has to be created. In the *chocolateyInstall.ps1*, the install command may be used as described above, but the installer file has to be escaped with *#*, installation parameters can be provide similar to simpler cases :  
+´´´
+ Install-ChocolateyRealmjoinPackage "CONTAINER.zip#INSTALLER.msi" "HASH" -additionalArgs "/Additional Args"
+´´´
+
+#### Installation Pre-Actions  
+The *Install-ChocolateyRealmjoinPackage* command can be run with the execution of pre-actions:  
+```
+Install-ChocolateyRealmjoinPackage "INSTALLER.msi" "HASH" -preActions {param($setupFolder) Copy-Item -force "$packageToolsFolder\Oracle CONFIG.ini" $setupFolder }
+```
+
+#### Installation Post-Actions 
+The *Install-ChocolateyRealmjoinPackage* command can be run with the execution of post-actions:  
+```
+Install-ChocolateyRealmjoinPackage "INSTALLER.msi" "HASH" -postActions { Remove-Item "$env:PUBLIC\Desktop\SHORTCUT.lnk" -ErrorAction SilentlyContinue }
+```
 
 ## Craft Package
 ### Edit Package files
