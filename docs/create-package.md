@@ -3,7 +3,7 @@
 ![RJ ecosystem](./media/rj-ecosystem.png)    
   
 The picture above provides a schematic overview over the RealmJoin package distribution ecosystem. The step of creating packages will be illuminiated in this chapter. 
-It documents the basic steps in creating craft, chocolatey, APP-X and organic packages. While all types follow the same rough outline, there are some differences when handling the packages. 
+It documents the basic steps in creating craft, chocolatey, chocolatey App-V and organic packages. While all types follow the same rough outline, there are some differences when handling the packages. 
 
 ## General Steps
 This section describes the shared steps for craft and chocolatey packages. The packaging process will be demonstrated on the well known **VLC player**.
@@ -176,7 +176,7 @@ Organic packages are created similar to Chocolatey packages, but instead of a so
 ![RJ package-deploy](./media/rj-package-choco-deploy.png)  
 After the successfull deployment, the package can be found in the chocolatey library and added. See chapter *managing RealmJoin* for information on assigning packages.
 
-## APP-X Package
+## App-V Package
 APP-V packages are highly sophisticated and unique. Therefore, a general guide can at this point not be provided. If an APP-V package is required, please contact GK for examples and further information or package creation.
 
 ## Conventions and RealmJoin helpers
