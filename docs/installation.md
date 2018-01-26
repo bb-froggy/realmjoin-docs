@@ -33,7 +33,7 @@ RealmJoin might be recognized by the *Windows Defender* as a possible thread. Wh
 `%ProgramFiles%\RealmJoin\RealmJoinUpdate.exe`    
 
 ### Powershell
-RealmJoin can be added to Intune via a short powershell script:  
+It is possible to configure Intune device configurations, so that a powershell script is executed on the client which downloads and installs the RealmJoin software:    
 ```
 # check if AAD joined
 if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\CloudDomainJoin\TenantInfo\<ID>)
@@ -48,6 +48,7 @@ if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\CloudDomainJoin\TenantInfo\
 ```
 where <ID> is the corresponding tenant ID. The script may then be assigned:  
   ![RJ Intune Deploy3](./media/rj-intune-deploy3.png)  
+  
 ## Interactive Installation
 If an administrator wants to install RealmJoin on a device without mass deployment or the Microsoft Intune infrastructure, he/she may download the MSI and do an interactive installation or copy one of the command lines below to download and run in a single step.
 
