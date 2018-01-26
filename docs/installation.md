@@ -27,14 +27,27 @@ Like any other application in Intune, ReamJoin then can be assigned to the desir
 RealmJoin might be recognized by the *Windows Defender* as a possible thread. While this behaviour is not certain, it is recommended to implement some Windows Defender exceptions. Create a new device configuration profile, type *Device restriction*, or edit your existing profile and add the following *Windows Defender Antivirus Exceptions*:  
 * Files and folders  
 `%ProgramFiles%\RealmJoin`  
-* Processes  
-`%ProgramFiles%\RealmJoin\RealmJoin.exe`   
-`%ProgramFiles%\RealmJoin\RealmJoinService.exe`  
-`%ProgramFiles%\RealmJoin\RealmJoinUpdate.exe`  
+* Processes   
+`%ProgramFiles%\RealmJoin\RealmJoin.exe`    
+`%ProgramFiles%\RealmJoin\RealmJoinService.exe`    
+`%ProgramFiles%\RealmJoin\RealmJoinUpdate.exe`    
 
 ### Powershell
-TBD
+RealmJoin can be added to Intune via a short powershell script:  
+```
+# check if AAD joined
+if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\CloudDomainJoin\TenantInfo\<ID>)
+{
+    $url = "https://gkrealmjoin.s3.amazonaws.com/win-beta/RealmJoin.msi"
+    $filePath = "c:\windows\temp\RealmJoin.msi"
+    $ProgressPreference = 0
+    Invoke-WebRequest $url -OutFile $filePath -UseBasicParsing 
+    & $filePath /quiet
+}
 
+```
+where <ID> is the corresponding tenant ID. The script may then be assigned:  
+  ![RJ Intune Deploy3](./media/rj-intune-deploy3.png)  
 ## Interactive Installation
 If an administrator wants to install RealmJoin on a device without mass deployment or the Microsoft Intune infrastructure, he/she may download the MSI and do an interactive installation or copy one of the command lines below to download and run in a single step.
 
