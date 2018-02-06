@@ -10,7 +10,7 @@ RealmJoin can be deployed on a device using one of multiple ways, depending on t
 [RealmJoin Canary Version](https://gkrealmjoin.s3.amazonaws.com/win-canary/RealmJoin.msi)
 
 ## Via Microsoft Intune
-There are different ways to install and enroll RealmJoin in Microsoft Intune. If a more-visual configuration experience is desired, the interactive configuration of deployment can be carried out using the Microsoft Intune portal. An alternative approach is the configuration of RealmJoin deployment in Intune via a powershell command line.
+Currently, it is only possible to deploy RealmJoin through Microsoft Intune by deploying the MSI as a Line-of-Business app. The deployment through an Intune PowerShell script is not supported as the MSI installer will then be unable to launch the RealmJoin tray in the logged-in user's context at the end of the installation.
 
 ### Azure Intune Portal
 The deployment of RealmJoin using Azure Intune requires only the .MSI installer to be configured. If the RealmJoin app in the desired release version is not registered in Intune, it can be added as a Line-of-Business app via the Azure Portal blade *Microsoft Intune / Mobile Apps / Apps / Add*.  
@@ -32,23 +32,6 @@ RealmJoin might be recognized by the *Windows Defender* as a possible thread. Wh
 `%ProgramFiles%\RealmJoin\RealmJoinService.exe`    
 `%ProgramFiles%\RealmJoin\RealmJoinUpdate.exe`    
 
-### Powershell
-It is possible to configure Intune device configurations, so that a powershell script is executed on the client which downloads and installs the RealmJoin software:    
-```
-# check if AAD joined
-if (Test-Path HKLM:\SYSTEM\CurrentControlSet\Control\CloudDomainJoin\TenantInfo\<ID>)
-{
-    $url = "https://gkrealmjoin.s3.amazonaws.com/win-beta/RealmJoin.msi"
-    $filePath = "c:\windows\temp\RealmJoin.msi"
-    $ProgressPreference = 0
-    Invoke-WebRequest $url -OutFile $filePath -UseBasicParsing 
-    & $filePath /quiet
-}
-
-```
-where <ID> is the corresponding tenant ID. The script may then be assigned:  
-  ![RJ Intune Deploy3](./media/rj-intune-deploy3.png)  
-  
 ## Interactive Installation
 If an administrator wants to install RealmJoin on a device without mass deployment or the Microsoft Intune infrastructure, he/she may download the MSI and do an interactive installation or copy one of the command lines below to download and run in a single step.
 
