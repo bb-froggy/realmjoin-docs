@@ -17,7 +17,7 @@ Remember to set the Download Mode to Group via Windows Update settings in Intune
 ```
 Delivery optimization download mode: HTTP blended with peering across private group
 ```
-This is effectifly DownloadMode=2.
+This is effectively DownloadMode=2.
   
 For a more on WUDO see the [Microsoft WUDO documentation (DE)](https://docs.microsoft.com/de-de/windows/deployment/update/waas-delivery-optimization).
 
