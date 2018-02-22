@@ -60,27 +60,28 @@ All in this tenant registered user groups. RealmJoin syncronizes groups from Azu
 While there are not strict naming pattern requirements in RealmJoin, we recommend the following convention:
   
 ```
-*APP|CFG-Location-[Vendor-Product-Language-Type-Flavor]*  
+*APP|CFG - Location-[Vendor-Product-Language-Type-Flavor]*  
 ```
 
 **Examples:**  
 ```
-CFG-Global-Core  
-CFG-DE-Core  
-CFG-DE7499-Core  
-APP-Adobe-Photoshop  
-APP-Microsoft-Visio  
-APP-Mozilla-Firefox  
-APP-Mozilla-Firefox-PreRelease  
-APP-Mozilla-Firefox-Optional  
-APP-Mozilla-Firefox-Optional-PreRelease  
-APP-Mozilla-Firefox-x86  
-APP-Mozilla-Firefox-x64  
-APP-Mozilla-Firefox-DE7499  
-APP-Mozilla-Firefox-withFlash  
+CFG - Global-Core  
+CFG - DE-Core  
+CFG - DE7499-Core  
+APP - Adobe-Photoshop  
+APP - Microsoft-Visio  
+APP - Mozilla-Firefox  
+APP - Mozilla-Firefox-PreRelease  
+APP - Mozilla-Firefox-Optional  
+APP - Mozilla-Firefox-Optional-PreRelease  
+APP - Mozilla-Firefox-x86  
+APP - Mozilla-Firefox-x64  
+APP - Mozilla-Firefox-DE7499  
+APP - Mozilla-Firefox-withFlash  
 ```
-
-The synchronization time schedule and the prefixes that are taken into account might be configured from the settings control panel or individually implemented by the developer.
+  
+The standard sychronization time is 20 minutes (hh:00, hh:20, hh:40), and all groups that start with *APP - * or *CFG - * are taking into consideration.  
+The synchronization time schedule and the prefixes that are taken into account can be adjusted, currently only on request.
 
 ### User settings
 ![RJ rj-ac-groupsettingsicon](./media/rj-ac-groupsettingsicon.png)  
@@ -139,9 +140,11 @@ While adding a package the following configuration entries are available:
 Options:  
 - Availability
   * *Allow Reinstall*: This option allows the client user to reinstall and therefore override their current installation of the package. Useful for information that is taken from Azure or similiar. 
-  * *Pre Release*: For testing of a new package, a pre release package is created. The option is chosen, to emphasize, that a test version is deployed. This should not done be using a special version number.
-    If two packages have the same ID, but one is a pre release package, the pre release package installed if this option is chosen. 
-- Auto Upgrade
+  * *Pre-Release*: The pre-release flag as two distintive features within RealmJoin. It allows a) to add a package with ID and version similar to another existing package in the portal and b), if assigned to a group or user, overwrites all other packages with the same ID assigned to the group or user.  
+  Those features are usually used for the testing of new packages or updates of existing one: The test-groups or test-users get the pre-release version of a package assigned during the testing.  
+  *Note*: Under normal circumstance it is highly adviced to prevent a normal user having the same package assigned more than once.   
+  The pre-release flagged package is visually highlighted in the portal's package list with an lightning symbol behind the name.  
+  - Auto Upgrade
   * The *Auto Upgrade* feature may be enabled to automatically update the package if a new version is assigned in RealmJoin. If not choosen, the user has to manually select the package to be upgraded.
 - Staggered Deployment
   * It is possible to use staggered deployment and distribute the risk of updating a software if desired. The two parameters needed are the target date and the amount of days over which the update should take place. 

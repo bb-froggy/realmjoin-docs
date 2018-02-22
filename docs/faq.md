@@ -60,6 +60,9 @@ It is in principle possible to host the RealmJoin
 
 ## What Firewall/Proxy settings do I have to configure?
 Please check chapter *Technical* section *Requirements* for detailed information on the RealmJoin connections.  
+
+## Does G&K have any recommendations on workflows?  
+TBD
 <!--
 ## Who can see my packages  
 TBD
