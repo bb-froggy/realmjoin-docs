@@ -41,7 +41,7 @@ Select and copy everything in the details If the software installation fails. At
 
 ## RealmJoin Log Files
 
-## Loging
+## Logging
 RealmJoin records all event data into log files. Those can easily be accessed on the client device using the Windows Event Viewer (eventvwr.msc).
 RealmJoin logs can be found under *Event Viewer (Local) / Windows Logs / Application*. 
 
