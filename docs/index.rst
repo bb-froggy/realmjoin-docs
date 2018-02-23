@@ -30,6 +30,7 @@ Deployment Guide
    packaging-workflow
    specialised-packages
    packaging-indepth
+   3rdparty-packages
    appendix
 
 Indices and tables
