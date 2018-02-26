@@ -6,7 +6,7 @@ The package management team of a customer uses the option *RealmJoin Request Pac
 ## Get involved  
 The customers upload triggers an automatic ticket in the Packaging as a Service ticketing system. 
 
-## Check the requierments 
+## Check the requirements 
 
 Before building your package, there are different checks to be performed:
 
