@@ -16,7 +16,7 @@ Run cmd.exe as administrator and navigate to the desired folder, in which the pa
 Gk provides a Jumpstarter script that can be used to automatically create the template for a new package. Run the following code in the cmd shell: 
 
 ```
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/realmjoin/realmjoin-package-jumpstarter/raw/master/JumpstartRealmJoinPackage.ps1'))"
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/realmjoin/realmjoin-package-jumpstarter/master/JumpstartRealmJoinPackage.ps1'))"
 ```
 You confronted by the following prompt and asked to specify details:
 ```
