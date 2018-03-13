@@ -18,7 +18,8 @@ Gk provides a Jumpstarter script that can be used to automatically create the te
 ```
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/realmjoin/realmjoin-package-jumpstarter/master/JumpstartRealmJoinPackage.ps1'))"
 ```
-You confronted by the following prompt and asked to specify details:
+Optional parameters are ``-DoNotCloneRepository`` and ``-DoNotCopyTemplate``.   
+After the execution you are confronted by the following prompt and asked to specify details:
 ```
 Repository path (leave empty for current folder name, Format: {VENDOR}-{PRODUCTNAME}): videolan-vlc
 Repository name (leave empty for repository path): Videolan VLC Player
@@ -75,13 +76,14 @@ The beta version of the Jumpstarter script can be used by running the following 
   * authors: Creator of the package.
   * requireLicenseAcceptance: *true/false*.
 * Move binaries  
-  Move the executables, installer or zip files into the subfolder ```blobs```.
+  Move the executables, installer or zip files into the subfolder ```blobs```. Make sure the files name does not contain spaces or irregular characters but does contain the version number.  
 * Create SHA256 hash  
   Open a Powershell and navigate into the ```blobs``` subfolder. Execute 
   ```
   Get-ChildItem | % {(Get-FileHash $_.name).hash + " *" + $_.name | out-file ($_.name + ".sha256")}
   ```
-  A `*.sha256` file is created for every item in the folder. The command is also listed in the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```, which is to be deleted afterwards (as well as any ```zzz_Place_installer_files_here_and_delete_me.txt.sha256``` item).  
+  A `*.sha256` file is created for every item in the folder. The command is also listed in the placeholder file ```zzz_Place_installer_files_here_and_delete_me.txt```, which is to be deleted afterwards (as well as any ```zzz_Place_installer_files_here_and_delete_me.txt.sha256``` item). 
+  Alternatively it is possible to run the ``mh_hash.cmd`` with elevated rights to automatically create the hash file.   
 * Customize ```tools\chocolateyInstall.ps1```  
   Based on the samples in the file, choose the most fitting one and adapt accordingly. To ad additional installation parameters, the ```-silentArgs""``` or ```-additionalArgs``` options may be used.  
 ![RJ package-install](./media/rj-package-install.png)  
@@ -231,7 +233,20 @@ The following variables may be used in the RealmJoin install scripts:
 * $Global:packageToolsFolder = Join-Path $env:packageFolder "tools"
 * $Global:packageTempDir = Join-Path $env:TEMP (Join-Path $env:chocolateyPackageName $env:chocolateyPackageVersion)
 
+# Updating Packages
 
+## GitClone of current repository
+Using the Git tool of choice, the current repository is cloned onto the local client.  
+If an already localy available package is updated, a pull request has to be performed beforehand to avoid overwriting more recent changes.  
 
+## Content Update 
+Replace binaries in */blobs* and/or the code in the *rj_install* or *chocolateyInstall* scripts.
 
+## Versioning
+Make sure to update: 
+1. the package version in the *.nuspec* file, either the revision number or the complete software version.
+2. the version of the executable/installer/zip file, if any content was changed. Pushing */blobs* files onto the Git-Lfs does never overwrite existing files with the same name. Therefore, not changing the version may result in installing the outdated, thus wrong, application or zip on the client. 
+
+## Push & CI/CD 
+After all updates and bugfixes are implemented, the changes have to be committed and pushed into the master repository. The build job will automatically start and the new version of the package may then be deployed and tested as usual. 
  

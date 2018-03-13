@@ -1,12 +1,20 @@
 ﻿# Core Extension
 
-## Enable-ChocolateyRealmjoinAppv
-### Syntax
+## Ensure Core Extension in RealmJoin portal 
+To ensure the extenions are correctly deployed on all clients, please add the core extensions to the global core group with *order 1*. 
+
+## Enable extension CmdLets in Craft packages  
+Out of chocolatey packages, the usage of the extension CmdLets have to be enabled:  
+´´´Import-Module (Get-ItemPropertyValue -Path "Registry::HKLM\SOFTWARE\RealmJoin\Variables" -Name RealmjoinCraftSupportModulePath)´´´  
+
+## AppV Packages 
+### Enable-ChocolateyRealmjoinAppv
+#### Syntax
 Enable-ChocolateyRealmjoinAppv
-## Install-ChocolateyRealmjoinAppvPackage
-### Syntax
+### Install-ChocolateyRealmjoinAppvPackage
+#### Syntax
 Install-ChocolateyRealmjoinAppvPackage \[\[-fileName\] \<string\>\] \[\[-fileChecksum\] \<string\>\] \[\[-DynamicDeploymentConfiguration\] \<string\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                           Aliases Description Required? Pipeline Input? Default Value
@@ -16,10 +24,10 @@ fileChecksum                   None                false     false
 fileName                       None                false     false                        
 ```
 
-## Uninstall-ChocolateyRealmjoinAppvPackage
-### Syntax
+### Uninstall-ChocolateyRealmjoinAppvPackage
+#### Syntax
 Uninstall-ChocolateyRealmjoinAppvPackage \[\[-name\] \<string\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name Aliases Description Required? Pipeline Input? Default Value
@@ -27,21 +35,21 @@ Name Aliases Description Required? Pipeline Input? Default Value
 name None                false     false                        
 ```
 
-## Get-ChocolateyRealmjoinAppvPackageVfsPath
-### Syntax
+### Get-ChocolateyRealmjoinAppvPackageVfsPath
+#### Syntax
 Get-ChocolateyRealmjoinAppvPackageVfsPath \[\[-appvPackage\] \<Object\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name        Aliases Description Required? Pipeline Input? Default Value
 ----        ------- ----------- --------- --------------- -------------
 appvPackage None                false     false                        
 ```
-
-## Get-ChocolateyRealmjoinLocaleId
-### Syntax
+## Logs and Transforms
+### Get-ChocolateyRealmjoinLocaleId
+#### Syntax
 Get-ChocolateyRealmjoinLocaleId \[\[-localeString\] \<string\>\] \[\[-defaultLocaleId\] \<int\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name            Aliases Description Required? Pipeline Input? Default Value
@@ -50,10 +58,10 @@ defaultLocaleId None                false     false
 localeString    None                false     false                        
 ```
 
-## Get-ChocolateyRealmjoinLocaleMsiTransform
-### Syntax
+### Get-ChocolateyRealmjoinLocaleMsiTransform
+#### Syntax
 Get-ChocolateyRealmjoinLocaleMsiTransform \[\[-localeString\] \<string\>\] \[\[-localeTransformsFolder\] \<string\>\] \[\[-defaultLocaleId\] \<int\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                   Aliases Description Required? Pipeline Input? Default Value
@@ -63,10 +71,10 @@ localeString           None                false     false
 localeTransformsFolder None                false     false                        
 ```
 
-## Get-ChocolateyRealmjoinLogFilePath
-### Syntax
+### Get-ChocolateyRealmjoinLogFilePath
+#### Syntax
 Get-ChocolateyRealmjoinLogFilePath \[\[-operation\] \<string\>\] \[\[-target\] \<string\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name      Aliases Description Required? Pipeline Input? Default Value
@@ -74,11 +82,11 @@ Name      Aliases Description Required? Pipeline Input? Default Value
 operation None                false     false                        
 target    None                false     false                        
 ```
-
-## Install-ChocolateyRealmjoinPackage
-### Syntax
+## Chocolatey Packages
+### Install-ChocolateyRealmjoinPackage
+#### Syntax
 Install-ChocolateyRealmjoinPackage \[\[-installerFileName\] \<string\>\] \[\[-installerFileChecksum\] \<string\>\] \[\[-msiTransforms\] \<string\[\]\>\] \[\[-msiTransformsCabs\] \<string\[\]\>\] \[\[-additionalArgs\] \<string\[\]\>\] \[\[-silentArgs\] \<string\[\]\>\] \[\[-validExitCodes\] \<int\[\]\>\] \[\[-installers\] \<psobject\[\]\>\] \[\[-preActions\] \<scriptblock\>\] \[\[-postActions\] \<scriptblock\>\] \[\[-installPackage\] \<bool\>\] \[\[-noInstallMessage\] \<string\>\] \[-installerFileNameIsLocalPath\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                         Aliases Description Required? Pipeline Input? Default Value
@@ -98,10 +106,10 @@ silentArgs                   None                false     false
 validExitCodes               None                false     false                        
 ```
 
-## Uninstall-ChocolateyRealmjoinPackage
-### Syntax
+### Uninstall-ChocolateyRealmjoinPackage
+#### Syntax
 Uninstall-ChocolateyRealmjoinPackage \[\[-uninstallerFile\] \<string\>\] \[\[-additionalArgs\] \<string\[\]\>\] \[\[-silentArgs\] \<string\[\]\>\] \[\[-validExitCodes\] \<int\[\]\>\] \[\[-subPackageName\] \<string\>\] \[\[-uninstallers\] \<psobject\[\]\>\] \[\[-uninstallInfo\] \<Object\>\] \[-WhatIf\] \[-Confirm\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name            Aliases Description Required? Pipeline Input? Default Value
@@ -117,10 +125,10 @@ uninstallers    None                false     false
 validExitCodes  None                false     false                        
 ```
 
-## Import-ChocolateyRealmjoinPackageParameters
-### Syntax
+### Import-ChocolateyRealmjoinPackageParameters
+#### Syntax
 Import-ChocolateyRealmjoinPackageParameters \[\[-params\] \<string\>\] \[-setVariables\] \[-clearVariables\] \[-returnKeyValuePairs\] \[-returnParameterHashset\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                   Aliases Description Required? Pipeline Input? Default Value
@@ -132,10 +140,10 @@ returnParameterHashset None                false     false
 setVariables           None                false     false                        
 ```
 
-## Test-ChocolateyRealmjoinRegistryUninstallExists
-### Syntax
+### Test-ChocolateyRealmjoinRegistryUninstallExists
+#### Syntax
 Test-ChocolateyRealmjoinRegistryUninstallExists \[\[-keyNameFilter\] \<string\>\] \[\[-displayNameFilter\] \<string\>\] \[\[-publisherFilter\] \<string\>\] \[\[-versionGe\] \<version\>\] \[\[-versionGt\] \<version\>\] \[\[-versionLe\] \<version\>\] \[\[-versionLt\] \<version\>\] \[\[-filterScriptblock\] \<scriptblock\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name              Aliases Description Required? Pipeline Input? Default Value
@@ -150,10 +158,10 @@ versionLe         None                false     false
 versionLt         None                false     false                        
 ```
 
-## Get-ChocolateyRealmjoinRegistryUninstallInfo
-### Syntax
+### Get-ChocolateyRealmjoinRegistryUninstallInfo
+#### Syntax
 Get-ChocolateyRealmjoinRegistryUninstallInfo \[\[-keyNameFilter\] \<string\>\] \[\[-displayNameFilter\] \<string\>\] \[\[-publisherFilter\] \<string\>\] \[\[-versionGe\] \<version\>\] \[\[-versionGt\] \<version\>\] \[\[-versionLe\] \<version\>\] \[\[-versionLt\] \<version\>\] \[\[-filterScriptblock\] \<scriptblock\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name              Aliases Description Required? Pipeline Input? Default Value
@@ -168,10 +176,10 @@ versionLe         None                false     false
 versionLt         None                false     false                        
 ```
 
-## Get-ChocolateyRealmjoinRegistryUninstallStrings
-### Syntax
+### Get-ChocolateyRealmjoinRegistryUninstallStrings
+#### Syntax
 Get-ChocolateyRealmjoinRegistryUninstallStrings \[-uninstallKeyNameFilter\] \<string\> \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                   Aliases Description Required? Pipeline Input? Default Value
@@ -179,10 +187,10 @@ Name                   Aliases Description Required? Pipeline Input? Default Val
 uninstallKeyNameFilter None                true      false                        
 ```
 
-## Get-ChocolateyRealmjoinWebFile
-### Syntax
+### Get-ChocolateyRealmjoinWebFile
+#### Syntax
 Get-ChocolateyRealmjoinWebFile \[\[-fileName\] \<string\>\] \[\[-fileChecksum\] \<string\>\] \[\[-remoteFileName\] \<string\>\] \[-extractArchive\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name           Aliases Description Required? Pipeline Input? Default Value
@@ -193,10 +201,10 @@ fileName       None                false     false
 remoteFileName None                false     false                        
 ```
 
-## Invoke-RealmjoinChocoPackageInstallation
-### Syntax
+### Invoke-RealmjoinChocoPackageInstallation
+#### Syntax
 Invoke-RealmjoinChocoPackageInstallation \[\[-packageName\] \<string\>\] \[\[-params\] \<hashtable\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name        Aliases Description Required? Pipeline Input? Default Value
@@ -204,11 +212,11 @@ Name        Aliases Description Required? Pipeline Input? Default Value
 packageName None                false     false                        
 params      None                false     false                        
 ```
-
-## Join-RealmjoinCommandLine
-### Syntax
+## Command line
+### Join-RealmjoinCommandLine
+#### Syntax
 Join-RealmjoinCommandLine \[\[-CommandOnly\] \<string\>\] \[\[-ArgumentsOnly\] \<string\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name          Aliases Description Required? Pipeline Input? Default Value
@@ -217,10 +225,10 @@ ArgumentsOnly None                false     false
 CommandOnly   None                false     false                        
 ```
 
-## Split-RealmjoinCommandLine
-### Syntax
+### Split-RealmjoinCommandLine
+#### Syntax
 Split-RealmjoinCommandLine \[\[-CommandLine\] \<string\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name        Aliases Description Required? Pipeline Input? Default Value
@@ -228,10 +236,10 @@ Name        Aliases Description Required? Pipeline Input? Default Value
 CommandLine None                false     false                        
 ```
 
-## Get-RealmjoinCommandLineWithLauncher
-### Syntax
+### Get-RealmjoinCommandLineWithLauncher
+#### Syntax
 Get-RealmjoinCommandLineWithLauncher \[\[-CommandLine\] \<string\>\] \[\[-CommandOnly\] \<string\>\] \[\[-ArgumentsOnly\] \<string\>\] \[-ReturnSplit\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name          Aliases Description Required? Pipeline Input? Default Value
@@ -242,10 +250,10 @@ CommandOnly   None                false     false
 ReturnSplit   None                false     false                        
 ```
 
-## Restart-RealmjoinComputer
-### Syntax
+### Restart-RealmjoinComputer
+#### Syntax
 Restart-RealmjoinComputer \[\[-Delay\] \<timespan\>\] \[\[-Message\] \<string\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name    Aliases Description Required? Pipeline Input? Default Value
@@ -254,24 +262,24 @@ Delay   None                false     false
 Message None                false     false                        
 ```
 
-## Get-RealmjoinComputerSystemBiosVersion
-### Syntax
+### Get-RealmjoinComputerSystemBiosVersion
+#### Syntax
 Get-RealmjoinComputerSystemBiosVersion
-## Get-RealmjoinComputerSystemModel
-### Syntax
+### Get-RealmjoinComputerSystemModel
+#### Syntax
 Get-RealmjoinComputerSystemModel \[-IncludeDebugInfoIfUnsure\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                     Aliases Description Required? Pipeline Input? Default Value
 ----                     ------- ----------- --------- --------------- -------------
 IncludeDebugInfoIfUnsure None                false     false                        
 ```
-
-## Out-RealmjoinCustomState
-### Syntax
+## Custom States
+### Out-RealmjoinCustomState
+#### Syntax
 Out-RealmjoinCustomState \[-Name\] \<string\> \[\[-InputObject\] \<Object\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name        Aliases Description Required? Pipeline Input? Default Value
@@ -280,10 +288,10 @@ InputObject None                false     true (ByValue)
 Name        None                true      false                        
 ```
 
-## Remove-RealmjoinCustomState
-### Syntax
+### Remove-RealmjoinCustomState
+#### Syntax
 Remove-RealmjoinCustomState \[-Name\] \<string\> \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name Aliases Description Required? Pipeline Input? Default Value
@@ -291,23 +299,24 @@ Name Aliases Description Required? Pipeline Input? Default Value
 Name None                true      false                        
 ```
 
-## Register-RealmjoinCustomStateScheduledTask
-### Syntax
+## <a name="schedtasks"></a> Scheduled Tasks
+### <a name="regcstask"></a> Register-RealmjoinCustomStateScheduledTask
+#### Syntax
 Register-RealmjoinCustomStateScheduledTask \[\[-RepetitionInterval\] \<timespan\>\] \[\[-TaskName\] \<string\>\] \[\[-PublishStateScriptFile\] \<string\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                   Aliases Description Required? Pipeline Input? Default Value
 ----                   ------- ----------- --------- --------------- -------------
-PublishStateScriptFile None                false     false                        
-RepetitionInterval     None                false     false                        
-TaskName               None                false     false                        
+PublishStateScriptFile None                false     false           ".\publishState.ps1"                        
+RepetitionInterval     None                false     false           "1.00:00:00"             
+TaskName               None                false     false           $env:packageTitle             
 ```
 
-## Unregister-RealmjoinCustomStateScheduledTask
-### Syntax
+### Unregister-RealmjoinCustomStateScheduledTask
+#### Syntax
 Unregister-RealmjoinCustomStateScheduledTask \[\[-TaskName\] \<string\>\] \[\[-PublishStateScriptFile\] \<string\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                   Aliases Description Required? Pipeline Input? Default Value
@@ -316,10 +325,10 @@ PublishStateScriptFile None                false     false
 TaskName               None                false     false                        
 ```
 
-## Get-RealmjoinInvocationParameters
-### Syntax
+### Get-RealmjoinInvocationParameters
+#### Syntax
 Get-RealmjoinInvocationParameters \[\[-Invocation\] \<InvocationInfo\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name       Aliases Description Required? Pipeline Input? Default Value
@@ -327,10 +336,10 @@ Name       Aliases Description Required? Pipeline Input? Default Value
 Invocation None                false     false                        
 ```
 
-## Get-RealmjoinPathRooted
-### Syntax
+### Get-RealmjoinPathRooted
+#### Syntax
 Get-RealmjoinPathRooted \[\[-Path\] \<string\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name Aliases Description Required? Pipeline Input? Default Value
@@ -338,10 +347,10 @@ Name Aliases Description Required? Pipeline Input? Default Value
 Path None                false     false                        
 ```
 
-## New-RealmjoinScheduledTaskBootTrigger
-### Syntax
+### New-RealmjoinScheduledTaskBootTrigger
+#### Syntax
 New-RealmjoinScheduledTaskBootTrigger \[\[-Enabled\] \<bool\>\] \[\[-StartBoundary\] \<datetime\>\] \[\[-EndBoundary\] \<datetime\>\] \[\[-RepetitionInterval\] \<timespan\>\] \[\[-RepetitionDuration\] \<timespan\>\] \[\[-Delay\] \<timespan\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name               Aliases Description Required? Pipeline Input? Default Value
@@ -354,10 +363,10 @@ RepetitionInterval None                false     false
 StartBoundary      None                false     false                        
 ```
 
-## New-RealmjoinScheduledTaskDailyTrigger
-### Syntax
+### New-RealmjoinScheduledTaskDailyTrigger
+#### Syntax
 New-RealmjoinScheduledTaskDailyTrigger \[\[-Enabled\] \<bool\>\] \[\[-StartBoundary\] \<datetime\>\] \[\[-EndBoundary\] \<datetime\>\] \[\[-RepetitionInterval\] \<timespan\>\] \[\[-RepetitionDuration\] \<timespan\>\] \[\[-RandomDelay\] \<timespan\>\] \[\[-DaysInterval\] \<uint32\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name               Aliases Description Required? Pipeline Input? Default Value
@@ -371,10 +380,10 @@ RepetitionInterval None                false     false
 StartBoundary      None                false     false                        
 ```
 
-## New-RealmjoinScheduledTaskLogonTrigger
-### Syntax
+### New-RealmjoinScheduledTaskLogonTrigger
+#### Syntax
 New-RealmjoinScheduledTaskLogonTrigger \[\[-Enabled\] \<bool\>\] \[\[-StartBoundary\] \<datetime\>\] \[\[-EndBoundary\] \<datetime\>\] \[\[-RepetitionInterval\] \<timespan\>\] \[\[-RepetitionDuration\] \<timespan\>\] \[\[-Delay\] \<timespan\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name               Aliases Description Required? Pipeline Input? Default Value
@@ -387,10 +396,10 @@ RepetitionInterval None                false     false
 StartBoundary      None                false     false                        
 ```
 
-## New-RealmjoinScheduledTaskTimeTrigger
-### Syntax
+### New-RealmjoinScheduledTaskTimeTrigger
+#### Syntax
 New-RealmjoinScheduledTaskTimeTrigger \[\[-DelayFromNow\] \<timespan\>\] \[\[-Enabled\] \<bool\>\] \[\[-StartBoundary\] \<datetime\>\] \[\[-EndBoundary\] \<datetime\>\] \[\[-RepetitionInterval\] \<timespan\>\] \[\[-RepetitionDuration\] \<timespan\>\] \[\[-RandomDelay\] \<timespan\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name               Aliases Description Required? Pipeline Input? Default Value
@@ -404,10 +413,10 @@ RepetitionInterval None                false     false
 StartBoundary      None                false     false                        
 ```
 
-## New-RealmjoinScheduledTaskXml
-### Syntax
+### New-RealmjoinScheduledTaskXml
+#### Syntax
 New-RealmjoinScheduledTaskXml \[\[-Principal\] \<ScheduledTaskPrincipal\>\] \[\[-Action\] \<Object\[\]\>\] \[\[-Trigger\] \<Object\[\]\>\] \[\[-Enabled\] \<bool\>\] \[\[-ExecutionTimeLimit\] \<timespan\>\] \[\[-TaskName\] \<string\>\] \[-DeleteAfterFirstRun\] \[-Register\] \[-StartOnce\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                Aliases Description Required? Pipeline Input? Default Value
@@ -421,12 +430,13 @@ Register            None                false     false
 StartOnce           None                false     false                        
 TaskName            None                false     false                        
 Trigger             None                false     false                        
-```
+```  
 
-## New-RealmjoinShortcut
-### Syntax
+## Shortcuts
+### New-RealmjoinShortcut
+#### Syntax
 New-RealmjoinShortcut \[-shortcutPath\] \<string\> \[-targetPath\] \<string\> \[\[-targetArguments\] \<string\>\] \[\[-workingDirectory\] \<string\>\] \[\[-description\] \<string\>\] \[\[-iconLocation\] \<string\>\] \[\[-hotKey\] \<string\>\] \[\[-windowStyle\] \<int\>\] \[-forCurrentUser\] \[-onDesktop\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name             Aliases Description Required? Pipeline Input? Default Value
@@ -443,10 +453,10 @@ windowStyle      None                false     false
 workingDirectory None                false     false                        
 ```
 
-## Remove-RealmjoinShortcut
-### Syntax
+### Remove-RealmjoinShortcut
+#### Syntax
 Remove-RealmjoinShortcut \[-shortcutPath\] \<string\> \[-forCurrentUser\] \[-onDesktop\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name           Aliases Description Required? Pipeline Input? Default Value
@@ -456,10 +466,10 @@ onDesktop      None                false     false
 shortcutPath   None                true      false                        
 ```
 
-## Format-RealmjoinShortcutPath
-### Syntax
+### Format-RealmjoinShortcutPath
+#### Syntax
 Format-RealmjoinShortcutPath \[-shortcutPath\] \<string\> \[-forCurrentUser\] \[-onDesktop\] \[-doNotCheckCreateFolder\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name                   Aliases Description Required? Pipeline Input? Default Value
@@ -470,10 +480,10 @@ onDesktop              None                false     false
 shortcutPath           None                true      false                        
 ```
 
-## Start-RealmjoinSoftwarePackageInstallation
-### Syntax
+### Start-RealmjoinSoftwarePackageInstallation
+#### Syntax
 Start-RealmjoinSoftwarePackageInstallation \[\[-packageName\] \<string\>\] \[\<CommonParameters\>\]
-### Parameters
+#### Parameters
 
 ```no-highlight
 Name        Aliases Description Required? Pipeline Input? Default Value

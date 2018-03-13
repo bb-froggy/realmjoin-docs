@@ -178,8 +178,9 @@ The *Branch Cache* column indicates, how much this client has contributed to the
 Selecting the white arrow in the green circle gives away the complete upstream file.
 It contains all the information about the device, OS, Defender Pattern States and installed packages that are transfered to the backend, where some of it is evaluated.   
   
-![RJ rj-ac-states](./media/rj-ac-states.png)
+![RJ rj-ac-states](./media/rj-ac-states.png)  
 
+It is possible to extend the states by custom states. See [Custom States](#customstates) for details. 
 ### Settings
 #### List of states
 
@@ -337,10 +338,51 @@ It contains all the information about the device, OS, Defender Pattern States an
         "ArgsHash": null
       }
     ]
+    "Inventory": [
+      {
+        "Name": "7-Zip 18.01 (x64 edition)",
+        "Version": "18.01.00.0",
+        "Publisher": "Igor Pavlov",
+        "EstimatedSize": 5123,
+        "UserScope": false
+      },
+      {
+        "Name": "Adobe Acrobat Reader DC (2015) MUI",
+        "Version": "15.006.30417",
+        "Publisher": "Adobe Systems Incorporated",
+        "EstimatedSize": 552266,
+        "UserScope": false
+      },
+      {
+        "Name": "Chocolatey GUI",
+        "Version": "0.16.0.0",
+        "Publisher": "Chocolatey",
+        "EstimatedSize": 43896,
+        "UserScope": false
+      },
+      {
+        "Name": "Dropbox",
+        "Version": "44.4.58",
+        "Publisher": "Dropbox, Inc.",
+        "EstimatedSize": 0,
+        "UserScope": false
+      }
+    ]
   },
   "DeliveryOptimization": {
     "DefaultGatewayDiscovered": null,
-    "GroupID": "00099099-0000-0000-0000-802cc8f1c3bd"
+    "GroupID": "00000099-0000-0000-0000-002cc8f1c3bd"
+  }, 
+  "Atp": {
+    "IsOnboarded": true,
+    "OnboardingInfo": {
+      "previousOrgIds": [],
+      "orgId": "fa29db65-000c-0000-9459-369df149b5ba",
+      "geoLocationUrl": "https://winatp-gw-weu.microsoft.com/",
+      "datacenter": "WestEurope",
+      "vortexGeoLocation": "EU",
+      "version": "1.13"
+    }
   }
 }
 ```
