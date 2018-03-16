@@ -33,8 +33,8 @@ If neccessary, a debug window can be opened by clicking on the RealmJoin icon wh
 
 *Collect Logs* is a quick way to access all log files, which will be saved in a zip-file to the users desktop. See chapter *troubleshooting* for a detailed description of the RealmJoin debug window and its features.
 
-## Admin Console
-Device provisioning and RealmJoin configuration is done with the RealmJoin *Admin Console*. Designed to mirror the style of the new Microsoft administration services, it is the main tool for the management of the RealmJoin clients and users. The web application can be reached under <https://realmjoin-web-staging.azurewebsites.net/>.
+## RealmJoin Portal
+Device provisioning and RealmJoin configuration is done with the RealmJoin portal. Designed to mirror the style of the new Microsoft administration services, it is the main tool for the management of the RealmJoin clients and users. The web application can be reached under <https://realmjoin-web-staging.azurewebsites.net/>.
 
 ![RJ Dashboard](./media/rj-ac-dashboard.png)  
 
@@ -185,13 +185,13 @@ It contains all the information about the device, OS, Defender Pattern States an
   
 ![RJ rj-ac-states](./media/rj-ac-states.png)  
 
-It is possible to extend the states by custom states. See [Custom States](#customstates) for details. 
+It is possible to extend the states by custom states. See [Custom States](http://docs.realmjoin.com/appendix.html#a-name-customstates-a-custom-states) for details. 
 ### Settings
 #### List of states
 
 ##### Information on the Windows Device: 
 
-```
+```JSON
 {
  > Basic Client Information
   "Type": "win",

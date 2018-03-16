@@ -1,12 +1,12 @@
 # FAQ
 
 ## Which links should I bookmark?
-* RealmJoin Admin Portal    
-  <https://realmjoin-web.azurewebsites.net/>   
+* RealmJoin Admin Portal   
+    <https://realmjoin-web.azurewebsites.net/>   
 * Gitlab Packages   
-  <https://gitlab.glueckkanja.net/>   
+    <https://gitlab.glueckkanja.net/>   
 * Documentation  
-  <https://docs.realmjoin.com/>    
+    <https://docs.realmjoin.com/>    
 
 ## Am I able to maintain my own packages and updates
 Yes. RealmJoin offers packageing-as-a-service but you may also check in ready-to-use packages. In addition it is possible to use additional deployment repositories completely maintained independently. 

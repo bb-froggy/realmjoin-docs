@@ -11,9 +11,9 @@ The package has to be assigned for the user in the RealmJoin backend.
 ## NoGraph Option
 
 To install RealmJoin without Graph API consent, the registry key 
-``
+```Powershell
 Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\realmjoin\Parameters\NoGraph
-``
+```
 can be set to `1`.  
 It is also possible to set this key during the installation of RealmJoin as a argument for the *msi*:  
 
@@ -30,23 +30,25 @@ As per default, the newly created task executes the script ``.\publishState.ps1`
 
 The within the powershell script created JSON file might be designed as:   
 
->  "CustomStates": {
->    "bad-json": {
->      "Error": "File cannot be parsed: Unexpected character encountered while parsing value: a. Path '', line 0, position 0."
->    },
->    "is-not-json-object": {
->      "Error": "File cannot be parsed: Error reading JObject from JsonReader. Current JsonReader item is not an object: StartArray. Path '', line 1, position 1."
->    },
->    "name . test $ foo": {
->      "test": "ok"
->    },
->    "test": {
->      "hello": "world"
->    },
->    "too-big": {
->      "Error": "File size (66075 bytes) exceeds limit of 65536 bytes."
->    }
->  }
+```JSON
+  "CustomStates": {
+    "bad-json": {
+      "Error": "File cannot be parsed: Unexpected character encountered while parsing value: a. Path '', line 0, position 0."
+    },
+    "is-not-json-object": {
+      "Error": "File cannot be parsed: Error reading JObject from JsonReader. Current JsonReader item is not an object: StartArray. Path '', line 1, position 1."
+    },
+    "name . test $ foo": {
+      "test": "ok"
+    },
+    "test": {
+      "hello": "world"
+    },
+    "too-big": {
+      "Error": "File size (66075 bytes) exceeds limit of 65536 bytes."
+    }
+  }
+```
 
 ## Scheduled Tasks
 
