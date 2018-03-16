@@ -21,24 +21,23 @@ Packages that are run in *user* mode are installed using the current user withou
 Packages that are run in the system mode use the *SYSTEM* account on the device.
   
 ### Environment Variables
-```
-Graph_User_BusinessPhone
-Graph_User_City
-Graph_User_CompanyName
-Graph_User_Country
-Graph_User_Department
-Graph_User_DisplayName
-Graph_User_GivenName
-Graph_User_Id
-Graph_User_JobTitle
-Graph_User_Mail
-Graph_User_MobilePhone
-Graph_User_OfficeLocation
-Graph_User_PostalCode
-Graph_User_State
-Graph_User_StreetAddress
-Graph_User_Surname
-```
+
+* Graph_User_BusinessPhone
+* Graph_User_City
+* Graph_User_CompanyName
+* Graph_User_Country
+* Graph_User_Department
+* Graph_User_DisplayName
+* Graph_User_GivenName
+* Graph_User_Id
+* Graph_User_JobTitle
+* Graph_User_Mail
+* Graph_User_MobilePhone
+* Graph_User_OfficeLocation
+* Graph_User_PostalCode
+* Graph_User_State
+* Graph_User_StreetAddress
+* Graph_User_Surname
 
 ## Chocolatey packages
 Chocolatey packages are created with the Chocolatey engine, which is using the NuGet infrastructure.
@@ -53,7 +52,7 @@ Chocolatey is a powershell execution engine that provides a single, unified inte
 Chocolatey packages contain all neccessary files, e.g. installes, zip-files, scripts etc., in one compiled package. During package installation, Chocolatey checks for dependencies (specified during package assignment in RealmJoin) and takes care of those, silently installing the needed packages. 
 Chocolatey uses Nuget.Core to retrieve packages from the source. Before installing, Chocolatey takes snapshots, then runs automation scripts (Powershell) if provided in the package. In the next step, installers or exeutables are run. After the installation, Chocolatey prepares uninstall information based on the pre-installation snapshots of registry and file/folder structre.
 In case of Windows installer based software, it will be installed into the default path, mostly *Program Files*. Other packages are installed into *ChocolateyInstall\Lib*.  
-The Chocolatey install command can be run with various parameters to e.g. suppress prompts, specifiy an installation directory. The full list of options can be found in the Chocolatey wiki: <https://github.com/chocolatey/choco/wiki/CommandsInstall#options-and-switches>.  
+The Chocolatey install command can be run with various parameters to e.g. suppress prompts, specifiy an installation directory. The full list of options can be found in the [Chocolatey wiki](https://github.com/chocolatey/choco/wiki/CommandsInstall#options-and-switches).  
   
 **Note:** If you want to provide command line parameters for the software that should be installed, they have to be correclty escaped to prevent Chocolatey from trying to interpret them as install options.  
 For a more detailed documentation of Chocolatey see the [official Chocolatey wiki on Github](https://github.com/chocolatey/choco/wiki).

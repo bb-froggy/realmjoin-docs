@@ -46,13 +46,12 @@ Comments on the individuall settings in *italics*
     
 - "FirstRun"
   * "EnableSecureDesktop": true
-    + *Enable the Windows *secure desktop* feature*  
+     *Enable the Windows *secure desktop* feature*  
     
 - "Realm"
   * "Domain": "glueckkanja.net"
   * "NetBIOS": "GLUECKKANJA"
-    + *Connection data to the backend*  
-    
+
 - "DomainConnect"
   * "Domain": "glueckkanja.net",
   * "NetBIOS": "GLUECKKANJA",
@@ -60,7 +59,7 @@ Comments on the individuall settings in *italics*
   * "CheckInterval": "01:00"  
     
  - "CredentialManager":
-    + Allows to configure WAN/LAN connections and manage authentication
+     *Allows to configure WAN/LAN connections and manage authentication*
   * "Type": "wlan",
     * "Target": "GKEnterprise",
     * "CredentialName": "RealmJoin (master)"
@@ -127,7 +126,7 @@ Comments on the individuall settings in *italics*
    * "Hidden": false,
    * "Mandatory": false  
 
-- "Location": "https://packages.gkdatacenter.net/blobs/glueckkanja/glueckkanja-core-settings-wlan-gkenterprise/glueckkanja-core-settings-wlan-gkenterprise-v1.0.0.0.zip",
+- "Location": "https://packages.gkdatacenter.net/blobs/v1.0.0.0.zip",
   * "Hash": "46298d7dfe399cc46bd62ee359ab983771f5bcf1",
   * "Scope": "user",
   * "ID": "glueckkanja-core-settings-wlan-gkenterprise",
@@ -159,9 +158,9 @@ Comments on the individuall settings in *italics*
   * "RequireSecurityFeatures": 
     * "WinVersion": "Win7",
     * "BitlockerEnabled": null,
-        + *If set to "true", Bitlocker will be enforced if the device has a TPM.* 
-        + *The following key value is changed to allow Bitlocker force: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker; Value: PreventDeviceEncryption set to null/false*
-        + *The Bitlocker key is synced to AAD if the client is AAD joined, otherwise, no backup will be made.*
+         *If set to "true", Bitlocker will be enforced if the device has a TPM.* 
+         *The following key value is changed to allow Bitlocker force: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker; Value: PreventDeviceEncryption set to null/false*
+         *The Bitlocker key is synced to AAD if the client is AAD joined, otherwise, no backup will be made.*
     * "FirewallEnabled": true,
     * "AvEnabled": null,
     * "EnvironmentCheck": null  

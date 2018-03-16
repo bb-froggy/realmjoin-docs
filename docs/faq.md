@@ -1,18 +1,12 @@
 # FAQ
 
 ## Which links should I bookmark?
-* RealmJoin Admin Console  
-  
-  <https://realmjoin-web-staging.azurewebsites.net/>  
-* RealmJoin Uploader / Package Request  
-  
-  <https://Realmjoin-uploader.azurewebsites.net>  
-* Gitlab Packages  
-  
-  <https://gitlab.glueckkanja.net/>  
+* RealmJoin Admin Portal    
+  <https://realmjoin-web.azurewebsites.net/>   
+* Gitlab Packages   
+  <https://gitlab.glueckkanja.net/>   
 * Documentation  
-  
-  <https://realmjoin.readthedocs.io/>  
+  <https://docs.realmjoin.com/>    
 
 ## Am I able to maintain my own packages and updates
 Yes. RealmJoin offers packageing-as-a-service but you may also check in ready-to-use packages. In addition it is possible to use additional deployment repositories completely maintained independently. 
@@ -59,7 +53,7 @@ Yes. NuGet and Chocolatey repositories are based on open protocols. Using search
 It is in principle possible to host the RealmJoin   
 
 ## What Firewall/Proxy settings do I have to configure?
-Please check chapter *Technical* section *Requirements* for detailed information on the RealmJoin connections.  
+Please check the [infrastructure requirements](http://docs.realmjoin.com/infrastructure.html#network) for detailed information on the RealmJoin connections.  
 
 ## Does G&K have any recommendations on workflows?  
 TBD

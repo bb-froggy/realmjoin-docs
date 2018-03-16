@@ -137,3 +137,22 @@ In this example it has not been assigned to any individual user but to 2 groups.
 ## Corrupted chocolatey installation  
 If the installation of software packages produce error messages hinting to a corrupt chocolatey installation, it is possible to reenforce the automatic chocolatey installation through RealmJoin.   
 To do so, remove the *%chocolatey%* environment variable and enforce a reboot of the client machine and the RealmJoin agent. This will trigger a reinstallation of chocolatey.
+
+## How can I remove the RealmJoin application from a client?  
+It is not supported to remove the RealmJoin application from a client.  
+However, for test scenarios, there are two ways to remove the application from a client.  
+1. Reimage the client.
+2. Stop all running RealmJoin services. Remove the services and executables from the Programfolder. 
+
+## Where does RealmJoin file the packge scripts on the client?  
+You may find the data as follows:  
+* Chocolatey install scripts: %PROGRAMDATA%\chocolatey\lib\<package-id>\tools\chocolateyInstall.ps1  
+* Chocolatey blobs:  Windows\Temp\chocolatey\<package-id>\<package-version>
+* Craft scripts are cleaned up after the execution  
+
+## How can I send feedback to the RealmJoin team?  
+Please use the offical user voice website:  
+https://realmjoin.canny.io/features  
+
+## Where is the changelog located?  
+http://docs.realmjoin.com 

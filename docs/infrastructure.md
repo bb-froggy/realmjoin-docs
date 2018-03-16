@@ -76,7 +76,7 @@ The backend is hosted on an Azure tenant exclusively used for RealmJoin. All cus
 To provide the BranchCache mechanism (see section *BranchCache* above), the endpoint has to provide the chunk identifiers, a feature only provided by *Microsoft Internet Information Services* (IIS) servers. To deliver the maximum scalability he Publishing Endpoint is distributed on multiple Azure nodes hosting Windows 2016 IIS sharing an redundant Azure blob storage. 
 
 #### Web interface
-The web interface can be reached via <https://realmjoin-web.azurewebsites.net/> and is in detailed explained in the chapter *Managing RealmJoin*. After logging in with the provided credentials, the administrator can manage the package distribution in his tenant and has access to extensive information.
+The web interface can be reached via the [realmjoin portal](https://realmjoin-web.azurewebsites.net/) and is in detailed explained in the chapter *Managing RealmJoin*. After logging in with the provided credentials, the administrator can manage the package distribution in his tenant and has access to extensive information.
 
 ## Security Features
 ### Client authentication

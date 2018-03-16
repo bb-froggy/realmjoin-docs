@@ -38,8 +38,13 @@ Device provisioning and RealmJoin configuration is done with the RealmJoin *Admi
 
 ![RJ Dashboard](./media/rj-ac-dashboard.png)  
 
-The dashboard provides a quick and beneficial overview. All sections can be accessed by either clicking on the corresponding number or selecting the section in the toolbar on the left.
+The dashboard provides a quick and beneficial overview. All sections can be accessed by either clicking on the corresponding number or selecting the section in the toolbar on the left.  
 
+### Roles
+There are two different roles available for the RealmJoin portal:  
+- Administrator: Full rights within the portal. 
+- Auditor: Read-only rights within the portal, access to all settings and assignments.  
+  
 ### Clients
 ![RJ clientsicon](./media/rj-ac-clientsicon.png)  
 The clients tab gives you a transparent overview over all enrolled devices as well as the respective primary user. To enter the devices' states (see section *States*) or associate users, just click on the green numbers on the right. 
@@ -188,6 +193,7 @@ It is possible to extend the states by custom states. See [Custom States](#custo
 
 ```
 {
+ > Basic Client Information
   "Type": "win",
   "ClientID": "75cf4d56-0676-ae02-73ad-a1af9b89f269",
   "VersionTray": "4.9.15-canary+14869.bf207295",
@@ -222,6 +228,7 @@ It is possible to extend the states by custom states. See [Custom States](#custo
       "ON"
     ]
   },
+  > Antivirus information and patterns
   "AvProducts": {
     "Installed": [
       {
@@ -265,6 +272,7 @@ It is possible to extend the states by custom states. See [Custom States](#custo
       }
     ]
   },
+  > Bitlocker status
   "Bitlocker": {
     "DriveStates": [
       {
@@ -296,15 +304,18 @@ It is possible to extend the states by custom states. See [Custom States](#custo
       "DeferFeatureUpdatesPeriodInDays": 60
     }
   },
+  > BranchCache version
   "BranchCache": {
     "DataCacheCurrentActiveCacheSize": 1424903614,
     "CurrentClientMode": "DistributedCache"
   },
+  > Installed Chocolatey Version. Not upgraded automatically, RealmJoin uses specific version
   "Chocolatey": {
     "RequiredVersion": "0.10.3",
     "InstalledVersion": "0.10.3",
     "Status": "Ready"
   },
+  > Software installed via RealmJoin
   "SoftwarePackages": {
     "Installed": [
       {
@@ -338,6 +349,7 @@ It is possible to extend the states by custom states. See [Custom States](#custo
         "ArgsHash": null
       }
     ]
+    > Software installed by other means
     "Inventory": [
       {
         "Name": "7-Zip 18.01 (x64 edition)",
@@ -369,19 +381,32 @@ It is possible to extend the states by custom states. See [Custom States](#custo
       }
     ]
   },
+  > Configured DO Group ID
   "DeliveryOptimization": {
     "DefaultGatewayDiscovered": null,
     "GroupID": "00000099-0000-0000-0000-002cc8f1c3bd"
   }, 
+  > Advanced Threat Protection status
   "Atp": {
     "IsOnboarded": true,
     "OnboardingInfo": {
       "previousOrgIds": [],
-      "orgId": "fa29db65-000c-0000-9459-369df149b5ba",
+      "orgId": "fa29db65-000c-0000-9409-369df149b5ba",
       "geoLocationUrl": "https://winatp-gw-weu.microsoft.com/",
       "datacenter": "WestEurope",
       "vortexGeoLocation": "EU",
       "version": "1.13"
+      },
+  > Individual Custom States
+  "CustomStates": {
+    "ComputerSystem_Information": {
+      "Manufacturer": "Microsoft",
+      "Model": "Virtual Machine",
+      "SystemSku": "None",
+      "SerialNumber": "8024-3966-7536-6152-8582-7818-84",
+      "VersionGetRealmjoinComputerSystemModel": "180116",
+      "BiosVersion": "Hyper-V UEFI Release v1.0",
+      "TimestampOutRealmjoinCustomState": "2018-03-07T15:34:28.0907833Z"
     }
   }
 }

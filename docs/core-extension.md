@@ -5,7 +5,7 @@ To ensure the extenions are correctly deployed on all clients, please add the co
 
 ## Enable extension CmdLets in Craft packages  
 Out of chocolatey packages, the usage of the extension CmdLets have to be enabled:  
-´´´Import-Module (Get-ItemPropertyValue -Path "Registry::HKLM\SOFTWARE\RealmJoin\Variables" -Name RealmjoinCraftSupportModulePath)´´´  
+``Import-Module (Get-ItemPropertyValue -Path "Registry::HKLM\SOFTWARE\RealmJoin\Variables" -Name RealmjoinCraftSupportModulePath)``  
 
 ## AppV Packages 
 ### Enable-ChocolateyRealmjoinAppv
@@ -299,8 +299,8 @@ Name Aliases Description Required? Pipeline Input? Default Value
 Name None                true      false                        
 ```
 
-## <a name="schedtasks"></a> Scheduled Tasks
-### <a name="regcstask"></a> Register-RealmjoinCustomStateScheduledTask
+## Scheduled Tasks  
+### Register-RealmjoinCustomStateScheduledTask
 #### Syntax
 Register-RealmjoinCustomStateScheduledTask \[\[-RepetitionInterval\] \<timespan\>\] \[\[-TaskName\] \<string\>\] \[\[-PublishStateScriptFile\] \<string\>\]
 #### Parameters
