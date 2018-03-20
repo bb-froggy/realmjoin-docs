@@ -83,7 +83,7 @@ Primary User:
   }
 }
 ```
-*NOTE*: It is important to understand, that the userID is equal to the userID from the Azure identity management, while the clientID is the ID Windows submitts during the installation and NOT equal to the clientID in Azure/Intune.
+**NOTE**: It is important to understand, that the userID is equal to the userID from the Azure identity management, while the clientID is the ID Windows submitts during the installation and NOT equal to the clientID in Azure/Intune.
 
 ### Users
 ![RJ rj-ac-usersicon](./media/rj-ac-usersicon.png)  
@@ -186,7 +186,7 @@ Options:
   *Note*: Under normal circumstance it is highly adviced to prevent a normal user having the same package assigned more than once.   
   The pre-release flagged package is visually highlighted in the portal's package list with an lightning symbol behind the name.  
   * *Require Intune Compliance (BETA)*: The package is installed, as soon as RealmJoin is able to verify via the GraphAPI that the machine is considered compliant. This might stop the rollout for some time. The installation of the package, and therefore all other mandatory packages with higher order numbers that are queued to beinstalled afterwards, is resumed when the client is compliant. 
-  - Auto Upgrade
+- Auto Upgrade
   * The *Auto Upgrade* feature may be enabled to automatically update the package if a new version is assigned in RealmJoin. If not choosen, the user has to manually select the package to be upgraded.
 - Staggered Deployment
   * It is possible to use staggered deployment and distribute the risk of updating a software if desired. The two parameters needed are the target date and the amount of days over which the update should take place. 
@@ -226,11 +226,11 @@ It is possible to extend the states by custom states. See [Custom States](http:/
 ### Settings
 #### List of states
 
-##### Information on the Windows Device: 
+##### Information on the device: 
 
+> Basic Client Information
 ```JSON
 {
- > Basic Client Information
   "Type": "win",
   "ClientID": "75cf4d56-0676-ae02-73ad-a1af9b89f269",
   "VersionTray": "4.9.15-canary+14869.bf207295",
@@ -265,7 +265,10 @@ It is possible to extend the states by custom states. See [Custom States](http:/
       "ON"
     ]
   },
-  > Antivirus information and patterns
+  
+```
+> Antivirus information and patterns
+```JSON
   "AvProducts": {
     "Installed": [
       {
