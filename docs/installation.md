@@ -60,3 +60,14 @@ When installing RealmJoin during unattend OS installation or any other non-inter
 reamjoin.exe -install
 ```
 
+## Connecting a tenant with RealmJoin  
+To a connect a tenant to the Glück&Kanja RealmJoin backend, a hello token is needed. This token might be requested from Glück&Kanja.  
+A RealmJoin administrator group has to be created upfront in AAD with the name *"cfg-RealmJoin Admin"* and all dedicated RealmJoin administrators should be added to it.  
+The connect wizard is located under the URL [RealmJoin connect](https://realmjoin-web.azurewebsites.net/global/graph). The token and the tenant name are to be entered and the request submitted.  
+![RJ connection interface](./media/rj-connect-tenant.png)   
+A tenant administrator has to give consent to RealmJoin. The connect wizard creates the necessary entries in Intune.  
+After the success, it is important to revisit the first tab/browser window and the "Check&Install" option as to be executed.  
+
+### RealmJoin Permissions
+The following permissions are admitted by the administrator consent and set in Azure via the GraphAPI:  
+![RJ azure permissions](./media/rj-realmjoin-permissions.png)  

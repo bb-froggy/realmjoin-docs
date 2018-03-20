@@ -48,7 +48,43 @@ There are two different roles available for the RealmJoin portal:
 ### Clients
 ![RJ clientsicon](./media/rj-ac-clientsicon.png)  
 The clients tab gives you a transparent overview over all enrolled devices as well as the respective primary user. To enter the devices' states (see section *States*) or associate users, just click on the green numbers on the right. 
- 
+In this details you find two JSON files with basic information on the client and the primary user. It is possible change the primary device user if there is an inconsistency between the Azure and the RealmJoin portal. This might happen if a device is not correctly reseted and issued to a new user afterwards.  
+Client:  
+```JSON
+{
+  "id": 3714,
+  "clientID": "f19c3d1a-75e3-0000-afe9-f8d3da72e2f1",
+  "firstSeen": "2017-09-26T08:10:46.3211008",
+  "lastSeen": "2018-03-20T14:50:25.4933509",
+  "lastMachineName": "DESKTOP-B0815",
+  "lastVersion": "4.11.6+25493.9f206a6d",
+  "primaryUserID": 6325,
+  "primaryUserName": "Test@test.onmicrosoft.com",
+  "stateCount": 7242,
+  "userCount": 0
+}
+```
+
+Primary User:  
+```JSON
+ {
+  "id": 6325,
+  "userID": "3239d4dd-0000-0000-90d6-611a7fd93dba",
+  "userName": "Test@test.onmicrosoft.com",
+  "graphUser": {
+    "displayName": "testuser",
+    "department": null,
+    "jobTitle": null,
+    "mail": "Test@test.onmicrosoft.com",
+    "city": null,
+    "officeLocation": null,
+    "businessPhones": [],
+    "mobilePhone": null
+  }
+}
+```
+*NOTE*: It is important to understand, that the userID is equal to the userID from the Azure identity management, while the clientID is the ID Windows submitts during the installation and NOT equal to the clientID in Azure/Intune.
+
 ### Users
 ![RJ rj-ac-usersicon](./media/rj-ac-usersicon.png)  
  A list of all users assigned to the tenant. The selectable details on the right include states, group membership, installed software packages, client devices and (to come...) individual settings. Users can't be added or assigned to groups using RealmJoin, the management of users and groups has to be done in Azure AD. 
@@ -149,6 +185,7 @@ Options:
   Those features are usually used for the testing of new packages or updates of existing one: The test-groups or test-users get the pre-release version of a package assigned during the testing.  
   *Note*: Under normal circumstance it is highly adviced to prevent a normal user having the same package assigned more than once.   
   The pre-release flagged package is visually highlighted in the portal's package list with an lightning symbol behind the name.  
+  * *Require Intune Compliance (BETA)*: The package is installed, as soon as RealmJoin is able to verify via the GraphAPI that the machine is considered compliant. This might stop the rollout for some time. The installation of the package, and therefore all other mandatory packages with higher order numbers that are queued to beinstalled afterwards, is resumed when the client is compliant. 
   - Auto Upgrade
   * The *Auto Upgrade* feature may be enabled to automatically update the package if a new version is assigned in RealmJoin. If not choosen, the user has to manually select the package to be upgraded.
 - Staggered Deployment
