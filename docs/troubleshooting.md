@@ -151,8 +151,8 @@ You may find the data as follows:
 * Craft scripts are cleaned up after the execution  
 
 ## How can I send feedback to the RealmJoin team?  
-Please use the offical user voice website:  
+Please use the offical user voice website:   
 https://realmjoin.canny.io/features  
 
 ## Where is the changelog located?  
-http://docs.realmjoin.com 
+https://headwayapp.co/realmjoin-platform-changelog
