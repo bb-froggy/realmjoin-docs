@@ -34,7 +34,7 @@ If neccessary, a debug window can be opened by clicking on the RealmJoin icon wh
 *Collect Logs* is a quick way to access all log files, which will be saved in a zip-file to the users desktop. See chapter *troubleshooting* for a detailed description of the RealmJoin debug window and its features.
 
 ## RealmJoin Portal
-Device provisioning and RealmJoin configuration is done with the RealmJoin portal. Designed to mirror the style of the new Microsoft administration services, it is the main tool for the management of the RealmJoin clients and users. The web application can be reached under <https://realmjoin-web-staging.azurewebsites.net/>.
+Device provisioning and RealmJoin configuration is done with the RealmJoin portal. Designed to mirror the style of the new Microsoft administration services, it is the main tool for the management of the RealmJoin clients and users. The web application can be reached under <https://realmjoin-web.azurewebsites.net/> or the beta version under <https://realmjoin-web-staging.azurewebsites.net/>.
 
 ![RJ Dashboard](./media/rj-ac-dashboard.png)  
 
