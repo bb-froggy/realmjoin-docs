@@ -145,7 +145,9 @@ However, for test scenarios, there are two ways to remove the application from a
 2. Delete manually.
 
 Manual deletion instruction:
-* Stop all running RealmJoin services. Remove the services and executables from C:\Program Files\RealmJoin. 
+* Stop all running RealmJoin processes
+* Remove the service, execute "sc delete realmjoin"
+* Remove the executables from C:\Program Files\RealmJoin
 * Delete registry hive HKLM and HKCU\SOFTWARE\RealmJoin
 * Delete folder %LocalAppData%\RealmJoin
 * Delete folder C:\ProgramData\RealmJoin
