@@ -142,7 +142,16 @@ To do so, remove the *%chocolatey%* environment variable and enforce a reboot of
 It is not supported to remove the RealmJoin application from a client.  
 However, for test scenarios, there are two ways to remove the application from a client.  
 1. Reimage the client.
-2. Stop all running RealmJoin services. Remove the services and executables from the Programfolder. 
+2. Delete manually.
+
+Manual deletion instruction:
+* Stop all running RealmJoin processes
+* Remove the service, execute "sc delete realmjoin"
+* Remove the executables from C:\Program Files\RealmJoin
+* Delete registry hive HKLM and HKCU\SOFTWARE\RealmJoin
+* Delete folder %LocalAppData%\RealmJoin
+* Delete folder C:\ProgramData\RealmJoin
+* Uninstalling Chocolatey (https://chocolatey.org/docs/uninstallation)
 
 ## Where does RealmJoin file the packge scripts on the client?  
 You may find the data as follows:  
@@ -151,8 +160,8 @@ You may find the data as follows:
 * Craft scripts are cleaned up after the execution  
 
 ## How can I send feedback to the RealmJoin team?  
-Please use the offical user voice website:  
+Please use the offical user voice website:   
 https://realmjoin.canny.io/features  
 
 ## Where is the changelog located?  
-http://docs.realmjoin.com 
+https://headwayapp.co/realmjoin-platform-changelog
