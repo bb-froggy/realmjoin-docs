@@ -9,7 +9,7 @@ When RealmJoin is enrolled and started for the first time, it asks for the User-
    
 ![RJ AAD Auth](./media/rj-aad-auth.png)  
 
-RealmJoin “Security Requirement” assessment does some pre-checks (Encryption, Patch Level, Firewall, Anti-Virus, etc. – this is optional and can be replaced in parts by Intune-Health-Check).  
+RealmJoin “Security Requirement” assessment does some pre-checks (Encryption, Patch Level, Firewall, Anti-Virus, etc. – this is optional and can be replaced in parts by Intune-Health-Check). In the last step, all mandatory software will be installed (*black screen installation*). During this installation, any interaction with the client is suppressed.  
   
 ![RJ Sec Check](./media/rj-sec-check.gif)
   
@@ -92,7 +92,7 @@ Selecting a user opens up the users detail page, which contains information gath
 
 ### User settings
 ![RJ usersettingsicon](./media/rj-ac-usersettingsicon.png)  
-Configurable group settings and policies. See chapter *Policies* for a list of implemented features.
+Configurable group settings and policies. See section *Policies* for a list of implemented features. See [Group Settings](http://docs.realmjoin.com/managing-realmjoin.html#group-settings) for a detailed description on configurating policies. 
 
 ### Groups
 ![RJ rj-ac-groupsicon](./media/rj-ac-groupsicon.png)  
@@ -122,11 +122,30 @@ APP - Mozilla-Firefox-withFlash
 ```
   
 The standard sychronization time is 20 minutes (hh:00, hh:20, hh:40), and all groups that start with *APP - * or *CFG - * are taking into consideration.  
-The synchronization time schedule and the prefixes that are taken into account can be adjusted, currently only on request.
+The synchronization time schedule and the prefixes that are taken into account can be adjusted, currently only on request. Groups won't be deleted from the *RealmJoin* backend, if they are removed in Azure/Intune.   
+**NOTE:** The *RealmJoin - All Users* group is automatically created, containg all users with a *RealmJoin* installation on at least one of their clients.  
 
-### User settings
+### Group settings
 ![RJ rj-ac-groupsettingsicon](./media/rj-ac-groupsettingsicon.png)  
-Configurable group settings and policies. See chapter *Policies* for a list of implemented features.
+Configurable group settings and policies. See chapter [policies](http://docs.realmjoin.com/policies.html#other-configuration-settings) for a list of implemented features. To change a policy, you have to first select the group, and then select the group settings number on the right. This will open the group settings web page with a filter on the selected group, allowing to create policies for this group. To configure a policy, add the tree path in the *key* field and the setting in the *value* section, e.g.:  
+```Policies.SetCurrentUserAdministrator```  
+```true```  
+to set a user or the users within the group to local administrators or  
+```WebLinks```  
+``
+[
+  {
+    "Name": "RealmJoin",
+    "Target": "https://realmjoin.com",
+    "Platform": "any"
+  },
+  {
+    "Name": "Google",
+    "Target": "https://google.com",
+    "Platform": "any"
+  }
+``   
+to create new links available in the *RealmJoin* client tray. The created settings overwrite all default values. 
 
 ### Software Packages
 ![RJ rj-ac-packagesicon](./media/rj-ac-packagesicon.png)  
@@ -166,8 +185,9 @@ While adding a package the following configuration entries are available:
   * The order number is an Int32 type figure and provides RealmJoin with a basic structure to determine the package installation sequence. The lower the number the higher the importance, therefore a 10 will be installed before 100. 
     It has to be noted that a 0 is translated to "no sequence given" and the order number is only taken into account at the first roll out.
 - Args
-  * If the packaged software has to be installed with arguments. If the package to be deployed is a chocolatey package, make sure to use the prefix *-params* and correct escaping, since chocolatey might mistake the arguments to be directed to it.
-    It has to be noted, that it is also possible to provide arguments in the package assignment stage (see section below). Globally relevant parameters (e.g. volume license number) should be provided at the package addition step, while more individualized arguments (e.g. language packs) are better specified during the assignment step.
+  * If the packaged software has to be installed with arguments. If the package to be deployed is a chocolatey package, make sure to use the prefix *-params* and correct escaping, since chocolatey might mistake the arguments to be directed to it, for *craft* packages, the arguments can just be added.  
+    It has to be noted, that it is also possible to provide arguments in the package assignment stage (see section below). Globally relevant parameters (e.g. volume license number) should be provided at the package addition step, while more individualized arguments (e.g. language packs) are better specified during the assignment step.  
+**NOTE:** Do not use the *dependency* and *order* option on *mandatory* packages parallel. This might prevent the backend from correctly resolve the order installation. Mandatory packages should always be sequenced using the order flag.
 - Version
   * Version of the package to be installed (for conventions of the version numbering see chapter *Packages*).
 - Chocolatey Package ID (chocolatey packages only)
@@ -180,19 +200,20 @@ While adding a package the following configuration entries are available:
   * Craft packages might be installed in the *user* or *system* scope.
 Options:  
 - Availability
-  * *Allow Reinstall*: This option allows the client user to reinstall and therefore override their current installation of the package. Useful for information that is taken from Azure or similiar. 
+  * *Allow Reinstall*: This option allows the client user to reinstall and therefore override their current installation of the package. In case of *craft* type packages, the *craft* scripts are re-run.  
+  * *Allow Background Install*: The software package may be installed outside of the *black screen* installation, thus not blocking the access to the clients desktop and software.  
   * *Pre-Release*: The pre-release flag as two distintive features within RealmJoin. It allows a) to add a package with ID and version similar to another existing package in the portal and b), if assigned to a group or user, overwrites all other packages with the same ID assigned to the group or user.  
   Those features are usually used for the testing of new packages or updates of existing one: The test-groups or test-users get the pre-release version of a package assigned during the testing.  
   *Note*: Under normal circumstance it is highly adviced to prevent a normal user having the same package assigned more than once.   
   The pre-release flagged package is visually highlighted in the portal's package list with an lightning symbol behind the name.  
   * *Require Intune Compliance (BETA)*: The package is installed, as soon as RealmJoin is able to verify via the GraphAPI that the machine is considered compliant. This might stop the rollout for some time. The installation of the package, and therefore all other mandatory packages with higher order numbers that are queued to beinstalled afterwards, is resumed when the client is compliant. 
 - Auto Upgrade
-  * The *Auto Upgrade* feature may be enabled to automatically update the package if a new version is assigned in RealmJoin. If not choosen, the user has to manually select the package to be upgraded.
+  * The *Auto Upgrade* feature may be enabled to automatically update the package if a new version is assigned in RealmJoin. If not choosen, the user has to manually select the package to be upgraded. The automatic upgrade does apply to mandatory and non-mandatory packages.  
 - Staggered Deployment
   * It is possible to use staggered deployment and distribute the risk of updating a software if desired. The two parameters needed are the target date and the amount of days over which the update should take place. 
     The clients are not equaly distributed in the deplyoment groups, with fewer deployments in the first part of the timeline and the majority on the last. 
     Deployed package versions for each can be found in the user details of the package or the deployed package details of the users.
-    Exsample distribution for n = 10000 and 8 days update time:   
+    Example distribution for n = 10000 and 8 days update time:   
       
     ![RJ autoupdate_sim](./media/rj-autoupdate_sim.png)   
 

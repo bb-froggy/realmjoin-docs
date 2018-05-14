@@ -71,3 +71,12 @@ After the success, it is important to revisit the first tab/browser window and t
 ### RealmJoin Permissions
 The following permissions are admitted by the administrator consent and set in Azure via the GraphAPI:  
 ![RJ azure permissions](./media/rj-realmjoin-permissions.png)  
+
+### Default Software for new tenants  
+Per default, we currently provide the following software packages within the RealmJoin portal after the successfull connection:   
+* MS Office with Usersettings and Proofingtools  
+* 7-Zip  
+* Microsoft Teams  
+* Google Chrome  
+* Mozilla Firefox  
+* Win10PinUnpin   

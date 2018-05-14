@@ -44,7 +44,7 @@ Before working on the files, please check the *readme.md*. Depending on the type
 RealmJoin and the automatization tools are constantly adapted and refined. Advanced features are implemented and tested in a beta branch. 
 The beta version of the Jumpstarter script can be used by running the following code in a cmd shell:  
 ```
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/realmjoin/realmjoin-package-jumpstarter/raw/beta/JumpstartRealmJoinPackage.ps1'))"
+@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/realmjoin/realmjoin-package-jumpstarter/raw/beta/JumpstartRealmJoinPackage.ps1'))"
 ```
 
 ## Chocolatey Package
@@ -125,6 +125,13 @@ The *Install-ChocolateyRealmjoinPackage* command can be run with the execution o
 Install-ChocolateyRealmjoinPackage "INSTALLER.msi" "HASH" -postActions { Remove-Item "$env:PUBLIC\Desktop\SHORTCUT.lnk" -ErrorAction SilentlyContinue }
 ```
 
+### Parameters in chocolatey packages   
+To utilize parameters in chocolatey packages, it is necessary to invoke the read-out of the entered text in the optional [args](http://docs.realmjoin.com/managing-realmjoin.html#add-packages) text field: ```Import-ChocolateyRealmjoinPackageParameters ```.  
+The chocolatey extension now parses the argument string and automatically creates and fill the variables with the following pattern:  
+Example parameters: ```"/Key:xx-yy-cc /Language:EN"```  
+Available variables: ```$packParamKey``` with value ```xx-yy-cc``` and ```$packParamLanguage``` with value ```EN```   
+Those variables may now be used for any purposes within the *chocolatyinstall.ps1* script.  
+
 ## Craft Package
 ### Edit Package files
 * Delete non-craft items  
@@ -147,6 +154,17 @@ Install-ChocolateyRealmjoinPackage "INSTALLER.msi" "HASH" -postActions { Remove-
   * 90 special: Deploys a new version of the special flavour package. This is used, when a package is already deployed for more than one customer. It prevents unwanted deployment of new package versions.  
 ![RJ choco-deploy](./media/rj-package-choco-deploy.png)  
 After the successfull deployment, the package can be found in the chocolatey library and added. See chapter *managing RealmJoin* for information on assigning packages.  
+
+### Parameters in craft packages   
+*RealmJoin* executes the *rj_install.ps1/cmd* script as ```rj_install.ps1/cmd argument```. Thus, the parameters in the *RealmJoin* portal can just be added in the argument field as ```-genericname argument1 -genericname2 argument2```, while *genericname* will not be evaluated and serves as a visual help.  
+Within in the script, the parameters are initialized as 
+``` 
+ param(
+    [ValidateNotNullOrEmpty()]
+        $argument1,
+        $argument2
+     )
+```  
 
 ## Organic Package  
 Organic packages are created similar to Chocolatey packages, but instead of a software install, they unzip a specified file into a specified folder on the device. Therefore, the main differences are the provided `blobs` and the `chocolateyInstall.ps1`script. 
