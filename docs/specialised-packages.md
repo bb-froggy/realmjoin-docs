@@ -24,3 +24,9 @@ The WPA2-PSK package has to be assigned with the parameters:
 Argumentsynthax:  
 ``-SSID "xyz" -PreSharedKey "xyz" [-Encryption "xyz"]``
 
+## Something special: Microsoft Office 2016  
+The Office 365/2016 package as maintained by Glück&Kanja  
+
+### Update infrastructure
+Languages, cdn, updates, 
+### Assignment
