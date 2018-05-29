@@ -59,8 +59,9 @@ Please check the [infrastructure requirements](http://docs.realmjoin.com/infrast
 
 ## Does G&K have any recommendations on workflows?  
 TBD
-<!--
-## Who can see my packages  
-TBD
-Aktuell k�nnen nat�rlich auf "Fremdkunden" Pakete geladen werden, repositories sind global verf�gbar, daher sind die Pakete ohne Security Info; Isolation kommt, ist aber nicht so einfach, da die choco protokolle offen sind, Trennung ist jetzt schon durch eigene Infrastructure m�glich
-Realmjoin-uploader.azurewebsites.net  -->
+
+## What is the recommendation for reporting?  
+Using the [(custom) states](http://docs.realmjoin.com/managing-realmjoin.html#states), it is possible to get virtually any information from each client in JSON-form There are several applications available to evaluate the data, for example PowerBI, which allows to sort and process the data in logical and visuallay pleasing ways.  
+
+## In the future, may RealmJoin packages be used in Intune?  
+If in the future, Microsoft Intune becomes more capable and the installation of software is as versatile and organized as with *RealmJoin*, you may use the existing packages in Intune. Since *RealmJoin* does only need chocolatey and powershell to run the installers, there might be possibilites to use Intune to install software.  

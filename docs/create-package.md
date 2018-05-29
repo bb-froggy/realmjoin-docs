@@ -250,6 +250,25 @@ The following variables may be used in the RealmJoin install scripts:
 * $Global:packageFolder = $env:packageFolder
 * $Global:packageToolsFolder = Join-Path $env:packageFolder "tools"
 * $Global:packageTempDir = Join-Path $env:TEMP (Join-Path $env:chocolateyPackageName $env:chocolateyPackageVersion)
+* $PackageID
+* $Version
+* $UserSID
+* $RJ_DeploymentPhase = contains information on the installation. Can be:  
+   ```
+  Blank
+
+  RunningFirstDeployment
+  RunningFirstDeploymentAuto
+  # Now the installations start
+  CompletedFirstDeployment
+
+  RunningDeployment
+  # Now the installations start
+  CompletedDeployment
+
+  ManualDeployment
+  # Now the installations start
+    ```  
 
 # Updating Packages
 
