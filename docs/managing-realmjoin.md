@@ -187,8 +187,10 @@ While adding a package the following configuration entries are available:
 - Args
   * If the packaged software has to be installed with arguments. If the package to be deployed is a chocolatey package, make sure to use the prefix *-params* and correct escaping, since chocolatey might mistake the arguments to be directed to it, for *craft* packages, the arguments can just be added.  
     It has to be noted, that it is also possible to provide arguments in the package assignment stage (see section below). Globally relevant parameters (e.g. volume license number) should be provided at the package addition step, while more individualized arguments (e.g. language packs) are better specified during the assignment step.  
+    
 **NOTE:** Do not use the *dependency* and *order* option on *mandatory* packages parallel. This might prevent the backend from correctly resolve the order installation: During the initial rollout, or any rollout of mandatory packages after a log-in for this purpose, *RealmJoin* in the first step resolves all dependencies of the packages. If there are any, all packages which are listed as a dependency for a different package are installed. In the second step, the original packages are installed. This may cancel out any order numbers. E.g.:  
 Package A, order 1. Package B, order 101 and dependend on Package C, order 100. If all packages are assigned as mandatory, the installation sequence will be C - A - B.  
+  
 - Version
   * Version of the package to be installed (for conventions of the version numbering see chapter *Packages*).
 - Chocolatey Package ID (chocolatey packages only)
@@ -217,7 +219,7 @@ Options:
     Example distribution for n = 10000 and 8 days update time:   
       
     ![RJ autoupdate_sim](./media/rj-autoupdate_sim.png)   
-
+  
 **NOTE:** Do not edit assigned packages in the way, that you change the package name or ID (version number is fine). If you need a package in a different flavour, please add a new package and delete the obsolete one.  
 #### Assign Packages
 
