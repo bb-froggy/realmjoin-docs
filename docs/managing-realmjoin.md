@@ -222,7 +222,7 @@ Options:
   
 **NOTE:** Do not edit assigned packages in the way, that you change the package name or ID (version number is fine). If you need a package in a different flavour, please add a new package and delete the obsolete one.  
 
-##### Duplicate a package 
+#### Duplicate a package 
 Whenever a package with identical content is needed multiple times for the same user or group, the RealmJoin portal offers the possibility to use the same package multiple times while preventing conflicting installations.  
 
 A possible scenario may be: One user group needs the same package with different arguments (for example to map several network drives) and the RJ-Client requires unique package IDs. 
