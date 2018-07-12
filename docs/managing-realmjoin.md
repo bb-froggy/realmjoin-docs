@@ -221,6 +221,17 @@ Options:
     ![RJ autoupdate_sim](./media/rj-autoupdate_sim.png)   
   
 **NOTE:** Do not edit assigned packages in the way, that you change the package name or ID (version number is fine). If you need a package in a different flavour, please add a new package and delete the obsolete one.  
+
+##### Duplicate a package 
+Whenever a package with identical content is needed multiple times for the same user or group, the RealmJoin portal offers the possibility to use the same package multiple times while preventing conflicting installations.  
+
+A possible scenario may be: One user group needs the same package with different arguments (for example to map several network drives) and the RJ-Client requires unique package IDs. 
+
+- Notation 
+  * To make the ID unique, a hash is written behind the ID and provided with a meaningful word/index, for example "package-id#Value".  
+
+![RJ rj-duplicate-packages](./media/rj-duplicate-packages.png) 
+
 #### Assign Packages
 
 Similar to the profile management with Microsoft Azure AD, packages can be assigned to groups and individual users. To assign a package, enter the group or user detail for the package in the package control panel. 
