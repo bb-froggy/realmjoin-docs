@@ -247,6 +247,10 @@ There are four options to override the package configuration when assigning, if 
   * In addition to the configuration of the package itself (see section above for the feature description), *Args* can be set for the selected group / user individually.   
     
 ![RJ rj-ac-packageoverrides](./media/rj-ac-packageoverrides.png)    
+  
+### AppStore
+![RJ rj-ac-statesicon](./media/rj-ac-storeicon.png)  
+Glück&Kanja maintaince a ever-expanding library of ready-to-go applications, that might instantly be added to the list of available packages and assigend to groups or users. For details, please check the [AppStore section](http://docs.realmjoin.com/requestsoftware.html#appstore) in the [application sources chapter](http://docs.realmjoin.com/requestsoftware.html).  
 
 ### States
 ![RJ rj-ac-statesicon](./media/rj-ac-statesicon.png)   

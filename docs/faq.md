@@ -11,7 +11,7 @@
     <https://docs.realmjoin.com/>    
 
 ## Am I able to maintain my own packages and updates
-Yes. RealmJoin offers packageing-as-a-service but you may also check in ready-to-use packages. In addition it is possible to use additional deployment repositories completely maintained independently. 
+Yes. RealmJoin offers packaging-as-a-service but you may also check in ready-to-use packages. In addition it is possible to use additional deployment repositories completely maintained independently. 
 
 ## Which platforms are supported?
 RealmJoin v4 is only available for Windows 10.
@@ -20,7 +20,7 @@ RealmJoin v4 is only available for Windows 10.
 The sync between Azure AD and RealmJoin is scheduled every 15 minutes and based on your custom pattern ruleset.
 
 ## How to enter the *Debug Mode* in RealmJoin client?
-Click on the RealmJoin tray icon while pressing STRG and Shift on the Keyboard. For a detailed description of the *debug mode* see chapter *troubleshooting*.
+Click on the RealmJoin tray icon while pressing CTRL and Shift on the Keyboard. For a detailed description of the *debug mode* see chapter *troubleshooting*.
 
 ## I accidentally uninstalled software using the Windows Apps control  
 Force reinstall by using the *debug mode*.
@@ -42,10 +42,7 @@ In real world there are typically three reasons to uninstall software:
 * There is a newer version of the software. This is not a reason to use an uninstall command but instead it is a common practice for every software package used by RealmJoin to 'clean' any precursory binaries or settings.
 
 ## Should I use the applications internal auto updater or not?
-TBD
-
-## How can I manage the RJ Tenants?
-TBD
+This highly depends on the application itself as well as your internal processes. For some applications, that might be prone to attacking and are very well maintained by the vendor - like Google Chrome - we recommend to use the applications internal update. For other software, it might be more usefull to include a regular update via RealmJoin into your processes.  
 
 ## Re-Install failed software installations
 RealmJoin tries to redo failed installations on the next three logons. If the installations still fails the package is marked as permanent-failed. To reinstall it at a later time use "Retry base installation" in *debug mode*.
@@ -58,10 +55,13 @@ It is in principle possible to host the RealmJoin
 Please check the [infrastructure requirements](http://docs.realmjoin.com/infrastructure.html#network) for detailed information on the RealmJoin connections.  
 
 ## Does G&K have any recommendations on workflows?  
-TBD
+Yes. Our suggestions can be found in the *workflow* section of this documentation.  
 
 ## What is the recommendation for reporting?  
-Using the [(custom) states](http://docs.realmjoin.com/managing-realmjoin.html#states), it is possible to get virtually any information from each client in JSON-form There are several applications available to evaluate the data, for example PowerBI, which allows to sort and process the data in logical and visuallay pleasing ways.  
+Using the [(custom) states](http://docs.realmjoin.com/managing-realmjoin.html#states), it is possible to get virtually any information from each client in JSON-form There are several applications available to evaluate the data, for example PowerBI, which allows to sort and process the data in logical and visually pleasing ways.  
 
 ## In the future, may RealmJoin packages be used in Intune?  
-If in the future, Microsoft Intune becomes more capable and the installation of software is as versatile and organized as with *RealmJoin*, you may use the existing packages in Intune. Since *RealmJoin* does only need chocolatey and powershell to run the installers, there might be possibilites to use Intune to install software.  
+If in the future, Microsoft Intune becomes more capable and the installation of software is as versatile and organized as with *RealmJoin*, you may use the existing packages in Intune. Since *RealmJoin* does only need chocolatey and powershell to run the installers, there might be possibilities to use Intune to install software.  
+
+## Is RealmJoin GDPR compliant?   
+Glück&Kanja takes data protection very seriously. All contracts with customers and partners take data protection into consideration. 

@@ -131,7 +131,28 @@ The chocolatey extension now parses the argument string and automatically create
 Example parameters: ```"/Key:xx-yy-cc /Language:EN"```  
 Available variables: ```$packParamKey``` with value ```xx-yy-cc``` and ```$packParamLanguage``` with value ```EN```   
 Those variables may now be used for any purposes within the *chocolatyinstall.ps1* script.  
+<!--Full Choco example:
 
+RJ_ChocolateyPackage = glueckkanja-test-choco
+RJ_DeploymentPhase = ManualDeployment
+RJ_InstalledVersion = 1.0.0.1
+RJ_PackageID = glueckkanja-test-choco
+RJ_UserSID = S-1-12-1-0000000000-0000000000-0000000000-000000000
+RJ_Version = 1.0.0.1
+Full user Craft example:
+
+RJ_DeploymentPhase=ManualDeployment
+RJ_InstalledVersion=1.1.1.0
+RJ_PackageID=glueckkanja-test-craft-user
+RJ_UserSID=S-1-12-1-0000000000-0000000000-0000000000-000000000
+RJ_Version=1.1.1.0
+Full system Craft example:
+
+RJ_DeploymentPhase=ManualDeployment
+RJ_InstalledVersion=1.1.1.0
+RJ_PackageID=glueckkanja-test-craft-system
+RJ_UserSID=S-1-12-1-0000000000-0000000000-0000000000-000000000
+RJ_Version=1.1.1.0-->
 ## Craft Package
 ### Edit Package files
 * Delete non-craft items  
@@ -274,7 +295,7 @@ The following variables may be used in the RealmJoin install scripts:
 
 ## GitClone of current repository
 Using the Git tool of choice, the current repository is cloned onto the local client.  
-If an already localy available package is updated, a pull request has to be performed beforehand to avoid overwriting more recent changes.  
+If an already locally available package is updated, a pull request has to be performed beforehand to avoid overwriting more recent changes.  
 
 ## Content Update 
 Replace binaries in */blobs* and/or the code in the *rj_install* or *chocolateyInstall* scripts.
