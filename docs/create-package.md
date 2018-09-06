@@ -149,10 +149,10 @@ RJ_DeploymentPhase=ManualDeployment
 RJ_InstalledVersion=1.1.1.0
 RJ_PackageID=glueckkanja-test-craft-system
 RJ_UserSID=S-1-12-1-0000000000-0000000000-0000000000-000000000
-RJ_Version=1.1.1.0--!>
+RJ_Version=1.1.1.0-->
 
-## Craft Package
-### Edit Package files
+## Craft Package  
+### Edit Package files  
 * Delete non-craft items  
   Delete subfolders `blobs`, `tools` and `usersettings` and file `choco-package.nuspec`.
 * Create ```.gitlab-ci.yml```  
