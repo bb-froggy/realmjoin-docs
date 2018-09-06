@@ -132,7 +132,6 @@ Example parameters: ```"/Key:xx-yy-cc /Language:EN"```
 Available variables: ```$packParamKey``` with value ```xx-yy-cc``` and ```$packParamLanguage``` with value ```EN```   
 Those variables may now be used for any purposes within the *chocolatyinstall.ps1* script.  
 <!--Full Choco example:
-
 RJ_ChocolateyPackage = glueckkanja-test-choco
 RJ_DeploymentPhase = ManualDeployment
 RJ_InstalledVersion = 1.0.0.1
@@ -140,19 +139,18 @@ RJ_PackageID = glueckkanja-test-choco
 RJ_UserSID = S-1-12-1-0000000000-0000000000-0000000000-000000000
 RJ_Version = 1.0.0.1
 Full user Craft example:
-
 RJ_DeploymentPhase=ManualDeployment
 RJ_InstalledVersion=1.1.1.0
 RJ_PackageID=glueckkanja-test-craft-user
 RJ_UserSID=S-1-12-1-0000000000-0000000000-0000000000-000000000
 RJ_Version=1.1.1.0
 Full system Craft example:
-
 RJ_DeploymentPhase=ManualDeployment
 RJ_InstalledVersion=1.1.1.0
 RJ_PackageID=glueckkanja-test-craft-system
 RJ_UserSID=S-1-12-1-0000000000-0000000000-0000000000-000000000
-RJ_Version=1.1.1.0-->
+RJ_Version=1.1.1.0--!>
+
 ## Craft Package
 ### Edit Package files
 * Delete non-craft items  
