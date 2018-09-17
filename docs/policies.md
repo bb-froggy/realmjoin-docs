@@ -29,8 +29,8 @@ It is possible to force BitLocker encryption for OS volumes. The configuration f
 For virtual machines the encryption is only enforced, if the virtual machine variable ```$env:RjDisableVmDetection=1``` is set. 
 
 ### BitLocker recovery key
-If the client device is Azure AD joined, RealmJoin uploads the BitLocker recovery key to Azure AD. If the upload is not successfull in the first try, it will be retried. If the upload can not be performed successfully, the RealmJoin rollout failed. 
-In case of a *not-AAD-joined* device, the BitLocker recovery key is not secured. 
+If the client device is Azure AD joined, RealmJoin uploads the BitLocker recovery key to Azure AD. If the upload is not successfull in the first try, it will be retried. If the upload cannot be performed successfully, the RealmJoin rollout fails. 
+In case of a *not-AAD-joined* device, the BitLocker recovery key is not saved anywhere. 
 
 ## Domain Passwort expiry
 RealmJoin uses the Azure AD attribute ```msDS-UserPasswordExpiryTimeComputed``` to check if the user passwort is expired. 
