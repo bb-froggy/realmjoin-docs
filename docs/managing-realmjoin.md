@@ -215,7 +215,7 @@ Options:
 - Staggered Deployment
   * It is possible to use staggered deployment and distribute the risk of updating a software if desired. The two parameters needed are the target date and the amount of days over which the update should take place. 
     The clients are not equaly distributed in the deplyoment groups, with fewer deployments in the first part of the timeline and the majority on the last. 
-    Deployed package versions for each can be found in the user details of the package or the deployed package details of the users.
+    Deployed package versions can be found in the user details of the package or the deployed package details of the users.
     Example distribution for n = 10000 and 8 days update time:   
       
     ![RJ autoupdate_sim](./media/rj-autoupdate_sim.png)   
