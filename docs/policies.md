@@ -22,15 +22,15 @@ This is effectively *DownloadMode=2*. Opting-out of setting the groupID via *Rea
   
 For more on WUDO see the [Microsoft WUDO documentation (DE)](https://docs.microsoft.com/de-de/windows/deployment/update/waas-delivery-optimization).
 
-## Bitlocker
-### Bitlocker enforcement
+## BitLocker
+### BitLocker enforcement
 
-It is possible to force Bitlocker encryption for OS volumes. The configuration file (see chapter *Policies*) allows to set the switch *BitlockerEnabled* to true. If the device is equipped with a *ready state* TPM chip the encryption is activated. To allow the Bitlocker enforcement, the registry key ```HKLM\SYSTEM\CurrentControlSet\Control\BitLocker:PreventDeviceEncryption``` is set to false. 
+It is possible to force BitLocker encryption for OS volumes. The configuration file (see chapter *Policies*) allows to set the switch *BitLockerEnabled* to true. If the device is equipped with a *ready state* TPM chip the encryption is activated. To allow the BitLocker enforcement, the registry key ```HKLM\SYSTEM\CurrentControlSet\Control\BitLocker:PreventDeviceEncryption``` is set to false. 
 For virtual machines the encryption is only enforced, if the virtual machine variable ```$env:RjDisableVmDetection=1``` is set. 
 
-### Bitlocker recovery key
-If the client device is Azure AD joined, RealmJoin uploads the Bitlocker recovery key to Azure AD. If the upload is not successfull in the first try, it will be retried. If the upload can not be performed successfully, the RealmJoin rollout failed. 
-In case of a *not-AAD-joined* device, the Bitlocker recovery key is not secured. 
+### BitLocker recovery key
+If the client device is Azure AD joined, RealmJoin uploads the BitLocker recovery key to Azure AD. If the upload is not successfull in the first try, it will be retried. If the upload can not be performed successfully, the RealmJoin rollout failed. 
+In case of a *not-AAD-joined* device, the BitLocker recovery key is not secured. 
 
 ## Domain Passwort expiry
 RealmJoin uses the Azure AD attribute ```msDS-UserPasswordExpiryTimeComputed``` to check if the user passwort is expired. 
@@ -158,10 +158,10 @@ Comments on the individuall settings in *italics*
   
   * "RequireSecurityFeatures": 
     * "WinVersion": "Win7",
-    * "BitlockerEnabled": null,  
-         *If set to "true", Bitlocker will be enforced if the device has a TPM.* 
-         *The following key value is changed to allow Bitlocker force: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker; Value: PreventDeviceEncryption set to null/false*
-         *The Bitlocker key is synced to AAD if the client is AAD joined, otherwise, no backup will be made.*
+    * "BitLockerEnabled": null,  
+         *If set to "true", BitLocker will be enforced if the device has a TPM.* 
+         *The following key value is changed to allow BitLocker force: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\BitLocker; Value: PreventDeviceEncryption set to null/false*
+         *The BitLocker key is synced to AAD if the client is AAD joined, otherwise, no backup will be made.*
     * "FirewallEnabled": true,
     * "AvEnabled": null,
     * "EnvironmentCheck": null  
