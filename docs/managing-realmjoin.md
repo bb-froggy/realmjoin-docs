@@ -250,7 +250,7 @@ There are four options to override the package configuration when assigning, if 
   
 ### AppStore
 ![RJ rj-ac-statesicon](./media/rj-ac-storeicon.png)  
-Glück&Kanja maintaince a ever-expanding library of ready-to-go applications, that might instantly be added to the list of available packages and assigend to groups or users. For details, please check the [AppStore section](http://docs.realmjoin.com/requestsoftware.html#appstore) in the [application sources chapter](http://docs.realmjoin.com/requestsoftware.html).  
+Glück & Kanja maintains an ever-expanding library of ready-to-go applications that might instantly be added to the list of available packages and assigned to groups or users. For details, please check the [AppStore section](http://docs.realmjoin.com/requestsoftware.html#appstore) in the [application sources chapter](http://docs.realmjoin.com/requestsoftware.html).  
 
 ### States
 ![RJ rj-ac-statesicon](./media/rj-ac-statesicon.png)   
