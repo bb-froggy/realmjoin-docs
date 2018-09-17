@@ -37,7 +37,7 @@ RealmJoin uses the Azure AD attribute ```msDS-UserPasswordExpiryTimeComputed``` 
 
 ## Other Configuration Settings
 
-Comments on the individuall settings in *italics*  
+Comments on the individual settings in *italics*  
   
   
 - "Environment"
@@ -147,7 +147,7 @@ Comments on the individuall settings in *italics*
 
 ### Policies  
 
-Comments on the individuall settings in *italics*  
+Comments on the individual settings in *italics*  
   
   
 - "Policies": 
