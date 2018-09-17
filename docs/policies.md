@@ -1,10 +1,10 @@
 # Settings and Policies
 
-After installing the RealmJoin client on the device, a configuration is saved locally. This configuration is encrypted and can not be modified by the user. RealmJoin compares the hash value of the local configuration  to the hash value of the configuration for this user on the backend. If the hash deviats, the confifguration is re-synced from the server to the local device. The configuration is signed with the servers public key, therefore the local RealmJoin client can validate the configuration. 
+After installing the RealmJoin client on the device, a configuration is saved locally. This configuration is encrypted and cannot be modified by the user. RealmJoin compares the hash value of the local configuration to the hash value of the configuration for this user on the backend. If the hash deviates, the configuration is re-synced from the server to the local device. The configuration is signed with the server's public key, therefore the local RealmJoin client can validate the configuration. 
 
 ## Delivery Optimization for Windows Update
 
-*Windows Update Delivery Optimization*, or *WUDO* is a self organised solution for distributed caches for Windows Updates. In default mode, WUDO identifies peers as part of a WAN based on their external IP. In case of streched out WANs with just one breakout point, this leads to a high network load and a bottleneck. 
+*Windows Update Delivery Optimization* (or *WUDO*) is a self-organised solution for distributed caches for Windows Updates. In default mode, WUDO identifies peers as part of a WAN based on their external IP. In case of streched out WANs with just one breakout point, this leads to a high network load and a bottleneck. 
 To improve the handling, Microsoft Intune can be used to set WUDO to *DownloadMode=2*, where peers are grouped by a groupID. The ID (GUID) is set for each device using network fingerprinting and the MAC address of the default gateway and therefore creating a more localized group. RealmJoin can be used to set the groupID for each client.
 
 The following registry key is set to define the DOGroupID:  
@@ -18,10 +18,9 @@ Remember to set the Download Mode to Group via Windows Update settings in Intune
 ```
 Delivery optimization download mode: HTTP blended with peering across private group
 ```
-This is effectively *DownloadMode=2*.  
-Opting-out of setting the groupID via *RealmJoin* can be done by setting the [Policies.SetNetworkOptimizationID](http://docs.realmjoin.com/policies.html#policies) to *false*.  
+This is effectively *DownloadMode=2*. Opting-out of setting the groupID via *RealmJoin* can be done by setting the [Policies.SetNetworkOptimizationID](http://docs.realmjoin.com/policies.html#policies) to *false*.  
   
-For a more on WUDO see the [Microsoft WUDO documentation (DE)](https://docs.microsoft.com/de-de/windows/deployment/update/waas-delivery-optimization).
+For more on WUDO see the [Microsoft WUDO documentation (DE)](https://docs.microsoft.com/de-de/windows/deployment/update/waas-delivery-optimization).
 
 ## Bitlocker
 ### Bitlocker enforcement
