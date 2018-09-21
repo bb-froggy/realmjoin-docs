@@ -57,21 +57,17 @@ Comments on the individuall settings in *italics*
 - "DomainConnect"
   * "Domain": "glueckkanja.net",
   * "NetBIOS": "GLUECKKANJA",
-  * "CredentialName": "RealmJoin (domain)",
   * "CheckInterval": "01:00"  
     
  - "CredentialManager":  
      *Allows to configure WAN/LAN connections and manage authentication*
   * "Type": "wlan",
     * "Target": "GKEnterprise",
-    * "CredentialName": "RealmJoin (domain)"
   * "Type": "ntlm",
     * "Target": "identity.glueckkanja.net"
-    * "CredentialName": "RealmJoin (domain)"
   * "Type": "smb",
     * "Target": "files.glueckkanja.net",
     * "Share": "Filestore"
-    * "CredentialName": "RealmJoin (domain)"
       
 - "IpSec": 
    * "Rules":
