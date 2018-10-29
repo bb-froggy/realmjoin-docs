@@ -196,31 +196,44 @@ Package A, order 1. Package B, order 101 and dependend on Package C, order 100. 
 - Chocolatey Package ID (chocolatey packages only)
   * Exact chocolatey repository name of the package to be installed. The combination of name and version is used ensure that the correct package is installed. Usually similar to the internal RealmJoin *ID*.
 - Location (craft only)
-  * Location of the package on the backend. 
+  * Location of the package on the backend.   
 - Hash (craft only)
-  * Hash of the package
+  * Hash of the package  
 - Scope
-  * Craft packages might be installed in the *user* or *system* scope.
+  * Craft packages might be installed in the *user* or *system* scope.  
+
 Options:  
 - Availability
   * *Allow Reinstall*: This option allows the client user to reinstall and therefore override their current installation of the package. In case of *craft* type packages, the *craft* scripts are re-run.  
   * *Allow Background Install*: The software package may be installed outside of the *black screen* installation, thus not blocking the access to the clients desktop and software.  
-  * *Pre-Release*: The pre-release flag as two distintive features within RealmJoin. It allows a) to add a package with ID and version similar to another existing package in the portal and b), if assigned to a group or user, overwrites all other packages with the same ID assigned to the group or user.  
+  * *Pre-Release*: The pre-release flag as two distinctive features within RealmJoin. It allows a) to add a package with ID and version similar to another existing package in the portal and b), if assigned to a group or user, overwrites all other packages with the same ID assigned to the group or user.  
   Those features are usually used for the testing of new packages or updates of existing one: The test-groups or test-users get the pre-release version of a package assigned during the testing.  
-  *Note*: Under normal circumstance it is highly adviced to prevent a normal user having the same package assigned more than once.   
+  *Note*: Under normal circumstance it is highly advised to prevent a normal user having the same package assigned more than once.   
   The pre-release flagged package is visually highlighted in the portal's package list with an lightning symbol behind the name.  
-  * *Require Intune Compliance (BETA)*: The package is installed, as soon as RealmJoin is able to verify via the GraphAPI that the machine is considered compliant. This might stop the rollout for some time. The installation of the package, and therefore all other mandatory packages with higher order numbers that are queued to beinstalled afterwards, is resumed when the client is compliant. 
+  * *Require Intune Compliance (BETA)*: The package is installed, as soon as RealmJoin is able to verify via the GraphAPI that the machine is considered compliant. This might stop the rollout for some time. The installation of the package, and therefore all other mandatory packages with higher order numbers that are queued to be installed afterwards, is resumed when the client is compliant. 
 - Auto Upgrade
-  * The *Auto Upgrade* feature may be enabled to automatically update the package if a new version is assigned in RealmJoin. If not choosen, the user has to manually select the package to be upgraded. The automatic upgrade does apply to mandatory and non-mandatory packages.  
+  * The *Auto Upgrade* feature may be enabled to automatically update the package if a new version is assigned in RealmJoin. If not chosen, the user has to manually select the package to be upgraded. The automatic upgrade does apply to mandatory and non-mandatory packages.  
 - Staggered Deployment
   * It is possible to use staggered deployment and distribute the risk of updating a software if desired. The two parameters needed are the target date and the amount of days over which the update should take place. 
-    The clients are not equaly distributed in the deplyoment groups, with fewer deployments in the first part of the timeline and the majority on the last. 
+    The clients are not equally distributed in the deployment groups, with fewer deployments in the first part of the timeline and the majority on the last. 
     Deployed package versions for each can be found in the user details of the package or the deployed package details of the users.
     Example distribution for n = 10000 and 8 days update time:   
       
     ![RJ autoupdate_sim](./media/rj-autoupdate_sim.png)   
   
-**NOTE:** Do not edit assigned packages in the way, that you change the package name or ID (version number is fine). If you need a package in a different flavour, please add a new package and delete the obsolete one.  
+**NOTE:** Do not edit assigned packages in the way, that you change the package name or ID (version number is fine). If you need a package in a different flavour, please add a new package and delete the obsolete one.    
+
+#### Advanced Options  
+With RealmJoin version 4.13 a new feature was published: the support of multi user devices. To represent these scenarios within the RealmJoin, advanced options are available when configuring a package. 
+
+![RJ advanced options](./media/rj-assign-advanced.png)   
+To access this plane, press the *Show Advanced Options* button on the right. All new options will be available:  
+- *Includes User Script*  
+  * In the latest generation of packages, it is not necessary anymore to create a second package for the deployment of corresponding user settings, but such a script can be part of the main package. If this is the case, it will be run automatically if this options is checked. Parameters can be transferred via arguments as established.  
+- *Main Script Restrictions*: Users
+  * This options allows the RealmJoin administrator to define, if this package should be run other for just the primary device user (default) or also/exclusively secondary users.  
+- *Main Script Restrictions*: Phases  
+  *  This options allows the RealmJoin administrator to define, if this package should be run during the initial provisioning of the device or during other phases.  
 
 #### Duplicate a package 
 Whenever a package with identical content is needed multiple times for the same user or group, the RealmJoin portal offers the possibility to use the same package multiple times while preventing conflicting installations.  
@@ -236,32 +249,34 @@ A possible scenario may be: One user group needs the same package with different
 
 Similar to the profile management with Microsoft Azure AD, packages can be assigned to groups and individual users. To assign a package, enter the group or user detail for the package in the package control panel. 
 There are four options to override the package configuration when assigning, if in conflict with the package settings, the assignment settings override: 
-- Availabilty
+- Availability
   * Packages can be labeled as *mandatory* to make the software package non-optional.
   * Packages might also be labeled as *hidden*, making them invisible in the RealmJoin client context menu. This might be used for mandatory software or for multiple level dependencies, when the user should only be able to install the highest hierachie and the underlying packages should be installed automatically.  
 - Auto Upgrade
   * In addition to the configuration of the package itself (see section above for the feature description), *auto upgrade* can be enabled for the selected group / user individually. 
 - Staggered Deployment
-  * In addition to the configuration of the package itself (see section above for the feature description), *stagered deployment* can be enabled for the selected group / user individually. 
+  * In addition to the configuration of the package itself (see section above for the feature description), *staggered deployment* can be enabled for the selected group / user individually. 
 - Args
-  * In addition to the configuration of the package itself (see section above for the feature description), *Args* can be set for the selected group / user individually.   
+  * In addition to the configuration of the package itself (see section above for the feature description), *Args* can be set for the selected group / user individually. 
+- Advanced Options  
+  * See the section [advanced options in the "Add Packages" section](http://docs.realmjoin.com/managing-realmjoin.html#advanced-options). 
     
 ![RJ rj-ac-packageoverrides](./media/rj-ac-packageoverrides.png)    
   
 ### AppStore
 ![RJ rj-ac-statesicon](./media/rj-ac-storeicon.png)  
-Glück&Kanja maintaince a ever-expanding library of ready-to-go applications, that might instantly be added to the list of available packages and assigend to groups or users. For details, please check the [AppStore section](http://docs.realmjoin.com/requestsoftware.html#appstore) in the [application sources chapter](http://docs.realmjoin.com/requestsoftware.html).  
+Glück&Kanja maintenance a ever-expanding library of ready-to-go applications, that might instantly be added to the list of available packages and assigned to groups or users. For details, please check the [AppStore section](http://docs.realmjoin.com/requestsoftware.html#appstore) in the [application sources chapter](http://docs.realmjoin.com/requestsoftware.html).  
 
 ### States
 ![RJ rj-ac-statesicon](./media/rj-ac-statesicon.png)   
-The *states* detail of the client or user control panel provides a list of the devices of the user and how frequent data was upstreamed. 
+The *states* detail of the client or user control panel provides a list of the devices of the user and how frequent data was up-streamed. 
 The *Branch Cache* column indicates, how much this client has contributed to the package distribution over the *Branch Cache* feature (see chapter *Infrastructure*).
 Selecting the white arrow in the green circle gives away the complete upstream file.
 It contains all the information about the device, OS, Defender Pattern States and installed packages that are transfered to the backend, where some of it is evaluated.   
   
 ![RJ rj-ac-states](./media/rj-ac-states.png)  
 
-It is possible to extend the states by custom states. See [Custom States](http://docs.realmjoin.com/appendix.html#a-name-customstates-a-custom-states) for details. 
+It is possible to extend the states by custom states. See [Custom States](http://docs.realmjoin.com/appendix.html#a-name-customstates-a-custom-states) for details.  
 ### Settings
 #### List of states
 
@@ -306,6 +321,39 @@ It is possible to extend the states by custom states. See [Custom States](http:/
   },
   
 ```
+  |   Key	| Value  	|  SubKey 	|  SubValue 	|  | |
+  |   ---	|  --- 	  |   ---	    |   ---	      | --- |--- |
+  |  "Type": 	|  "win", 	|   	|   	|   	| |
+  |   "ClientID":	|   "75cf4d56-0676-ae02-73ad-a1af9b89f269",	|   	|   	|  | |
+  |    "VersionTray": 	|    "4.9.15-canary+14869.bf207295",	|   	|   	|   | |
+  |   "VersionService":	|   "4.9.15-canary+14869.bf207295", 	|   	|   	|   | |
+  |    "OperatingSystem":	|   { 	|   	|   	|  | |
+  |   	|   	|   "Name": 	|  "Windows 10 Enterprise", 	|   | |
+  |   	|   	|   "Edition":	|  "Enterprise", 	|   | |
+  |   	|   	|   "CompositionEdition":	|  "Enterprise", 	|   | |
+  |   	|   	|   "Version": 	|   "10.0.14393.0",	|   | |
+  |   	|   	|  "ReleaseID": 	|   "1607",	|   | |
+  |   	|   	|  "BuildBranch": 	|  "rs1_release", 	|   | |
+  |   	|   	|  "Build": 	|   14393, 	|   	| |
+  |   	|   	|  "BuildRevision": 	|   0, 	|   | |
+  |   	|   	|  "InstallDate": 	|   "2017-08-16T12:53:01Z", 	|  	| |
+  |   	|   	|  "Bits": 	|   64,	|   | |
+  |   	|   	|  "Activated": 	|   false,	|   | |
+  |   	| },  	|   	|   	|   | |
+  | "MachineName":  	| "DESKTOP-VH66R7X",  	|   	|   	|  | | 
+  | "DomainName": 	| "LEGACYDOMAIN",  	|   	|   	|   | |
+  | "JoinedDomainName": 	| "legacydomain.local",  	|   	|   	|   | |
+  | "HostName": 	| "DESKTOP-0815VHX",  	|   	|   	|   | |
+  | "Timestamp": 	| "2017-09-14T07:07:39.2543111+00:00",  	|   	|   	|   | |
+  | "User": 	| {  	|   	|   	|   | |
+  |  	|   	|   "LocalName":	|   "JONDOE",	|   | |
+  |  	|   	|   "LocalLogonAt":	|  "2017-09-14T07:07:06.3167385+00:00", 	|   | |
+  |  	|   	|   "IsAdministrator":	|  false 	|   | |
+  |  	|  }, 	|  	|   	|   | |
+  | "Firewall": 	| { 	|  	|   	|   | |
+  |  	|  	| "ProfileStates": 	| [  <br> "ON",<br> "ON",<br> "ON"<br>	]|   | |
+  | 	| }, 	|  	|   	|   | |
+
 > Antivirus information and patterns
 ```JSON
   "AvProducts": {
@@ -351,11 +399,58 @@ It is possible to extend the states by custom states. See [Custom States](http:/
       }
     ]
   },
+```
+
+   "AvProducts": {  
+
+  |   Key	| Value  	|  SubKey 	|  SubValue 	|       |         |
+  |   ---	|  --- 	  |   ---	    |   ---	      | ---    |---     |
+  |   "Installed": 	| [ |   	|   	|   	| |
+  |   "Name": 	| "Windows Defender", |   	|   	|   	| |
+  |   "State":	|   397568,	|   	|   	|  | |
+  |    "Details": 	|   {	|   	|   	|   | |
+  |   	|    "AMEngineVersion": 	|   "1.1.14003.0",	|   	|   | |
+  |   	|    "AMProductVersion": 	|  "4.10.14393.0",	|   	|   | |
+  |   	|    "AMServiceEnabled": 	|  true,	|   	|   | |
+  |   	|    "AMServiceVersion": 	|   "4.10.14393.0",	|   	|   | |
+  |   	|    "AntispywareEnabled": 	|   true,	|   	|   | |
+  |   	|    "AntispywareSignatureAge": 	|    29,	|   	|   | |
+  |   	|    "AntispywareSignatureLastUpdated": 	|   "2017-08-15T14:37:45+00:00",	|   	|   | |
+  |   	|    "AntispywareSignatureVersion": 	| "1.249.1077.0",	|   	|   | |
+  |   	|    "AntivirusEnabled": 	|   true,	|   	|   | |
+  |   	|    "AntivirusSignatureAge": 	|   29,	|   	|   | |
+  |   	|    "AntivirusSignatureLastUpdated": 	|    "2017-08-15T14:37:46+00:00",	|   	|   | |
+  |   	|    "AntivirusSignatureVersion": 	|  "1.249.1077.0",	|   	|   | |
+  |   	|    "BehaviorMonitorEnabled": 	|   true,	|   	|   | |
+  |   	|    "ComputerID": 	|   "829DE85B-7B39-4093-85F1-6A62AC65DD",|   	|   | |
+  |   	|    "ComputerState": 	|   0,	|   	|   | |
+  |   	|    "FullScanAge": 	|    4294967295,	|   	|   | |
+  |   	|    "FullScanEndTime": 	|   null,	|   	|   | |
+  |   	|    "FullScanStartTime": 	|   null,	|   	|   | |
+  |   	|    "IoavProtectionEnabled": 	|  true,	|   	|   | |
+  |   	|    "LastFullScanSource": 	|   "1.1.14003.0",	|   	|   | |
+  |   	|    "NISEnabled": 	|   true,	|   	|   | |
+  |   	|    "NISEngineVersion": 	|  "2.1.13804.0",	|   	|   | |
+  |   	|    "NISSignatureAge": 	|  0,	|   	|   | |
+  |   	|    "NISSignatureLastUpdated": 	|   "2017-09-14T07:06:25.604+00:00",	|   	|   | |
+  |   	|    "NISSignatureVersion": 	|    "117.8.0.0",	|   	|   | |
+  |   	|    "OnAccessProtectionEnabled": 	|  true,	|   	|   | |
+  |   	|    "QuickScanAge": 	|    4294967295,	|   	|   | |
+  |   	|    "QuickScanEndTime": 	|    null,	|   	|   | |
+  |   	|    "QuickScanStartTime": 	|    null,	|   	|   | |
+  |   	|    "RealTimeProtectionEnabled": 	|  true,|   	|   | |
+  |   	|    "RealTimeScanDirection": 	|  0,	|   	|   | |
+  |   	|    "PSComputerName": 	|    null	|   	|   | |
+  |   	|      }	|   	|   	|   | |
+  |   	|      }	|   	|   	|   | |
+  |   	|     ]	|   	|   	|   | |
+
   > Bitlocker status
+```JSON
   "Bitlocker": {
     "DriveStates": [
       {
-        "ComputerName": "DESKTOP-VH66R7X",
+        "ComputerName": "DESKTOP-0815VHX",
         "MountPoint": "C:",
         "EncryptionMethod": 0,
         "AutoUnlockEnabled": null,
@@ -383,7 +478,30 @@ It is possible to extend the states by custom states. See [Custom States](http:/
       "DeferFeatureUpdatesPeriodInDays": 60
     }
   },
-  > BranchCache version
+  ```  
+  "Bitlocker": {  
+  |   Key	| Value  	|  SubKey 	|  SubValue 	|  | |
+  |   ---	|  --- 	  |   ---	    |   ---	      | --- |--- |
+  |  "DriveStates": 	|  [ 	|   	|   	|   	| |
+  |  	|  { 	|   	|   	|   	| |
+  |  	|  "ComputerName": 	| "DESKTOP-0815VHX", 	|   	|   	| |
+  |  	|  "MountPoint": 	|   "C:",	|   	|   	| |
+  |  	|  "EncryptionMethod": 	|   0,	|   	|   	| |
+  |  	|  "AutoUnlockEnabled": 	|  null,  	|   	|   	| |
+  |  	|  "AutoUnlockKeyStored": 	|   null,	|   	|   	| |
+  |  	|  "MetadataVersion": 	|  0, 	|   	|   	| |
+  |  	|  "VolumeStatus": 	|  0, 	|   	|   	| |
+  |  	|  "ProtectionStatus": 	|  0, 	|   	|   	| |
+  |  	|  "LockStatus": 	|   0,	|   	|   	| |
+  |  	|  "EncryptionPercentage": 	|  0, 	|   	|   	| |
+  |  	|  "WipePercentage": 	|   0,	|   	|   	| |
+  |  	|  "VolumeType": 	|   0,	|   	|   	| |
+  |  	|  "CapacityGB": 	|   59.50976, 	|   	|   	| |
+  |  	|  "KeyProtector": 	|   []	|   	|   	| |
+
+
+  > BranchCache and Software 
+  ```JSON
   "BranchCache": {
     "DataCacheCurrentActiveCacheSize": 1424903614,
     "CurrentClientMode": "DistributedCache"
