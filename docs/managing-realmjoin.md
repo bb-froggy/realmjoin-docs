@@ -319,40 +319,40 @@ It is possible to extend the states by custom states. See [Custom States](http:/
       "ON"
     ]
   },
-  
 ```
-  |   Key	| Value  	|  SubKey 	|  SubValue 	|  | |
-  |   ---	|  --- 	  |   ---	    |   ---	      | --- |--- |
-  |  "Type": 	|  "win", 	|   	|   	|   	| |
-  |   "ClientID":	|   "75cf4d56-0676-ae02-73ad-a1af9b89f269",	|   	|   	|  | |
-  |    "VersionTray": 	|    "4.9.15-canary+14869.bf207295",	|   	|   	|   | |
-  |   "VersionService":	|   "4.9.15-canary+14869.bf207295", 	|   	|   	|   | |
-  |    "OperatingSystem":	|   { 	|   	|   	|  | |
-  |   	|   	|   "Name": 	|  "Windows 10 Enterprise", 	|   | |
-  |   	|   	|   "Edition":	|  "Enterprise", 	|   | |
-  |   	|   	|   "CompositionEdition":	|  "Enterprise", 	|   | |
-  |   	|   	|   "Version": 	|   "10.0.14393.0",	|   | |
-  |   	|   	|  "ReleaseID": 	|   "1607",	|   | |
-  |   	|   	|  "BuildBranch": 	|  "rs1_release", 	|   | |
-  |   	|   	|  "Build": 	|   14393, 	|   	| |
-  |   	|   	|  "BuildRevision": 	|   0, 	|   | |
-  |   	|   	|  "InstallDate": 	|   "2017-08-16T12:53:01Z", 	|  	| |
-  |   	|   	|  "Bits": 	|   64,	|   | |
-  |   	|   	|  "Activated": 	|   false,	|   | |
-  |   	| },  	|   	|   	|   | |
-  | "MachineName":  	| "DESKTOP-VH66R7X",  	|   	|   	|  | | 
-  | "DomainName": 	| "LEGACYDOMAIN",  	|   	|   	|   | |
-  | "JoinedDomainName": 	| "legacydomain.local",  	|   	|   	|   | |
-  | "HostName": 	| "DESKTOP-0815VHX",  	|   	|   	|   | |
-  | "Timestamp": 	| "2017-09-14T07:07:39.2543111+00:00",  	|   	|   	|   | |
-  | "User": 	| {  	|   	|   	|   | |
-  |  	|   	|   "LocalName":	|   "JONDOE",	|   | |
-  |  	|   	|   "LocalLogonAt":	|  "2017-09-14T07:07:06.3167385+00:00", 	|   | |
-  |  	|   	|   "IsAdministrator":	|  false 	|   | |
-  |  	|  }, 	|  	|   	|   | |
-  | "Firewall": 	| { 	|  	|   	|   | |
-  |  	|  	| "ProfileStates": 	| [  <br> "ON",<br> "ON",<br> "ON"<br>	]|   | |
-  | 	| }, 	|  	|   	|   | |
+
+  |   Key	| Value  	|  SubKey 	|  SubValue 	|  
+  |   ---	|  --- 	  |   ---	    |   ---	      |
+  |  "Type": 	|  "win", 	|   	|   	|   	
+  |   "ClientID":	|   "75cf4d56-0676-ae02-73ad-a1af9b89f269",	|   	|   	|  
+  |    "VersionTray": 	|    "4.9.15-canary+14869.bf207295",	|   	|   	|   
+  |   "VersionService":	|   "4.9.15-canary+14869.bf207295", 	|   	|   	|   
+  |    "OperatingSystem":	|   { 	|   	|   	|  
+  |   	|   	|   "Name": 	|  "Windows 10 Enterprise", 	|   
+  |   	|   	|   "Edition":	|  "Enterprise", 	|   
+  |   	|   	|   "CompositionEdition":	|  "Enterprise", 	|   
+  |   	|   	|   "Version": 	|   "10.0.14393.0",	|   
+  |   	|   	|  "ReleaseID": 	|   "1607",	|   
+  |   	|   	|  "BuildBranch": 	|  "rs1_release", 	|   
+  |   	|   	|  "Build": 	|   14393, 	|   	
+  |   	|   	|  "BuildRevision": 	|   0, 	|   
+  |   	|   	|  "InstallDate": 	|   "2017-08-16T12:53:01Z", 	|  	
+  |   	|   	|  "Bits": 	|   64,	|   
+  |   	|   	|  "Activated": 	|   false,	|   
+  |   	| },  	|   	|   	|   
+  | "MachineName":  	| "DESKTOP-VH66R7X",  	|   	|   	|
+  | "DomainName": 	| "LEGACYDOMAIN",  	|   	|   	|   
+  | "JoinedDomainName": 	| "legacydomain.local",  	|   	|   	|   
+  | "HostName": 	| "DESKTOP-0815VHX",  	|   	|   	|   
+  | "Timestamp": 	| "2017-09-14T07:07:39.2543111+00:00",  	|   	|   	|   
+  | "User": 	| {  	|   	|   	|   
+  |  	|   	|   "LocalName":	|   "JONDOE",	|   
+  |  	|   	|   "LocalLogonAt":	|  "2017-09-14T07:07:06.3167385+00:00", 	|   
+  |  	|   	|   "IsAdministrator":	|  false 	|   
+  |  	|  }, 	|  	|   	|   
+  | "Firewall": 	| { 	|  	|   	|   
+  |  	|  	| "ProfileStates": 	| [  <br> "ON",<br> "ON",<br> "ON"<br>	]|   
+  | 	| }, 	|  	|   	|   
 
 > Antivirus information and patterns
 ```JSON
