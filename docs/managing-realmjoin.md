@@ -96,7 +96,7 @@ Configurable group settings and policies. See section *Policies* for a list of i
 
 ### Groups
 ![RJ rj-ac-groupsicon](./media/rj-ac-groupsicon.png)  
-All in this tenant registered user groups. RealmJoin syncronizes groups from Azure Active Directory into the RealmJoin backend. The details on the right contain users within the individual group, packages that are assigned to a group as well as group settings. Since not all users in Azure AD might be equipped with RealmJoin, only a specified range of groups are transfered into RealmJoin (depending on the group name.....). The groups can not be added or altered within RealmJoin, therefore the group naming conventions have to be established in advance.
+All in this tenant registered user groups. RealmJoin synchronizes groups from Azure Active Directory into the RealmJoin backend. The details on the right contain users within the individual group, packages that are assigned to a group as well as group settings. Since not all users in Azure AD might be equipped with RealmJoin, only a specified range of groups are transfered into RealmJoin (depending on the group name.....). The groups can not be added or altered within RealmJoin, therefore the group naming conventions have to be established in advance.
    
 While there are not strict naming pattern requirements in RealmJoin, we recommend the following convention:
   
