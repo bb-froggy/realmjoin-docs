@@ -17,12 +17,15 @@ Yes. RealmJoin offers packaging-as-a-service but you may also check in ready-to-
 RealmJoin v4 is only available for Windows 10.
 
 ## I do not see my groups in the Admin Console
-The sync between Azure AD and RealmJoin is scheduled every 15 minutes and based on your custom pattern ruleset.
+The sync between Azure AD and RealmJoin is scheduled every 15 minutes and based on your custom pattern rule set.
+
+## Does RealmJoin support *Multi User Devices*? 
+Yes, starting with version 4.13 RealmJoin allows applications to be installed not only for the primary device user but also secondary users.  
 
 ## How to enter the *Debug Mode* in RealmJoin client?
 Click on the RealmJoin tray icon while pressing CTRL and Shift on the Keyboard. For a detailed description of the *debug mode* see chapter *troubleshooting*.
 
-## I accidentally uninstalled software using the Windows Apps control  
+## I accidentally uninstalled Realmjoin-deployed software using the Windows Apps control  
 Force reinstall by using the *debug mode*.
 
 ## Can I get rid of Bloatware using RealmJoin?
@@ -42,7 +45,7 @@ In real world there are typically three reasons to uninstall software:
 * There is a newer version of the software. This is not a reason to use an uninstall command but instead it is a common practice for every software package used by RealmJoin to 'clean' any precursory binaries or settings.
 
 ## Should I use the applications internal auto updater or not?
-This highly depends on the application itself as well as your internal processes. For some applications, that might be prone to attacking and are very well maintained by the vendor - like Google Chrome - we recommend to use the applications internal update. For other software, it might be more usefull to include a regular update via RealmJoin into your processes.  
+This highly depends on the application itself as well as your internal processes. For some applications, that might be prone to attacking and are very well maintained by the vendor - like Google Chrome - we recommend to use the applications internal update. For other software, it might be more useful to include a regular update via RealmJoin into your processes.  
 
 ## Re-Install failed software installations
 RealmJoin tries to redo failed installations on the next three logons. If the installations still fails the package is marked as permanent-failed. To reinstall it at a later time use "Retry base installation" in *debug mode*.
