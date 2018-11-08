@@ -52,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'RealmJoin'
-copyright = u'2017, glueckkanja.com'
+copyright = u'2018, glueckkanja.com'
 author = u'glueckkanja.com'
 
 # The version info for the project you're documenting, acts as replacement for
