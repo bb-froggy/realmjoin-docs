@@ -130,9 +130,9 @@ The synchronization time schedule and the prefixes that are taken into account c
 Configurable group settings and policies. See chapter [policies](http://docs.realmjoin.com/policies.html#other-configuration-settings) for a list of implemented features. To change a policy, you have to first select the group, and then select the group settings number on the right. This will open the group settings web page with a filter on the selected group, allowing to create policies for this group. To configure a policy, add the tree path in the *key* field and the setting in the *value* section, e.g.:  
 ```Policies.SetCurrentUserAdministrator```  
 ```true```  
-to set a user or the users within the group to local administrators or  
-```WebLinks```  
-``
+to set a user or the users within the group to local administrators or set Key ```WebLinks``` with the following Value:
+
+```JSON
 [
   {
     "Name": "RealmJoin",
@@ -144,8 +144,10 @@ to set a user or the users within the group to local administrators or
     "Target": "https://google.com",
     "Platform": "any"
   }
-``   
-to create new links available in the *RealmJoin* client tray. The created settings overwrite all default values. 
+]
+```
+
+This creates new links available in the *RealmJoin* client tray. The created settings overwrite all default values. 
 
 ### Software Packages
 ![RJ rj-ac-packagesicon](./media/rj-ac-packagesicon.png)  
